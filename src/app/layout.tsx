@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "LegalTech AI Hub - Discover the Future of Legal Services",
   description: "Comprehensive directory of AI-powered legal technology tools and solutions.",
 };
+
 
 export default function RootLayout({
   children,
@@ -25,6 +28,8 @@ export default function RootLayout({
                 <a href="/" className="hover:text-blue-500">Home</a>
                 <a href="/tools" className="hover:text-blue-500">Tools</a>
                 <a href="/about" className="hover:text-blue-500">About</a>
+          <a href="/submit" className="hover:text-blue-500">Submit</a>
+          <a href="/advertise" className="hover:text-blue-500">Advertise</a>
               </nav>
             </div>
           </header>
@@ -34,12 +39,3 @@ export default function RootLayout({
           </main>
           
           <footer className="bg-gray-100 border-t py-8">
-            <div className="container mx-auto px-4 text-center text-gray-600">
-              <p>&copy; {new Date().getFullYear()} LegalTech AI Hub. All rights reserved.</p>
-            </div>
-          </footer>
-        </div>
-      </body>
-    </html>
-  );
-}
