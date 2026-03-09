@@ -23,6 +23,7 @@ export const tools: LegalTool[] = [
     description: "AI-powered tool for comprehensive contract review and risk assessment.",
     category: "contract-analysis",
     features: ["Automatic clause detection", "Risk scoring", "Obligation tracking"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "legal-research-assistant",
@@ -30,6 +31,7 @@ export const tools: LegalTool[] = [
     description: "Intelligent search and analysis for legal precedents and case law.",
     category: "legal-research",
     features: ["Natural language queries", "Citation verification", "Summary generation"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "case-management-pro",
@@ -37,6 +39,7 @@ export const tools: LegalTool[] = [
     description: "Streamlined case tracking and deadline management for legal teams.",
     category: "case-management",
     features: ["Deadline alerts", "Document linking", "Team collaboration"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "document-automation-ai",
@@ -44,13 +47,15 @@ export const tools: LegalTool[] = [
     description: "Automated legal document generation with AI-driven templates.",
     category: "document-automation",
     features: ["Template library", "Auto-filling", "Customizable workflows"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "e-discovery-scanner",
-    name: "E-Discovery Scanner",
+    name: "E-Discovery Scanner",\
     description: "Advanced scanning and categorization of electronic discovery data.",
     category: "e-discovery",
     features: ["Large-scale data processing", "Duplicate detection", "Searchable indexing"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "compliance-risk-checker",
@@ -58,12 +63,13 @@ export const tools: LegalTool[] = [
     description: "Automated assessment of regulatory compliance and risk exposure.",
     category: "compliance-risk",
     features: ["Regulatory updates", "Gap analysis", "Reporting dashboard"],
+    affiliateUrl: "https://legaltech-ai-hub.com/disclosure",
   },
   {
     slug: "intellectual-property-bot",
     name: "Intellectual Property Bot",
     description: "AI assistant for trademark and patent research and monitoring.",
-    category: "case-management", // Fixed from previous hardcoded mix
+    category: "case-management",
     features: ["TESS integration", "Status monitoring", "Alerting system"],
   },
   {
