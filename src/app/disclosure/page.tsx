@@ -1,46 +1,42 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Affiliate Disclosure | LegalTech AI Hub",
-  description: "Our commitment to transparency and how we monetize LegalTech AI Hub through affiliate partnerships.",
-  alternates: {
-    canonical: "/disclosure",
-  },
+  title: "Affiliate Disclosure",
+  description: "Transparency regarding our relationships with legal technology providers and affiliate links.",
 };
 
 export default function DisclosurePage() {
   return (
     <div className="bg-white min-h-screen py-20">
       <div className="container mx-auto px-4 max-w-3xl">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-8">Affiliate Disclosure</h1>
+        <h1 className="text-4xl font-extrabold mb-8">Affiliate Disclosure</h1>
         <div className="prose prose-lg text-gray-600">
           <p>
-            Transparency is a core value at LegalTech AI Hub. We believe in being upfront about how we maintain and operate this platform for the legal community.
-          </p>
-          
-          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">How We Monetize</h2>
-          <p>
-            LegalTech AI Hub participates in various affiliate marketing programs. This means that when you click on certain links to products or services and subsequently make a purchase, we may receive a small commission from the partner.
+            LegalTech AI Hub is a participant in various affiliate marketing programs. 
+            This means that some of the links on this website are "affiliate links." 
+            If you click on an affiliate link and make a purchase or sign up for a service, 
+            we may receive a small commission at no additional cost to you.
           </p>
           <p>
-            This comes at <strong>no additional cost to you</strong>. In many cases, our partnerships allow us to provide unique discounts or trials that are not available elsewhere.
-          </p>
-
-          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Our Integrity</h2>
-          <p>
-            Our primary goal is to provide value to legal professionals. We only recommend tools and services that we believe provide genuine utility and value to the legal industry. 
+            Our goal is to provide honest and helpful information about legal technology. 
+            The inclusion of a tool in our directory or a link to a provider does not 
+            necessarily constitute an endorsement. We research and select tools based on 
+            their features, reputation, and relevance to legal professionals.
           </p>
           <p>
-            The presence of an affiliate link does not influence our objective descriptions of the tools. We maintain editorial independence to ensure you get an accurate picture of the technology available.
+            These commissions help us maintain the website, update our content, and continue 
+            researching the latest advancements in AI for the legal industry. We appreciate 
+            your support which allows us to keep providing free resources to the community.
           </p>
-
-          <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Why This Model?</h2>
-          <p>
-            Building and maintaining a comprehensive database of legal technology requires significant resources. Affiliate commissions help cover our hosting costs, research time, and development, allowing us to keep the hub free for all users.
-          </p>
-
-          <p className="mt-12 text-sm text-gray-500 italic">
-            Last updated: March 9, 2026
+          <h2 className="text-2xl font-bold mt-12 mb-4 text-gray-900">How It Affects You</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li><strong>No Extra Cost:</strong> Using our affiliate links never costs you extra money.</li>
+            <li><strong>Unbiased Reviews:</strong> Our reviews and listings are independent of our affiliate relationships.</li>
+            <li><strong>Transparency:</strong> We clearly mark pages with affiliate content or provide this disclosure for awareness.</li>
+          </ul>
+          <p className="mt-8">
+            If you have any questions regarding this disclosure or our practices, please 
+            contact us via our <a href="/about" className="text-blue-600 hover:underline">About</a> page.
           </p>
         </div>
       </div>
