@@ -1,15 +1,9 @@
 import Link from "next/link";
-
-const categories = [
-  { name: "Contract Analysis", slug: "contract-analysis", icon: "📄" },
-  { name: "Legal Research", slug: "legal-research", icon: "🔍" },
-  { name: "Case Management", slug: "case-management", icon: "💼" },
-  { name: "Document Automation", slug: "document-automation", icon: "🤖" },
-  { name: "E-Discovery", slug: "e-discovery", icon: "📂" },
-  { name: "Compliance & Risk", slug: "compliance-risk", icon: "🛡️" },
-];
+import { tools, categories } from "@/lib/tools";
 
 export default function Home() {
+  const latestTools = tools.slice(0, 4);
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -61,7 +55,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Tools Section */}
+      {/* Latest Tools Section */}
       <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-12">
@@ -75,17 +69,18 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Placeholder for tool cards */}
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-white rounded-lg border overflow-hidden shadow-sm">
+            {latestTools.map((tool) => (
+              <div key={tool.slug} className="bg-white rounded-lg border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div className="h-40 bg-gray-200"></div>
                 <div className="p-4">
-                  <div className="text-xs font-bold text-blue-600 uppercase mb-1">AI Assistant</div>
-                  <h3 className="text-lg font-bold mb-2">LegalAI Pro {i}</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Advanced contract review and risk assessment powered by GPT-4.
+                  <div className="text-xs font-bold text-blue-600 uppercase mb-1">
+                    {tool.category.replace("-", " ")}
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">{tool.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {tool.description}
                   </p>
-                  <Link href={`/tools/tool-${i}`} className="text-blue-600 text-sm font-bold hover:underline">
+                  <Link href={`/tools/${tool.slug}`} className="text-blue-600 text-sm font-bold hover:underline">
                     Learn more
                   </Link>
                 </div>
