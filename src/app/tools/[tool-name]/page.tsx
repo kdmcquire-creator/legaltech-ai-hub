@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
-import AffiliateBlock from "@/components/AffiliateBlock";
 
 type Props = {
   params: { "tool-name": string };
@@ -45,16 +44,30 @@ export default function ToolPage({ params }: Props) {
       <section className="bg-blue-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="mb-4">
-            <Link href="/" className="text-blue-200 hover:text-white transition">
+            <Link href="/tools" className="text-blue-200 hover:text-white transition">
               &larr; Back to Hub
             </Link>
           </div>
           <h1 className="text-4xl font-extrabold mb-4">{tool.name}</h1>
           <p className="text-xl text-blue-100 max-w-3xl">{tool.description}</p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-blue-400">
               {tool.category.replace("-", " ")}
             </span>
+            {tool.affiliateUrl ? (
+              <a 
+                href={tool.affiliateUrl} 
+                target="_blank" 
+                rel="nofollow noopener" 
+                className="bg-white text-blue-600 px-8 py-2 rounded-lg font-bold hover:bg-blue-50 transition"
+              >
+                Visit Website &rarr;
+              </a>
+            ) : (
+              <button className="bg-blue-500 text-blue-100 px-8 py-2 rounded-lg font-bold cursor-not-allowed border border-blue-400">
+                Official Site
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -63,7 +76,7 @@ export default function ToolPage({ params }: Props) {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 text-gray-800">
               <h2 className="text-3xl font-bold mb-6">Overview</h2>
               <div className="prose prose-lg text-gray-600 mb-12">
                 <p>
@@ -99,7 +112,7 @@ export default function ToolPage({ params }: Props) {
               </p>
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-xl border h-fit">
+            <div className="bg-gray-50 p-8 rounded-xl border h-fit sticky top-24">
               <h3 className="text-xl font-bold mb-4">Request Demo</h3>
               <p className="text-gray-600 mb-6 text-sm">
                 Want to see how {tool.name} can transform your practice? 
@@ -115,12 +128,13 @@ export default function ToolPage({ params }: Props) {
                   firm's specific requirements.
                 </p>
               </div>
+              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-xs text-yellow-800">
+                <strong>Disclosure:</strong> This page may contain affiliate links. We may earn a commission if you make a purchase through these links at no extra cost to you.
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <AffiliateBlock placement="toolPage" />
     </div>
   );
 }
