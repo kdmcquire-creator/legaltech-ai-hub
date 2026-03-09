@@ -1,77 +1,15 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-const toolsData = {
-  "contract-analyzer": {
-    name: "Contract Analyzer",
-    description: "AI-powered tool for comprehensive contract review and risk assessment.",
-    category: "Contract Analysis",
-    features: ["Automatic clause detection", "Risk scoring", "Obligation tracking"],
-  },
-  "legal-research-assistant": {
-    name: "Legal Research Assistant",
-    description: "Intelligent search and analysis for legal precedents and case law.",
-    category: "Legal Research",
-    features: ["Natural language queries", "Citation verification", "Summary generation"],
-  },
-  "case-management-pro": {
-    name: "Case Management Pro",
-    description: "Streamlined case tracking and deadline management for legal teams.",
-    category: "Case Management",
-    features: ["Deadline alerts", "Document linking", "Team collaboration"],
-  },
-  "document-automation-ai": {
-    name: "Document Automation AI",
-    description: "Automated legal document generation with AI-driven templates.",
-    category: "Document Automation",
-    features: ["Template library", "Auto-filling", "Customizable workflows"],
-  },
-  "e-discovery-scanner": {
-    name: "E-Discovery Scanner",
-    description: "Advanced scanning and categorization of electronic discovery data.",
-    category: "E-Discovery",
-    features: ["Large-scale data processing", "Duplicate detection", "Searchable indexing"],
-  },
-  "compliance-risk-checker": {
-    name: "Compliance Risk Checker",
-    description: "Automated assessment of regulatory compliance and risk exposure.",
-    category: "Compliance & Risk",
-    features: ["Regulatory updates", "Gap analysis", "Reporting dashboard"],
-  },
-  "intellectual-property-bot": {
-    name: "Intellectual Property Bot",
-    description: "AI assistant for trademark and patent research and monitoring.",
-    category: "IP Management",
-    features: ["TESS integration", "Status monitoring", "Alerting system"],
-  },
-  "litigation-predictor": {
-    name: "Litigation Predictor",
-    description: "AI analytics to predict litigation outcomes based on historical data.",
-    category: "Legal Analytics",
-    features: ["Historical data analysis", "Outcome probability", "Cost estimation"],
-  },
-  "notary-verification-tool": {
-    name: "Notary Verification Tool",
-    description: "Digital verification and authentication for notarized documents.",
-    category: "Authentication",
-    features: ["Blockchain verification", "Identity checks", "Tamper-evident logs"],
-  },
-  "legal-chat-assistant": {
-    name: "Legal Chat Assistant",
-    description: "24/7 AI-powered chat assistant for basic legal inquiries and triage.",
-    category: "Customer Service",
-    features: ["Instant responses", "Lead qualification", "Initial triage"],
-  },
-};
+import { tools } from "@/lib/tools";
 
 type Props = {
   params: { "tool-name": string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const toolName = params["tool-name"];
-  const tool = toolsData[toolName as keyof typeof toolsData];
+  const toolSlug = params["tool-name"];
+  const tool = tools.find((t) => t.slug === toolSlug);
 
   if (!tool) {
     return {
@@ -82,6 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${tool.name} - AI Legal Tool | LegalTech AI Hub`,
     description: tool.description,
+    alternates: {
+      canonical: `/tools/${tool.slug}`,
+    },
     openGraph: {
       title: `${tool.name} - AI Legal Tool`,
       description: tool.description,
@@ -90,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function ToolPage({ params }: Props) {
-  const toolName = params["tool-name"];
-  const tool = toolsData[toolName as keyof typeof toolsData];
+  const toolSlug = params["tool-name"];
+  const tool = tools.find((t) => t.slug === toolSlug);
 
   if (!tool) {
     notFound();
@@ -111,7 +52,7 @@ export default function ToolPage({ params }: Props) {
           <p className="text-xl text-blue-100 max-w-3xl">{tool.description}</p>
           <div className="mt-8">
             <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-blue-400">
-              {tool.category}
+              {tool.category.replace("-", " ")}
             </span>
           </div>
         </div>
@@ -125,7 +66,7 @@ export default function ToolPage({ params }: Props) {
               <h2 className="text-3xl font-bold mb-6">Overview</h2>
               <div className="prose prose-lg text-gray-600 mb-12">
                 <p>
-                  {tool.name} is a leading-edge solution in the {tool.category} space. 
+                  {tool.name} is a leading-edge solution in the {tool.category.replace("-", " ")} space. 
                   Leveraging advanced AI models, it provides legal professionals with 
                   the tools they need to enhance efficiency, reduce errors, and deliver 
                   superior results for their clients.
