@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
+import AffiliateBlock from "@/components/AffiliateBlock";
 
 type Props = {
   params: { "tool-name": string };
@@ -118,6 +119,8 @@ export default function ToolPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <AffiliateBlock placement="toolPage" />
     </div>
   );
 }
