@@ -51,7 +51,7 @@ export const tools: LegalTool[] = [
   },
   {
     slug: "e-discovery-scanner",
-    name: "E-Discovery Scanner",\
+    name: "E-Discovery Scanner",
     description: "Advanced scanning and categorization of electronic discovery data.",
     category: "e-discovery",
     features: ["Large-scale data processing", "Duplicate detection", "Searchable indexing"],
