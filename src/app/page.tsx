@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools";
 import { reviews } from "@/lib/reviews";
+import AdUnit from "@/components/AdUnit";
 
 export default function Home() {
   const freeTools = tools.filter((t) => t.isFree);
@@ -118,6 +119,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Ad Unit */}
+      <div className="container mx-auto px-4 max-w-5xl py-6">
+        <AdUnit slot="SLOT_HOME_MID" format="horizontal" />
+      </div>
 
       {/* Featured Tools */}
       <section className="bg-gray-50 py-16">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reviews, typeLabels, typeColors } from "@/lib/reviews";
 import { reviewContent } from "@/lib/review-content";
+import AdUnit from "@/components/AdUnit";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -74,6 +75,11 @@ export default async function ReviewPage({ params }: Props) {
           ) : (
             <p className="text-gray-500">Full review coming soon.</p>
           )}
+
+          {/* Ad Unit */}
+          <div className="my-10">
+            <AdUnit slot="SLOT_REVIEW_BOTTOM" format="auto" />
+          </div>
 
           {/* Disclosure */}
           <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">

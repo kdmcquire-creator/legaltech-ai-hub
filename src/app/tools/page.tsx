@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools";
 import { Metadata } from "next";
+import AdUnit from "@/components/AdUnit";
 
 export const metadata: Metadata = {
   title: "AI Legal Tools Directory",
@@ -68,6 +69,11 @@ export default function ToolsDirectory() {
           </div>
         </section>
       )}
+
+      {/* Ad Unit */}
+      <div className="container mx-auto px-4 max-w-5xl py-4">
+        <AdUnit slot="SLOT_TOOLS_TOP" format="horizontal" />
+      </div>
 
       {/* Main Directory */}
       <section className="py-12">
