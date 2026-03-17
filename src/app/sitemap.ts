@@ -1,19 +1,21 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://legaltech-ai-hub.com"; // Replace with actual domain
+  const baseUrl = "https://legaltech-ai-hub.com";
 
-  const tools = [
-    "contract-analyzer",
-    "legal-research-assistant",
-    "case-management-pro",
-    "document-automation-ai",
-    "e-discovery-scanner",
-    "compliance-risk-checker",
-    "intellectual-property-bot",
-    "litigation-predictor",
-    "notary-verification-tool",
-    "legal-chat-assistant",
+  const toolSlugs = [
+    "legal-readiness-assessment",
+    "contract-clause-checker",
+    "harvey-ai",
+    "casetext-cocounsel",
+    "ironclad-ai",
+    "spellbook",
+    "kira-systems",
+    "everlaw",
+    "luminance",
+    "lex-machina",
+    "lawgeex",
+    "relativity",
   ];
 
   const reviewSlugs = [
@@ -24,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "how-to-choose-ai-contract-analysis-software",
   ];
 
-  const toolEntries = tools.map((tool) => ({
+  const toolEntries = toolSlugs.map((tool) => ({
     url: `${baseUrl}/tools/${tool}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
@@ -44,6 +46,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/legal-readiness`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/clause-checker`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     ...toolEntries,
     {
