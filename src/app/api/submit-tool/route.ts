@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   const { name, url, description } = await req.json();
 
