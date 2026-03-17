@@ -2,7 +2,7 @@ import Link from "next/link";
 import { tools, categories } from "@/lib/tools";
 
 export default function Home() {
-  const latestTools = tools.slice(0, 4);
+  const latestTools = tools.slice(4, 8);
 
   return (
     <div className="bg-white">
@@ -69,23 +69,35 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {latestTools.map((tool) => (
-              <div key={tool.slug} className="bg-white rounded-lg border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-40 bg-gray-200"></div>
-                <div className="p-4">
-                  <div className="text-xs font-bold text-blue-600 uppercase mb-1">
-                    {tool.category.replace("-", " ")}
+            {latestTools.map((tool) => {
+              const icon = categories.find(
+                (c) => c.slug === tool.category
+              )?.icon;
+              return (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  className="bg-white rounded-lg border overflow-hidden shadow-sm hover:shadow-lg transition-shadow block group"
+                >
+                  <div
+                    className={`h-40 bg-gradient-to-br ${tool.color || "from-gray-400 to-gray-600"} flex items-center justify-center`}
+                  >
+                    <span className="text-5xl opacity-90">{icon}</span>
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{tool.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {tool.description}
-                  </p>
-                  <Link href={`/tools/${tool.slug}`} className="text-blue-600 text-sm font-bold hover:underline">
-                    Learn more
-                  </Link>
-                </div>
-              </div>
-            ))}
+                  <div className="p-4">
+                    <div className="text-xs font-bold text-blue-600 uppercase mb-1">
+                      {tool.category.replace("-", " ")}
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                      {tool.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm line-clamp-2">
+                      {tool.description}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
