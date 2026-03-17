@@ -7,7 +7,7 @@ export default function ContactPage() {
       <div className="prose prose-blue max-w-none">
         <p>If you have any questions, suggestions, or feedback regarding LegalTech AI Hub, we would love to hear from you.</p>
         <p>You can reach us via email at:</p>
-        <p className="font-semibold">contact@aiproductivityhub.co</p>
+        <p className="font-semibold">contact@legaltech-ai-hub.com</p>
         <p className="mt-8">We aim to respond to all inquiries within 48 hours.</p>
       </div>
     </div>
