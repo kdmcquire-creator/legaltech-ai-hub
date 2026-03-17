@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
   sgMail.setApiKey(apiKey);
 
   const msg = {
-    to: process.env.CONTACT_TO_EMAIL || "kdmcquire@gmail.com",
+    to: process.env.CONTACT_TO_EMAIL || "moonsmoke.contact@gmail.com",
     from: process.env.SENDGRID_FROM_EMAIL || "contact@legaltech-ai-hub.com",
     replyTo: email,
     subject: `Contact Form: Message from ${name}`,
