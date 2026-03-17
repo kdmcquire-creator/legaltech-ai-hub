@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Script from "next/script";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://legaltech-ai-hub.com"),
@@ -38,7 +35,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <div className="flex flex-col min-h-screen">
           <header className="bg-white border-b sticky top-0 z-10">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
