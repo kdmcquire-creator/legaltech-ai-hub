@@ -4,11 +4,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = categories.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     return {
@@ -25,8 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CategoryPage({ params }: Props) {
-  const category = categories.find((c) => c.slug === params.slug);
+export default async function CategoryPage({ params }: Props) {
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     notFound();

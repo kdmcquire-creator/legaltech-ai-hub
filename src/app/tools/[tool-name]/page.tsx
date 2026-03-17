@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
 
 type Props = {
-  params: { "tool-name": string };
+  params: Promise<{ "tool-name": string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const toolSlug = params["tool-name"];
+  const { "tool-name": toolSlug } = await params;
   const tool = tools.find((t) => t.slug === toolSlug);
 
   if (!tool) {
@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ToolPage({ params }: Props) {
-  const toolSlug = params["tool-name"];
+export default async function ToolPage({ params }: Props) {
+  const { "tool-name": toolSlug } = await params;
   const tool = tools.find((t) => t.slug === toolSlug);
 
   if (!tool) {
