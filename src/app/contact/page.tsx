@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorDetail, setErrorDetail] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,11 +26,23 @@ export default function ContactPage() {
 
       if (res.ok) {
         setStatus("sent");
+        setErrorDetail("");
         (e.target as HTMLFormElement).reset();
       } else {
+        let detail = `HTTP ${res.status}`;
+        try {
+          const data = await res.json();
+          if (data.detail) detail = data.detail;
+          else if (data.error) detail = data.error;
+        } catch {
+          const text = await res.text().catch(() => "");
+          if (text) detail = text.slice(0, 200);
+        }
+        setErrorDetail(detail);
         setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      setErrorDetail(err instanceof Error ? err.message : "Network error");
       setStatus("error");
     }
   };
@@ -67,7 +80,12 @@ export default function ContactPage() {
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>
           {status === "error" && (
-            <p className="text-red-600 text-sm">Failed to send. Please try again later.</p>
+            <div className="text-red-600 text-sm">
+              <p>Failed to send. Please try again later.</p>
+              {errorDetail && (
+                <p className="mt-1 text-xs text-red-500">Error: {errorDetail}</p>
+              )}
+            </div>
           )}
         </form>
       )}
