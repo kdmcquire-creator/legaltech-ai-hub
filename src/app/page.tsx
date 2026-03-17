@@ -38,6 +38,18 @@ export default function Home() {
               Free Contract Checker
             </Link>
             <Link
+              href="/doc-diff"
+              className="bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+            >
+              Free Document Diff Checker
+            </Link>
+            <Link
+              href="/argument-gap"
+              className="bg-amber-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
+            >
+              Free Argument Gap Analyzer
+            </Link>
+            <Link
               href="/tools"
               className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
             >

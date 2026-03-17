@@ -112,6 +112,87 @@ export const tools: LegalTool[] = [
     pricing: [{ tier: "Free", price: "$0", note: "Always free. Runs entirely in your browser." }],
   },
 
+  {
+    slug: "legal-document-diff-checker",
+    name: "Legal Document Diff Checker",
+    description:
+      "Compare two versions of a contract or legal document side by side. See word-level changes highlighted with legal implications automatically flagged — liability shifts, IP changes, payment modifications, and more.",
+    category: "free-tools",
+    features: [
+      "Word-level diff highlighting between two document versions",
+      "Automatic detection of 12 legal implication categories",
+      "Severity-rated flags: high, medium, and low impact changes",
+      "Change statistics: words added, removed, and percentage changed",
+      "100% client-side — your documents stay private",
+    ],
+    color: "from-purple-500 to-violet-600",
+    tagline: "What changed in that redline? Find out in seconds.",
+    isFree: true,
+    isOwnTool: true,
+    websiteUrl: "/doc-diff",
+    bestFor: "Anyone comparing contract versions — lawyers reviewing redlines, business teams tracking negotiation changes, and individuals checking what a counterparty modified.",
+    overview:
+      "The Legal Document Diff Checker is a free tool built by LegalTech AI Hub. Paste two versions of any legal document and instantly see every word-level change highlighted. More importantly, the tool automatically flags changes that affect legally significant provisions — liability, termination, payment terms, IP ownership, governing law, and more — rated by severity. Everything runs in your browser; your document text is never sent to any server.",
+    useCases: [
+      "Reviewing a counterparty's redline to understand what changed",
+      "Comparing contract versions before and after negotiation",
+      "Checking what a vendor modified in their terms of service",
+      "Verifying that agreed-upon changes were accurately incorporated",
+    ],
+    pros: [
+      "Completely free and private — text never leaves your browser",
+      "Legal implications flagged automatically, not just text changes",
+      "Severity ratings help prioritize which changes to focus on",
+      "Clean, readable diff output with statistics",
+    ],
+    cons: [
+      "Pattern matching — does not evaluate the legal quality of changes",
+      "Works best with clean text (not formatted PDFs or scanned documents)",
+      "Large documents may take a moment to process",
+    ],
+    pricing: [{ tier: "Free", price: "$0", note: "Always free. Runs entirely in your browser." }],
+  },
+  {
+    slug: "legal-argument-gap-analyzer",
+    name: "Legal Argument Gap Analyzer",
+    description:
+      "Paste a legal argument, brief, or memo and get instant analysis of potential gaps — missing legal standards, unsupported claims, structural weaknesses, and missing counterarguments.",
+    category: "free-tools",
+    features: [
+      "Checks 12 gap categories across structure, authority, reasoning, and persuasiveness",
+      "Severity-rated gaps: critical, important, and suggestions",
+      "Argument completeness score with letter grade",
+      "Actionable recommendations for each gap identified",
+      "100% client-side — your arguments stay private",
+    ],
+    color: "from-amber-500 to-orange-600",
+    tagline: "Is your legal argument airtight? Check before you file.",
+    isFree: true,
+    isOwnTool: true,
+    websiteUrl: "/argument-gap",
+    bestFor: "Attorneys, law students, and paralegals who want a quick structural review of their legal arguments before filing or submission.",
+    overview:
+      "The Legal Argument Gap Analyzer is a free tool built by LegalTech AI Hub. It checks your legal writing against 12 common structural and substantive criteria that judges and opposing counsel look for: statement of the legal standard, factual foundation, case law citations, application of law to facts, counterargument handling, and more. Each gap is rated by severity and comes with a specific recommendation for how to address it. Everything runs in your browser — your argument text is never sent to any server.",
+    useCases: [
+      "Pre-filing review of a motion or brief to catch structural gaps",
+      "Law students checking their legal writing assignments",
+      "Paralegals doing first-pass quality checks on attorney drafts",
+      "Anyone writing a demand letter or legal memo who wants a sanity check",
+    ],
+    pros: [
+      "Completely free and private — text never leaves your browser",
+      "Covers the full argument lifecycle: structure, authority, reasoning, persuasion",
+      "Severity ratings help prioritize what to fix first",
+      "Specific, actionable recommendations for each gap",
+    ],
+    cons: [
+      "Pattern matching cannot evaluate the quality or accuracy of legal reasoning",
+      "May flag gaps that are intentionally omitted (e.g. policy arguments in a pure procedural motion)",
+      "Not a substitute for attorney review",
+    ],
+    pricing: [{ tier: "Free", price: "$0", note: "Always free. Runs entirely in your browser." }],
+  },
+
   // ─── REAL THIRD-PARTY TOOLS ─────────────────────────────
   {
     slug: "harvey-ai",

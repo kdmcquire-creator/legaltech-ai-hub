@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "lex-machina",
     "lawgeex",
     "relativity",
+    "legalzoom",
+    "lawdepot",
+    "legalnature",
+    "rocket-lawyer",
+    "legal-document-diff-checker",
+    "legal-argument-gap-analyzer",
   ];
 
   const reviewSlugs = [
@@ -55,6 +61,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/clause-checker`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/doc-diff`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/argument-gap`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
