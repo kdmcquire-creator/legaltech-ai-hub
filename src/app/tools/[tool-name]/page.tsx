@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
 import { reviews } from "@/lib/reviews";
+import AdUnit from "@/components/AdUnit";
 
 type Props = {
   params: Promise<{ "tool-name": string }>;
@@ -235,6 +236,11 @@ export default async function ToolPage({ params }: Props) {
                   )}
                 </div>
               )}
+
+              {/* Ad Unit */}
+              <div className="border rounded-xl p-4 overflow-hidden">
+                <AdUnit slot="SLOT_TOOL_SIDEBAR" format="rectangle" />
+              </div>
 
               {/* Quick links */}
               <div className="border rounded-xl p-6">

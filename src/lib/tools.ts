@@ -28,6 +28,7 @@ export const categories = [
   { name: "Contract Lifecycle", slug: "contract-lifecycle", icon: "🔄" },
   { name: "E-Discovery", slug: "e-discovery", icon: "📂" },
   { name: "Document Drafting", slug: "document-drafting", icon: "📝" },
+  { name: "Online Legal Services", slug: "online-legal-services", icon: "⚖️" },
   { name: "Free Tools", slug: "free-tools", icon: "🆓" },
 ];
 
@@ -519,6 +520,175 @@ export const tools: LegalTool[] = [
     pricing: [
       { tier: "RelativityOne", price: "Custom", note: "Cloud SaaS. Pricing based on data volume and users." },
       { tier: "Server", price: "Custom", note: "Self-hosted option. Annual license plus hosting costs." },
+    ],
+  },
+
+  // ─── ONLINE LEGAL SERVICES ───────────────────────────────
+  {
+    slug: "legalzoom",
+    name: "LegalZoom",
+    description:
+      "The largest online legal services platform in the U.S. Offers business formation (LLC, corporation), registered agent services, trademark registration, estate planning, and access to attorney consultations.",
+    category: "online-legal-services",
+    features: [
+      "LLC and corporation formation in all 50 states",
+      "Registered agent services",
+      "Trademark search and registration",
+      "Wills, trusts, and estate planning documents",
+      "Access to a network of independent attorneys",
+    ],
+    color: "from-green-600 to-emerald-700",
+    tagline: "The most recognized name in online legal services.",
+    websiteUrl: "https://www.legalzoom.com",
+    reviewSlug: "legalzoom-vs-lawdepot-vs-legalnature",
+    bestFor: "Entrepreneurs and small business owners who want a trusted, well-known platform for business formation and basic legal documents.",
+    overview:
+      "LegalZoom has helped millions of Americans form businesses, create legal documents, and access legal advice since 2001. It is the most recognized brand in online legal services. While it is not the cheapest option, its scale means reliable processing, a large attorney network, and a polished user experience. LegalZoom is best for people who want the peace of mind that comes with a well-established platform, even if they pay a premium for it.",
+    useCases: [
+      "Forming an LLC or corporation quickly and correctly",
+      "Filing a trademark application with USPTO",
+      "Creating a will or living trust without visiting a lawyer",
+      "Getting on-demand legal advice from a licensed attorney",
+    ],
+    pros: [
+      "Most recognized and trusted brand in online legal services",
+      "Comprehensive service catalog — formation, IP, estate, compliance",
+      "Large attorney network for consultations",
+      "Strong customer support with satisfaction guarantee",
+    ],
+    cons: [
+      "Premium pricing compared to competitors",
+      "Upsells can make the checkout process confusing",
+      "Some services (like registered agent) are cheaper elsewhere",
+    ],
+    pricing: [
+      { tier: "LLC Formation", price: "$0 + state fees", note: "Basic formation. Upsells for expedited processing and add-ons." },
+      { tier: "Business Advisory Plan", price: "$33/mo", note: "Includes attorney consultations, compliance calendar, and more." },
+    ],
+  },
+  {
+    slug: "lawdepot",
+    name: "LawDepot",
+    description:
+      "Online legal document platform with 100+ customizable templates for business, real estate, financial, and personal legal documents. Strong in Canada, U.S., U.K., and Australia.",
+    category: "online-legal-services",
+    features: [
+      "100+ legal document templates",
+      "Step-by-step document builder with plain-English questions",
+      "Multi-jurisdiction support (U.S., Canada, U.K., Australia)",
+      "Real estate lease and rental agreement templates",
+      "Business contracts, NDAs, and employment agreements",
+    ],
+    color: "from-blue-500 to-blue-700",
+    tagline: "Legal documents made simple — 100+ templates, no lawyer required.",
+    websiteUrl: "https://www.lawdepot.com",
+    reviewSlug: "legalzoom-vs-lawdepot-vs-legalnature",
+    bestFor: "Individuals and small businesses who need affordable, customizable legal documents — especially landlords, freelancers, and small employers.",
+    overview:
+      "LawDepot (part of Draycott Law Inc.) is a legal document platform that lets you create customized legal documents by answering simple questions. It is particularly strong for everyday legal needs: residential leases, employment contracts, NDAs, wills, and power of attorney documents. Unlike LegalZoom, LawDepot focuses purely on document generation rather than full legal services, which keeps costs lower. It also has excellent multi-jurisdiction coverage across the U.S., Canada, U.K., and Australia.",
+    useCases: [
+      "Landlords creating state-specific lease agreements",
+      "Freelancers and contractors drafting service agreements",
+      "Small businesses creating employment contracts and NDAs",
+      "Individuals creating wills and power of attorney documents",
+    ],
+    pros: [
+      "Large template library covering most common document types",
+      "Affordable — free trial plus reasonable subscription pricing",
+      "Multi-jurisdiction coverage is excellent for international users",
+      "Simple, guided document builder that anyone can use",
+    ],
+    cons: [
+      "Does not offer business formation services",
+      "No attorney consultation network",
+      "Some templates may need additional customization for complex situations",
+    ],
+    pricing: [
+      { tier: "Free Trial", price: "$0", note: "Create one document free. Full access requires subscription." },
+      { tier: "Annual", price: "$7.99/mo", note: "Billed annually. Unlimited document access." },
+    ],
+  },
+  {
+    slug: "legalnature",
+    name: "LegalNature",
+    description:
+      "Affordable online legal document service offering business formation, legal document templates, and compliance tools. Known for transparent pricing and no hidden fees.",
+    category: "online-legal-services",
+    features: [
+      "LLC and corporation formation",
+      "Legal document templates (contracts, wills, leases)",
+      "Compliance alerts and annual report reminders",
+      "Operating agreement and bylaws generation",
+      "EIN registration assistance",
+    ],
+    color: "from-teal-500 to-cyan-600",
+    tagline: "Affordable legal documents with transparent, no-surprise pricing.",
+    websiteUrl: "https://www.legalnature.com",
+    reviewSlug: "legalzoom-vs-lawdepot-vs-legalnature",
+    bestFor: "Budget-conscious entrepreneurs and small business owners who want straightforward legal documents without the upsell pressure.",
+    overview:
+      "LegalNature positions itself as the affordable, no-nonsense alternative to LegalZoom. It offers business formation, legal document templates, and basic compliance tools at lower price points with transparent pricing. While it does not have the brand recognition or attorney network of LegalZoom, it delivers solid document quality and a clean user experience. LegalNature is a good choice for cost-conscious founders who know what they need and do not want to navigate upsells.",
+    useCases: [
+      "Forming an LLC on a budget",
+      "Creating an operating agreement or corporate bylaws",
+      "Generating basic legal documents (leases, contracts, wills)",
+      "Staying on top of state compliance requirements",
+    ],
+    pros: [
+      "Transparent, competitive pricing — no hidden fees",
+      "Clean, straightforward user experience",
+      "Good document quality for common legal needs",
+      "Compliance reminders help you stay in good standing",
+    ],
+    cons: [
+      "Smaller brand — less established than LegalZoom",
+      "Narrower template library than LawDepot",
+      "No attorney consultation services",
+    ],
+    pricing: [
+      { tier: "LLC Formation", price: "$49 + state fees", note: "One-time fee. Includes operating agreement." },
+      { tier: "Documents", price: "From $19", note: "Per document. No subscription required." },
+    ],
+  },
+  {
+    slug: "rocket-lawyer",
+    name: "Rocket Lawyer",
+    description:
+      "Online legal services platform offering document creation, attorney consultations, and business formation. Combines DIY legal documents with on-demand access to real lawyers.",
+    category: "online-legal-services",
+    features: [
+      "Legal document creation with e-signature",
+      "On-demand attorney consultations (30-minute sessions)",
+      "Business formation (LLC, corporation, nonprofit)",
+      "Registered agent services",
+      "Legal health check and document review by attorneys",
+    ],
+    color: "from-red-500 to-rose-600",
+    tagline: "Legal documents plus real lawyers — when you need both.",
+    websiteUrl: "https://www.rocketlawyer.com",
+    bestFor: "Small business owners and individuals who want DIY legal documents but also want the option to consult a real attorney when things get complicated.",
+    overview:
+      "Rocket Lawyer bridges the gap between pure document platforms (like LawDepot) and full legal service providers. Its membership model gives you unlimited document creation plus access to on-demand attorney consultations. This makes it particularly valuable for small business owners who need ongoing legal support — not just a one-time document. Rocket Lawyer also offers business formation, registered agent services, and the ability to have attorneys review your documents before you finalize them.",
+    useCases: [
+      "Creating legal documents with the option to have an attorney review them",
+      "Getting quick legal advice on business or personal matters",
+      "Forming a business with ongoing legal support",
+      "Sending contracts with built-in e-signature",
+    ],
+    pros: [
+      "Combines DIY documents with real attorney access",
+      "Membership model is cost-effective for ongoing legal needs",
+      "Built-in e-signature on all documents",
+      "Wide range of services — documents, formation, consultations",
+    ],
+    cons: [
+      "Monthly membership required for best pricing",
+      "Individual document prices are high without membership",
+      "Attorney quality varies by location and availability",
+    ],
+    pricing: [
+      { tier: "Free Trial", price: "$0", note: "7-day free trial with access to documents and one attorney consultation." },
+      { tier: "Premium", price: "$39.99/mo", note: "Unlimited documents, e-signatures, and attorney consultations." },
     ],
   },
 ];
