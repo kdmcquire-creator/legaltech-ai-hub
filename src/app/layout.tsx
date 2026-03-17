@@ -45,6 +45,7 @@ export default function RootLayout({
               <nav className="space-x-4">
                 <Link href="/" className="hover:text-blue-500 font-medium">Home</Link>
                 <Link href="/tools" className="hover:text-blue-500 font-medium">Tools</Link>
+                <Link href="/reviews" className="hover:text-blue-500 font-medium">Reviews</Link>
                 <Link href="/about" className="hover:text-blue-500 font-medium">About</Link>
                 <Link href="/submit" className="hover:text-blue-500 font-medium">Submit Your Tool</Link>
               </nav>
@@ -59,6 +60,7 @@ export default function RootLayout({
                 <Link href="/about" className="text-gray-600 hover:text-blue-600">About</Link>
                 <Link href="/privacy" className="text-gray-600 hover:text-blue-600">Privacy Policy</Link>
                 <Link href="/contact" className="text-gray-600 hover:text-blue-600">Contact</Link>
+                <Link href="/terms" className="text-gray-600 hover:text-blue-600">Terms of Service</Link>
                 <Link href="/disclosure" className="text-gray-600 hover:text-blue-600">Affiliate Disclosure</Link>
               </div>
               <p className="text-gray-500 text-sm">
