@@ -43,11 +43,11 @@ export default function RootLayout({
                 LegalTech AI Hub
               </Link>
               <nav className="space-x-4">
-                <Link href="/" className="hover:text-blue-500 font-medium">Home</Link>
-                <Link href="/tools" className="hover:text-blue-500 font-medium">Tools</Link>
-                <Link href="/reviews" className="hover:text-blue-500 font-medium">Reviews</Link>
+                <Link href="/" className="text-gray-700 hover:text-blue-500 font-medium">Home</Link>
+                <Link href="/tools" className="text-gray-700 hover:text-blue-500 font-medium">Tools</Link>
+                <Link href="/reviews" className="text-gray-700 hover:text-blue-500 font-medium">Reviews</Link>
                 <Link href="/legal-readiness" className="hover:text-emerald-600 font-medium text-emerald-700">Free Quiz</Link>
-                <Link href="/about" className="hover:text-blue-500 font-medium">About</Link>
+                <Link href="/about" className="text-gray-700 hover:text-blue-500 font-medium">About</Link>
               </nav>
             </div>
           </header>
