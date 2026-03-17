@@ -63,6 +63,10 @@ export default function RootLayout({
                 <Link href="/terms" className="text-gray-600 hover:text-blue-600">Terms of Service</Link>
                 <Link href="/disclosure" className="text-gray-600 hover:text-blue-600">Affiliate Disclosure</Link>
               </div>
+              <p className="text-gray-400 text-xs max-w-2xl mx-auto mb-4">
+                <strong>Legal Disclaimer:</strong> LegalTech AI Hub provides informational content and tools only. Nothing on this site constitutes legal advice. Our free tools use pattern matching and automated analysis that may produce inaccurate or incomplete results — always verify outputs independently. Consult a licensed attorney for advice specific to your situation. Use of this site is subject to our{" "}
+                <Link href="/terms" className="underline hover:text-blue-600">Terms of Service</Link>.
+              </p>
               <p className="text-gray-500 text-sm">
                 {"©"} {new Date().getFullYear()} LegalTech AI Hub. All rights reserved.
               </p>

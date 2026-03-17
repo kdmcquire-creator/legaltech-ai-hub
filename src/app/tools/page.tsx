@@ -119,9 +119,10 @@ export default function ToolsDirectory() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {paidTools.map((tool) => (
-                  <div
+                  <Link
                     key={tool.slug}
-                    className="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition-shadow"
+                    href={`/tools/${tool.slug}`}
+                    className="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition-shadow block group"
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-xs font-bold text-blue-600 uppercase">
@@ -133,7 +134,7 @@ export default function ToolsDirectory() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{tool.name}</h3>
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{tool.name}</h3>
                     {tool.bestFor && (
                       <p className="text-gray-500 text-xs italic mb-2">
                         Best for: {tool.bestFor.split(".")[0]}.
@@ -152,23 +153,10 @@ export default function ToolsDirectory() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Link
-                        href={`/tools/${tool.slug}`}
-                        className="text-blue-600 font-bold text-sm hover:underline"
-                      >
-                        Full Overview &rarr;
-                      </Link>
-                      {tool.reviewSlug && (
-                        <Link
-                          href={`/reviews/${tool.reviewSlug}`}
-                          className="text-gray-400 text-sm hover:text-blue-600"
-                        >
-                          Read Review
-                        </Link>
-                      )}
-                    </div>
-                  </div>
+                    <span className="text-blue-600 font-bold text-sm">
+                      Full Overview &rarr;
+                    </span>
+                  </Link>
                 ))}
               </div>
             </div>

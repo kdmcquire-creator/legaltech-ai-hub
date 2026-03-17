@@ -533,6 +533,11 @@ export default function ClauseCheckerPage() {
                 Check out our recommended contract review tools &rarr;
               </Link>
             </div>
+
+            {/* Disclaimer */}
+            <div className="bg-gray-50 border rounded-xl p-4 text-xs text-gray-500 text-center">
+              <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. It uses pattern matching that may produce incomplete or inaccurate results — clauses may be present but phrased in ways the tool does not recognize, or flagged incorrectly. Always have a licensed attorney review any contract before signing.
+            </div>
           </div>
         </section>
       )}
