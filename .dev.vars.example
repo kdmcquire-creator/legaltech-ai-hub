@@ -1,0 +1,4 @@
+# Copy this file to .dev.vars and fill in your values
+# These are used by wrangler for local development
+
+SENDGRID_API_KEY=SG.your_api_key_here
