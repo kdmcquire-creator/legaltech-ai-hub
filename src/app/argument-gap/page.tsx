@@ -606,9 +606,7 @@ export default function ArgumentGapPage() {
 
             {/* Disclaimer */}
             <div className="bg-gray-50 border rounded-xl p-4 text-xs text-gray-500 text-center">
-              <strong>Disclaimer:</strong> This tool uses pattern matching to identify
-              common structural elements in legal arguments. It is not a substitute for
-              legal judgment. Always have a licensed attorney review your filings.
+              <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. It uses pattern matching that may produce inaccurate or incomplete results — gaps may be flagged incorrectly, and the tool cannot evaluate the quality or accuracy of your legal reasoning. Always have a licensed attorney review your filings before submission.
             </div>
           </div>
         </section>

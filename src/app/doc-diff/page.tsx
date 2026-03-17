@@ -598,6 +598,11 @@ export default function DocDiffPage() {
                 Explore AI contract review tools &rarr;
               </Link>
             </div>
+
+            {/* Disclaimer */}
+            <div className="bg-gray-50 border rounded-xl p-4 text-xs text-gray-500 text-center">
+              <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. It uses automated text comparison that may miss or mischaracterize changes, and its legal implication flags are based on keyword patterns that may be inaccurate or incomplete. Always have a licensed attorney review contract changes before signing.
+            </div>
           </div>
         </section>
       )}

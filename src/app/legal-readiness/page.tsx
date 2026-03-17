@@ -647,6 +647,11 @@ export default function LegalReadinessPage() {
             </Link>
           </div>
 
+          {/* Disclaimer */}
+          <div className="bg-gray-50 border rounded-xl p-4 text-xs text-gray-500 text-center mb-8">
+            <strong>Disclaimer:</strong> This assessment is for informational purposes only and does not constitute legal advice. Results are based on general best practices and may not reflect requirements specific to your industry, jurisdiction, or situation. A passing score does not mean your business is fully legally compliant. Always consult a licensed attorney for advice specific to your circumstances.
+          </div>
+
           {/* Retake */}
           <div className="text-center">
             <button
