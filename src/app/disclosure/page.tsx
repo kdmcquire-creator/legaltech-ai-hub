@@ -21,8 +21,20 @@ export const metadata: Metadata = {
 
 export default function DisclosurePage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-3xl font-bold mb-8">Affiliate & Advertising Disclosure</h1>
+    <div className="bg-white min-h-screen">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-slate-600 via-gray-600 to-zinc-700 py-12 md:py-16">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+            Affiliate & Advertising Disclosure
+          </h1>
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+            Transparency about how we earn revenue and how it does — and doesn&apos;t — influence our editorial content.
+          </p>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
       <p className="mb-4">
         This website is a participant in various affiliate marketing programs, which means we may get paid commissions on products purchased through our links to retailer sites.
       </p>
@@ -35,6 +47,7 @@ export default function DisclosurePage() {
       <p className="mb-4">
         If you have any questions about our disclosure policy, please feel free to contact us.
       </p>
+      </div>
     </div>
   );
 }

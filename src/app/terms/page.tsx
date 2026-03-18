@@ -12,8 +12,20 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+    <div className="bg-white min-h-screen">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-slate-600 via-gray-600 to-zinc-700 py-12 md:py-16">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+            Terms of Service
+          </h1>
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+            The rules and guidelines governing your use of LegalTech AI Hub.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
       <p className="mb-8 text-gray-500">Last updated: March 17, 2026</p>
 
       <section className="mb-8">
@@ -155,6 +167,7 @@ export default function TermsOfServicePage() {
           .
         </p>
       </section>
+      </div>
     </div>
   );
 }
