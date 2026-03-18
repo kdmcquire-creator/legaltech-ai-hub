@@ -22,7 +22,7 @@ const AffiliateBlock: React.FC<AffiliateBlockProps> = ({ placement = 'toolPage' 
             <a 
               href="https://go.nordprotect.net/aff_c?offer_id=973&aff_id=142338" 
               target="_blank" 
-              rel="nofollow noopener" 
+              rel="nofollow noopener noreferrer" 
               className="whitespace-nowrap bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition"
             >
               Protect My Data

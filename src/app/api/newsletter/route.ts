@@ -1,13 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
+import { escapeHtml, isValidEmail } from "@/lib/sanitize";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export async function POST(req: NextRequest) {
-  let body: { email?: string };
+  // --- Rate limiting (5 requests per IP per minute) ---
+  const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for") ?? "unknown";
+  if (!rateLimit(ip, { maxRequests: 5, windowMs: 60_000 })) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
 
+  // --- Parse body safely ---
+  let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
@@ -19,7 +28,7 @@ export async function POST(req: NextRequest) {
 
   const { email } = body;
 
-  if (!email || typeof email !== "string" || !EMAIL_REGEX.test(email)) {
+  if (!isValidEmail(email)) {
     return NextResponse.json(
       { error: "A valid email address is required." },
       { status: 400 }
@@ -118,7 +127,8 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Notify the site owner about the new subscriber
+  // Notify the site owner about the new subscriber (sanitize email in HTML)
+  const safeEmail = escapeHtml(email);
   try {
     await sgMail.send({
       to: ownerEmail,
@@ -128,7 +138,7 @@ export async function POST(req: NextRequest) {
       html: `
         <div style="font-family: sans-serif;">
           <h3>New Newsletter Subscriber</h3>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
           <p><strong>Date:</strong> ${new Date().toISOString()}</p>
           <p><strong>Added to Marketing Contacts:</strong> ${addedToContacts ? "Yes" : "No (fallback to email only)"}</p>
         </div>`,

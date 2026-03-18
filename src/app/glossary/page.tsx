@@ -441,8 +441,48 @@ export default function GlossaryPage() {
   const grouped = groupTermsByLetter(glossaryTerms);
   const activeLetters = new Set(Object.keys(grouped));
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: glossaryTerms.map((item) => ({
+      "@type": "Question",
+      name: `What is ${item.term}?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.definition,
+      },
+    })),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://legaltech-ai-hub.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Glossary",
+        item: "https://legaltech-ai-hub.com/glossary",
+      },
+    ],
+  };
+
   return (
     <div className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-amber-600 via-orange-600 to-red-700 py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">

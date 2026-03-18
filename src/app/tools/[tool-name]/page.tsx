@@ -41,7 +41,7 @@ export default async function ToolPage({ params }: Props) {
   const isOwn = tool.isOwnTool;
   const ctaUrl = isOwn ? tool.websiteUrl : tool.websiteUrl;
   const ctaLabel = isOwn ? "Use This Tool — Free" : "Visit Website";
-  const ctaRel = isOwn ? undefined : "nofollow noopener";
+  const ctaRel = isOwn ? undefined : "nofollow noopener noreferrer";
   const ctaTarget = isOwn ? undefined : "_blank";
 
   return (
