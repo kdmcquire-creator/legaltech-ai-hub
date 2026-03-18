@@ -16,9 +16,12 @@ export const runtime = "nodejs";
  * didn't get drafts generated (e.g., if Anthropic API was down).
  */
 export async function GET(req: NextRequest) {
-  // Auth check
-  const secret = process.env.CRON_SECRET;
-  if (!secret) {
+  // Auth check (cron secret or admin key, via Authorization, x-cron-secret, or query param)
+  const cronSecret = process.env.CRON_SECRET;
+  const adminKey = process.env.ADMIN_API_KEY;
+  const validTokens = [cronSecret, adminKey].filter(Boolean);
+
+  if (validTokens.length === 0) {
     return NextResponse.json(
       { error: "CRON_SECRET not configured" },
       { status: 500 }
@@ -26,10 +29,11 @@ export async function GET(req: NextRequest) {
   }
 
   const providedSecret =
-    req.nextUrl.searchParams.get("secret") ||
-    req.headers.get("authorization")?.replace("Bearer ", "");
+    req.headers.get("authorization")?.replace("Bearer ", "") ||
+    req.headers.get("x-cron-secret") ||
+    req.nextUrl.searchParams.get("secret");
 
-  if (providedSecret !== secret) {
+  if (!providedSecret || !validTokens.includes(providedSecret)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

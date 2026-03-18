@@ -107,18 +107,21 @@ async function sendViaSendGrid(
 }
 
 export async function GET(req: NextRequest) {
-  // Auth via query param or Authorization header
+  // Auth via Authorization header, x-cron-secret header, or query param
   const adminKey = process.env.ADMIN_API_KEY;
-  if (!adminKey) {
+  const cronSecret = process.env.CRON_SECRET;
+  if (!adminKey && !cronSecret) {
     return NextResponse.json({ error: "Not configured" }, { status: 500 });
   }
 
   const url = new URL(req.url);
   const token =
     req.headers.get("authorization")?.replace("Bearer ", "") ||
+    req.headers.get("x-cron-secret") ||
     url.searchParams.get("token");
 
-  if (token !== adminKey) {
+  const validTokens = [adminKey, cronSecret].filter(Boolean);
+  if (!token || !validTokens.includes(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

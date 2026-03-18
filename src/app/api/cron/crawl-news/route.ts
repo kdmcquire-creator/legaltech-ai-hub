@@ -12,11 +12,16 @@ import type { ArticleDraft } from "@/lib/crawler-config";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
-  // --- Auth (cron secret or admin key) ---
-  const authHeader = req.headers.get("authorization");
-  const cronSecret = process.env.CRON_SECRET || process.env.ADMIN_API_KEY;
+  // --- Auth (cron secret or admin key, via Authorization or x-cron-secret header) ---
+  const cronSecret = process.env.CRON_SECRET;
+  const adminKey = process.env.ADMIN_API_KEY;
+  const validTokens = [cronSecret, adminKey].filter(Boolean);
 
-  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
+  const token =
+    req.headers.get("authorization")?.replace("Bearer ", "") ||
+    req.headers.get("x-cron-secret");
+
+  if (validTokens.length === 0 || !token || !validTokens.includes(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
