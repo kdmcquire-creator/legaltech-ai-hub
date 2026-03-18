@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import AdUnit from "@/components/AdUnit";
 
 export const metadata: Metadata = {
   title: "Legal Tech Glossary",
@@ -566,6 +567,11 @@ export default function GlossaryPage() {
           })}
         </div>
       </section>
+
+      {/* Ad */}
+      <div className="container mx-auto px-4 max-w-4xl py-4">
+        <AdUnit slot="SLOT_GLOSSARY_BOTTOM" format="horizontal" />
+      </div>
 
       {/* Newsletter CTA */}
       <section className="py-8">

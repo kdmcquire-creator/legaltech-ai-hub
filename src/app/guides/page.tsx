@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { guides, guideTypeLabels, guideTypeColors } from "@/lib/guides";
+import AdUnit from "@/components/AdUnit";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Guides",
@@ -97,6 +99,14 @@ export default function GuidesIndexPage() {
           </div>
         </div>
       </section>
+
+      {/* Ad + Newsletter */}
+      <div className="container mx-auto px-4 max-w-5xl py-4">
+        <AdUnit slot="SLOT_GUIDES_MID" format="horizontal" />
+      </div>
+      <div className="container mx-auto px-4 max-w-5xl py-6">
+        <NewsletterSignup variant="inline" />
+      </div>
 
       {/* CTA */}
       <section className="bg-gray-50 border-t py-12">

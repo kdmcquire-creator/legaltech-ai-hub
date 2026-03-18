@@ -370,10 +370,486 @@ const litigationEdiscoveryContent = (
   </>
 );
 
+const midSizeFirmDueDiligenceContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Harrison &amp; Locke LLP is a 45-attorney firm in Philadelphia with a strong mergers and acquisitions practice. The firm handles between 30 and 40 M&amp;A transactions annually, ranging from $5M tuck-in acquisitions to $200M+ middle-market deals. Due diligence — the exhaustive review of a target company&apos;s contracts, financials, regulatory filings, and corporate records — is the backbone of every transaction.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        For years, the firm relied on teams of associates and paralegals to manually review data rooms, flagging risks and populating due diligence checklists in spreadsheets. The process worked, but it was expensive, slow, and vulnerable to human error — especially on larger deals where the data room might contain 10,000 or more documents.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        A typical mid-market deal required 400 to 600 hours of associate and paralegal time for due diligence alone. At blended internal rates, that translated to roughly $80,000 to $120,000 in labor costs per transaction — costs that were increasingly difficult to pass through to clients who demanded fixed-fee arrangements. The firm was absorbing more of the expense with each passing year.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Speed was an equally pressing concern. Buyers expected due diligence summaries within two to three weeks. On complex deals with large data rooms, the firm sometimes needed four to five weeks, creating friction with clients and occasionally delaying closings. Two deals in the prior year had nearly fallen apart because due diligence findings surfaced too late in the negotiation timeline.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The firm&apos;s M&amp;A practice group evaluated three AI-powered due diligence platforms and ultimately selected one that specialized in contract analysis for transactional work. The platform could ingest entire data rooms, automatically classify documents by type (lease, employment agreement, vendor contract, loan document, etc.), and extract key provisions — change-of-control clauses, termination rights, assignment restrictions, indemnification caps, and more.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Implementation took six weeks. The firm uploaded templates of their standard due diligence checklists, and the platform learned to map extracted provisions directly to checklist items. Associates no longer needed to read every page of every contract. Instead, they reviewed the AI&apos;s extraction results, verified flagged risks, and focused their time on the 15 to 20 percent of documents that required substantive legal judgment — unusual indemnification structures, non-standard IP ownership provisions, or regulatory compliance gaps.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Due diligence time per transaction dropped from an average of 500 hours to approximately 180 hours — a 64% reduction. The firm completed its first AI-assisted deal review in 9 days, compared to the 22 days the same deal size would have required under the old workflow. Over the first full year, the firm handled 36 transactions using the platform and calculated labor savings of $204,000.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Quality improved as well. The AI flagged a change-of-control provision buried in a vendor agreement&apos;s amendment history that the manual process would likely have missed — it was the fourth amendment to a contract originally signed seven years earlier. That single catch saved the client from a $2.1M penalty that would have triggered at closing. Client satisfaction scores for the M&amp;A practice increased by 30%, and three clients specifically cited faster turnaround as the reason they brought repeat business to the firm.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="$200K+" label="Annual cost savings" />
+        <Metric value="64%" label="Reduction in review hours" />
+        <Metric value="9 days" label="Average deal review time (vs. 22)" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Due diligence is the ideal AI use case for M&amp;A.</strong> The work is document-heavy, pattern-driven, and time-sensitive — exactly the profile where AI delivers the highest ROI.</li>
+        <li><strong>AI catches what humans miss in large data rooms.</strong> Buried amendments, cross-referenced provisions, and historical document chains are where human reviewers are most likely to make errors under time pressure.</li>
+        <li><strong>Fixed-fee arrangements become profitable.</strong> With AI reducing the labor required per deal, the firm can offer competitive fixed fees without sacrificing margins.</li>
+        <li><strong>Client retention improves with speed.</strong> Faster due diligence doesn&apos;t just save money — it keeps deals on track and builds the kind of responsiveness that wins repeat business.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const corporateLegalClmContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        NovaTech Industries is a Fortune 500 industrial manufacturer headquartered in Minneapolis with operations in 14 countries. The company&apos;s legal department consists of 22 in-house attorneys, 8 paralegals, and a contracts team of 12 specialists. In a typical year, the department manages over 8,000 active contracts — procurement agreements, distribution deals, licensing arrangements, joint ventures, and employment contracts across multiple jurisdictions.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Despite having a sizable in-house team, NovaTech was spending $6.2M annually on outside counsel. The general counsel, Maria Torres, knew that a significant portion of that spend was going toward routine contract work that should have been handled internally — but the department lacked the tools and processes to do it efficiently.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The root problem was visibility. NovaTech&apos;s contracts were scattered across shared drives, email inboxes, and a legacy document management system that no one trusted. When a business unit needed a new vendor agreement, the legal team often couldn&apos;t find the most recent approved template — let alone track whether existing agreements had been renewed, amended, or were approaching expiration. The result was a constant stream of &quot;urgent&quot; requests that overwhelmed the in-house team and pushed routine work to outside firms.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Outside counsel was handling approximately 40% of the company&apos;s contract drafting and negotiation, much of it work that fell well within the competency of the in-house team. The problem wasn&apos;t talent — it was infrastructure. Without a centralized system for contract creation, approval workflows, and obligation tracking, the department couldn&apos;t scale.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Maria led a 9-month initiative to implement a comprehensive contract lifecycle management platform with AI capabilities. The platform provided four core functions: a centralized contract repository with full-text search and metadata tagging, AI-powered contract generation from pre-approved clause libraries and templates, automated approval workflows with role-based routing, and an obligation management engine that tracked key dates, renewal windows, and compliance milestones.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The AI component was particularly impactful for contract generation. Business units could initiate a contract request through a self-service portal, answer a series of guided questions about the deal (counterparty, value, jurisdiction, risk tier), and receive a first draft within minutes — assembled from pre-approved clauses selected by the AI based on deal parameters. The in-house team reviewed and finalized rather than drafting from scratch. For negotiation, the platform included an AI redlining tool that compared counterparty markups against NovaTech&apos;s approved positions and flagged deviations that required attorney review.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Within the first full year of deployment, NovaTech reduced outside counsel spend from $6.2M to $3.7M — a 40% reduction. The savings came primarily from bringing routine contract work in-house: vendor agreements, NDAs, standard procurement contracts, and renewal negotiations that had previously been outsourced due to capacity constraints.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Contract cycle time — the average number of days from request to fully executed agreement — dropped from 23 days to 8 days. The self-service portal handled 62% of initial draft requests without attorney involvement, freeing the legal team to focus on complex, high-value negotiations. The obligation management engine also prevented three contract lapses in the first year that would have triggered automatic renewals totaling $1.8M in unfavorable terms. Maria estimated the platform&apos;s total first-year ROI at over 300%.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="40%" label="Reduction in outside counsel spend" />
+        <Metric value="23→8 days" label="Contract cycle time improvement" />
+        <Metric value="$2.5M" label="Annual savings realized" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Outside counsel spend often masks an infrastructure problem.</strong> NovaTech wasn&apos;t outsourcing because the work was complex — they were outsourcing because their internal systems couldn&apos;t keep up with volume.</li>
+        <li><strong>Self-service portals change the dynamic.</strong> When business units can initiate contracts without emailing a lawyer, the legal department stops being a bottleneck and starts being an enabler.</li>
+        <li><strong>Obligation tracking pays for itself.</strong> Preventing even one unfavorable auto-renewal can justify the cost of a CLM platform for an entire year.</li>
+        <li><strong>CLM implementation requires executive sponsorship.</strong> A 9-month rollout across 14 countries doesn&apos;t happen without sustained commitment from the general counsel and C-suite.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const ipBoutiquePatentContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Langford IP Group is a seven-attorney boutique firm in San Jose, California, focused exclusively on patent prosecution, patent litigation, and IP portfolio management. The firm&apos;s clients range from early-stage hardware startups to established semiconductor companies, all of whom rely on Langford to secure and defend their most valuable intellectual property. In a typical year, the firm files approximately 120 patent applications and conducts prior art searches for another 80 invention disclosures.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Patent research — specifically prior art searches — is the foundation of every filing. A thorough search determines whether an invention is novel, shapes the claims strategy, and ultimately decides whether a patent will survive examination and potential challenge. Getting it right is non-negotiable.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        A comprehensive prior art search typically required 12 to 18 hours of attorney and technical specialist time. The process involved searching the USPTO database, EPO, WIPO, Google Patents, and specialized technical databases using dozens of keyword combinations, classification codes, and citation chains. Even experienced searchers acknowledged that manual methods inevitably missed relevant references — the sheer volume of global patent filings (over 3.4 million per year) made it impossible to achieve comprehensive coverage by hand.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The firm had experienced two costly misses in the prior 18 months. In one case, an examiner cited a Japanese patent publication that the firm&apos;s manual search had not uncovered, resulting in a narrower claim scope than the client expected. In another, a competitor&apos;s patent that should have been identified during freedom-to-operate analysis surfaced during litigation, creating significant exposure for the client. Both situations damaged client trust and cost the firm considerable time in remediation.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The firm adopted an AI-powered patent research platform that used semantic search, machine learning-based classification, and cross-lingual retrieval to search global patent databases. Unlike traditional keyword searches, the AI understood the conceptual meaning of an invention disclosure and could find relevant prior art even when different terminology was used — a critical advantage for searching non-English patent databases.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The platform also introduced automated patent landscape mapping, which generated visual maps of competitor filing activity, technology clustering, and white-space analysis. Attorneys could see at a glance where a client&apos;s invention sat relative to the existing patent landscape, making claims strategy discussions with clients far more productive. The firm integrated the tool into its workflow over a four-week period, running parallel searches — AI alongside manual — for the first 15 matters to validate accuracy and build confidence.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Prior art search time dropped from an average of 15 hours to 3 hours — a 5x improvement in speed. The AI handled the initial broad search in under 10 minutes, surfacing a ranked list of the most relevant references across all major patent databases. Attorneys then spent 2 to 3 hours reviewing the AI&apos;s results, analyzing the most pertinent references in detail, and refining claims language accordingly.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Coverage improved dramatically. During the parallel-search validation phase, the AI found relevant prior art that the manual search missed in 11 out of 15 matters. In several cases, the AI identified prior art in Chinese and Korean patent filings that the firm would never have discovered through keyword searches alone. Over the first year, the firm increased its search volume from 80 to 140 invention disclosures without adding staff, and no examiner cited a reference that the AI-assisted search had not already identified. Client confidence in the firm&apos;s prosecution work reached an all-time high.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="5x" label="Faster prior art searches" />
+        <Metric value="80→140" label="Annual searches handled" />
+        <Metric value="0" label="Examiner-cited misses in Year 1" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Semantic search is a game-changer for patent work.</strong> Inventions are often described in different terminology across jurisdictions. AI that understands concepts — not just keywords — finds references that manual searches miss.</li>
+        <li><strong>Cross-lingual capability is no longer optional.</strong> With China, Korea, and Japan accounting for a growing share of global patent filings, firms that can&apos;t search non-English databases are operating with blind spots.</li>
+        <li><strong>Parallel validation builds trust.</strong> Running AI and manual searches side-by-side for the first batch of matters gave attorneys firsthand evidence of the tool&apos;s accuracy before relying on it exclusively.</li>
+        <li><strong>Landscape mapping adds strategic value.</strong> Clients don&apos;t just want to know if their invention is patentable — they want to understand the competitive landscape. AI-generated patent maps elevate the conversation from tactical to strategic.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const realEstateFirmLeaseContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Pinnacle Commercial Advisors is a commercial real estate services firm based in Atlanta with offices in Charlotte, Nashville, and Tampa. The firm manages a portfolio of over 1,200 commercial properties — office buildings, retail centers, industrial warehouses, and mixed-use developments — on behalf of institutional investors and REITs. Lease administration is the firm&apos;s largest operational function, with a team of 18 lease analysts responsible for reviewing, abstracting, and tracking every lease across the portfolio.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Each property generates a steady stream of lease-related documents: new leases, amendments, renewals, estoppel certificates, subordination agreements, and tenant correspondence. The volume had been growing at approximately 15% per year as the portfolio expanded through acquisitions.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        At the time of evaluation, the lease administration team was processing approximately 80 lease reviews per month — well below the 200 to 250 that the portfolio actually demanded. The backlog meant that critical lease provisions were going untracked: rent escalation triggers were missed, renewal option deadlines passed without notice to clients, and CAM reconciliation discrepancies accumulated without resolution.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Each lease review took an average of 3.5 hours. Analysts read the full document, extracted approximately 60 data points (rent amounts, escalation schedules, operating expense caps, permitted use clauses, assignment restrictions, co-tenancy provisions, and more), and entered the data into the firm&apos;s property management system. The work was meticulous but painfully manual. Hiring additional analysts was an option, but the talent market for experienced lease abstractors was tight, and onboarding took 4 to 6 months before a new hire reached full productivity.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The firm deployed an AI-powered lease abstraction platform designed specifically for commercial real estate. The system could ingest lease documents in any format — scanned PDFs, Word documents, even photographed pages from older files — and automatically extract the 60+ data points the team tracked. The AI used optical character recognition for scanned documents and natural language processing to identify and classify lease provisions regardless of how they were worded or structured.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The platform was configured over a five-week period. The firm&apos;s senior lease analysts defined the extraction schema, mapped fields to their property management system, and validated the AI&apos;s output against 50 leases that had already been manually abstracted. The AI achieved 94% accuracy on first pass during validation, with the remaining 6% consisting of edge cases that still required human review — unusual rent structures, handwritten amendments, and provisions that referenced external documents not included in the data room.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Average lease review time dropped from 3.5 hours to 45 minutes. The AI handled the initial extraction in under 2 minutes, and analysts spent the remaining time verifying flagged items, resolving ambiguities, and handling the small percentage of provisions that required human judgment. Monthly review capacity jumped from 80 leases to over 500 — a 6x increase — without adding a single analyst to the team.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The backlog was cleared within three months. For the first time in years, the team was current on every lease in the portfolio. Missed renewal deadlines dropped to zero. Rent escalation tracking became proactive rather than reactive, recovering $340,000 in under-collected rent adjustments in the first year. Client retention improved measurably — two institutional investors who had been considering switching firms cited the improved lease administration as the reason they renewed their management agreements.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="500+" label="Lease reviews per month" />
+        <Metric value="80%" label="Reduction in review time" />
+        <Metric value="$340K" label="Recovered under-collected rent" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Lease abstraction is perfectly suited for AI.</strong> The work is structured, repetitive, and high-volume — exactly the profile where AI delivers the most dramatic efficiency gains.</li>
+        <li><strong>Backlog elimination has compounding benefits.</strong> When every lease is current in the system, missed deadlines disappear and revenue recovery becomes proactive rather than reactive.</li>
+        <li><strong>OCR capability matters for real estate.</strong> Many commercial leases exist only as scanned PDFs or even physical documents. A platform that can&apos;t handle these formats is missing half the problem.</li>
+        <li><strong>Client retention is the ultimate ROI metric.</strong> Faster, more accurate lease administration doesn&apos;t just save internal costs — it strengthens the client relationships that drive revenue.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const insuranceClaimsContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Great Lakes Mutual is a regional property and casualty insurance carrier based in Columbus, Ohio, serving policyholders across six Midwestern states. The company processes approximately 14,000 claims annually, ranging from straightforward homeowner water-damage claims to complex commercial liability matters. The claims department employs 35 adjusters supported by a legal review team of 4 staff attorneys who evaluate coverage questions, reservation-of-rights decisions, and potential subrogation opportunities.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        For decades, the claims review process followed a consistent pattern: an adjuster received a claim, gathered documentation (police reports, medical records, repair estimates, witness statements), and manually reviewed the policy to determine coverage. Complex claims were escalated to the legal team. The process was thorough but slow, and policyholder satisfaction surveys consistently identified claim resolution speed as the company&apos;s biggest weakness.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The average claims review cycle — from first notice of loss to coverage determination — took 3.2 business days. For claims requiring legal review, the timeline stretched to 7 to 10 days. Policyholders waiting for coverage decisions were frustrated, and agents in the field reported losing renewals to competitors who promised faster claims handling.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The bottleneck was documentation review. Each claim file contained an average of 45 pages of supporting documents that adjusters had to read, cross-reference against policy terms, and summarize before making a recommendation. The legal team faced the same challenge at a higher complexity level, manually reviewing policy language, endorsements, and exclusions for every escalated claim. The company estimated that adjusters spent 65% of their time on document review and only 35% on the judgment calls and policyholder communications that actually required human expertise.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Great Lakes Mutual implemented an AI-powered claims analysis platform that automated three core functions: document ingestion and classification, policy-to-claim matching, and coverage determination support. When a new claim arrived, the AI ingested all supporting documents, classified each one by type, and extracted key data points — dates of loss, damage descriptions, claimed amounts, involved parties, and relevant policy numbers.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The platform then cross-referenced the extracted claim data against the applicable policy, including all endorsements, riders, and exclusions. It generated a preliminary coverage analysis that identified applicable coverages, flagged potential exclusions, calculated deductible impacts, and highlighted any provisions that required human interpretation. For straightforward claims — those with clear coverage, no exclusion concerns, and amounts within predefined thresholds — the AI generated a recommended disposition that an adjuster could approve with a single click. Complex claims were still escalated to the legal team, but the AI pre-populated the analysis, cutting the attorneys&apos; review time significantly.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Average claims review time dropped from 3.2 business days to 4.5 hours — an 85% reduction. For straightforward claims (approximately 60% of total volume), the AI&apos;s recommended disposition was approved without modification 91% of the time, meaning adjusters spent just minutes rather than hours on these files. Legal team escalations that previously took 7 to 10 days were resolved in 1 to 2 days, thanks to the AI&apos;s pre-populated coverage analysis.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Policyholder satisfaction scores improved by 28 points on the company&apos;s internal NPS survey. Agent retention — a critical metric for a regional carrier — increased by 12% year over year, with agents citing faster claims handling as the primary driver. The AI also identified $1.4M in subrogation opportunities that had been overlooked in manual review, more than covering the platform&apos;s annual cost. Overall claims accuracy improved as well, with the error rate on coverage determinations dropping from 4.2% to 1.1%.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="85%" label="Faster claims review" />
+        <Metric value="3.2d→4.5h" label="Average review cycle time" />
+        <Metric value="$1.4M" label="Subrogation opportunities recovered" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Claims review speed is a competitive differentiator.</strong> In insurance, faster claims handling directly translates to policyholder retention and agent loyalty — both of which drive revenue.</li>
+        <li><strong>AI excels at policy-to-claim matching.</strong> Cross-referencing claim facts against policy language, endorsements, and exclusions is exactly the kind of structured analysis where AI outperforms manual review.</li>
+        <li><strong>Subrogation recovery is an overlooked benefit.</strong> AI doesn&apos;t just speed up claims — it identifies recovery opportunities that human reviewers miss under time pressure.</li>
+        <li><strong>Human judgment still matters for complex claims.</strong> The AI handles the 60% of claims that are straightforward, freeing adjusters and attorneys to focus their expertise on the 40% that genuinely require it.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const complianceRegulatoryContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        FinEdge is a mid-stage fintech company based in New York that provides payment processing and lending products to small businesses. The company operates in 12 states, each with its own regulatory framework for money transmission, consumer lending, data privacy, and fair lending compliance. The compliance team consists of a Chief Compliance Officer, two compliance analysts, and one part-time regulatory counsel — a lean team for the scope of the regulatory landscape they navigate.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        As FinEdge expanded into new states, the compliance burden grew exponentially. Each new jurisdiction brought its own licensing requirements, examination schedules, reporting obligations, and rule changes. The team was drowning in regulatory updates, and the consequences of missing a change were severe — fines, enforcement actions, or loss of operating licenses.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The compliance team was manually monitoring regulatory changes across 12 state regulators, 4 federal agencies (CFPB, FinCEN, FTC, and OCC), and several industry self-regulatory organizations. The process involved checking regulator websites daily, subscribing to email alerts (which generated over 200 emails per week), reading proposed rules and final orders, and assessing whether each change affected FinEdge&apos;s operations.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The analysts estimated they spent 25 hours per week — more than 60% of their combined capacity — on monitoring alone, leaving insufficient time for the substantive compliance work: updating policies, conducting internal audits, preparing examination responses, and training staff. Three times in the prior year, the team had identified a regulatory change only after its effective date, requiring emergency remediation that disrupted operations and strained the relationship with the board&apos;s audit committee.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        FinEdge deployed an AI-powered regulatory monitoring platform that continuously scanned regulatory sources across all 12 states and the relevant federal agencies. The platform used natural language processing to read proposed rules, final rules, enforcement actions, guidance documents, and regulator bulletins, then classified each update by topic (lending, money transmission, data privacy, BSA/AML, fair lending) and assessed its relevance to FinEdge&apos;s specific business activities.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Each morning, the compliance team received a prioritized digest of regulatory changes, ranked by urgency and potential impact. High-priority items — such as new examination requirements or changes to licensing thresholds — were flagged for immediate review. Low-priority items — such as enforcement actions against unrelated companies — were summarized but deprioritized. The platform also maintained a compliance calendar that automatically populated deadlines for filings, renewals, and reporting obligations across all jurisdictions, with configurable advance-notice alerts.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Regulatory monitoring time dropped from 25 hours per week to 6 hours — a 76% reduction. The two compliance analysts reclaimed nearly 20 hours per week of capacity, which they redirected to substantive compliance work: updating the company&apos;s BSA/AML program, conducting risk assessments for two new product launches, and preparing for a scheduled state examination that resulted in zero findings.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        In the first year, the platform identified 847 regulatory updates relevant to FinEdge&apos;s operations — an average of 16 per week. Of those, 23 were classified as high-priority changes requiring policy or operational adjustments. The team addressed every one before the effective date, with an average lead time of 34 days. The days of emergency remediation were over. The CCO reported to the board that the company had achieved 100% on-time compliance across all 12 jurisdictions for the first time in the company&apos;s history.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="12" label="Jurisdictions monitored automatically" />
+        <Metric value="76%" label="Reduction in monitoring time" />
+        <Metric value="100%" label="On-time compliance rate" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Manual regulatory monitoring doesn&apos;t scale.</strong> As jurisdictions multiply, the manual approach breaks down. AI monitoring converts an exponential problem into a manageable daily digest.</li>
+        <li><strong>The real value is in reclaimed capacity.</strong> Reducing monitoring time freed the compliance team to do the substantive work — risk assessments, policy updates, examination prep — that actually protects the company.</li>
+        <li><strong>Proactive beats reactive every time.</strong> A 34-day average lead time on regulatory changes means the team can plan adjustments rather than scrambling after the fact.</li>
+        <li><strong>Board-level reporting improves with data.</strong> The platform gave the CCO concrete metrics — 100% on-time compliance, 847 updates tracked — that built confidence with the audit committee and board.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const immigrationLawContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Patel Immigration Law is a six-attorney practice in Houston, Texas, handling employment-based immigration, family-based petitions, asylum cases, and naturalization applications. The firm serves a diverse client base that includes tech companies sponsoring H-1B workers, families navigating the green card process, and individuals seeking asylum. In a typical year, the firm manages approximately 400 active cases, with each attorney carrying a caseload of 60 to 70 matters at any given time.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Immigration law is uniquely document-intensive. A single H-1B petition can require 50 to 80 pages of forms, supporting letters, evidence packages, and legal briefs. Family-based cases involve extensive biographical documentation, financial affidavits, and relationship evidence. Asylum cases demand detailed declarations, country condition reports, and evidentiary exhibits. The sheer volume of paperwork was consuming the firm&apos;s capacity and limiting growth.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Document preparation consumed an estimated 60% of every attorney&apos;s workweek. Paralegals spent hours filling out government forms — many of which asked overlapping questions across different petition types — and attorneys spent additional hours drafting support letters, legal briefs, and evidence summaries that followed largely predictable patterns. A standard H-1B petition took 8 to 10 hours to prepare, and an asylum application could take 15 to 20 hours.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The firm was turning away approximately 15 to 20 potential clients per month due to capacity constraints. Founding partner Anita Patel calculated that the lost revenue represented over $360,000 annually. Hiring additional attorneys was an option, but the firm&apos;s office space was at capacity, and experienced immigration attorneys willing to work in a small-firm environment were difficult to recruit. The firm needed a way to handle more cases with its existing team.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The firm implemented a document automation platform built specifically for immigration law. The system provided three core capabilities: intelligent form filling, template-based document generation, and case management integration. For form filling, the platform maintained a central client profile for each matter. Once client information was entered — biographical data, employment history, education credentials, family relationships — the system could auto-populate every relevant government form, eliminating the redundant data entry that had consumed paralegals&apos; days.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        For document generation, attorneys built templates for their most common work products: H-1B support letters, employer attestations, expert opinion letters, asylum declarations, and legal briefs addressing frequently raised issues. The AI component personalized each template based on the specific facts of the case, drawing from the client profile and generating a first draft that required attorney review rather than drafting from scratch. The platform also included a checklist engine that tracked every required document for each case type, flagged missing items, and generated filing-ready cover sheets and evidence indices.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Document preparation time per case dropped by an average of 55%. H-1B petitions that previously required 8 to 10 hours were completed in 3.5 to 4.5 hours. Asylum applications dropped from 15 to 20 hours to 7 to 9 hours. The time savings were most dramatic for form-heavy case types where redundant data entry had been the primary bottleneck.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The firm&apos;s annual case capacity doubled — from 400 to over 800 cases per year — without adding attorneys, paralegals, or office space. The 15 to 20 clients per month that the firm had been turning away were now being served, adding approximately $380,000 in annual revenue. Error rates on form submissions dropped by 40%, reducing Requests for Evidence from USCIS and the delays they cause. Attorney satisfaction improved as well — the team reported spending significantly more time on strategy, client counseling, and complex legal analysis, and less time on the mechanical document assembly that had dominated their days.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="2x" label="Case capacity increase" />
+        <Metric value="55%" label="Reduction in document prep time" />
+        <Metric value="$380K+" label="Additional annual revenue" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Immigration law&apos;s document intensity makes it ideal for automation.</strong> The combination of standardized government forms and templatable work products means automation delivers immediate, measurable time savings.</li>
+        <li><strong>Eliminating redundant data entry is the biggest quick win.</strong> A central client profile that populates every form and document at once removes hours of paralegal work per case.</li>
+        <li><strong>Capacity gains translate directly to revenue.</strong> When the constraint is attorney hours rather than client demand, document automation unlocks revenue that was previously left on the table.</li>
+        <li><strong>Fewer form errors mean fewer RFEs.</strong> Reducing Requests for Evidence from USCIS doesn&apos;t just save time — it accelerates case resolution for clients who are often in precarious situations.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
 export const caseStudyContent: Record<string, React.ReactNode> = {
   "solo-attorney-contract-review-ai": soloAttorneyContent,
   "legal-aid-nonprofit-ai-tools": legalAidContent,
   "small-business-ai-employment-contracts": smallBusinessContent,
   "startup-series-a-legal-free-tools": startupSeriesAContent,
   "litigation-firm-ediscovery-cost-savings": litigationEdiscoveryContent,
+  "mid-size-firm-due-diligence-automation": midSizeFirmDueDiligenceContent,
+  "corporate-legal-clm-outside-counsel": corporateLegalClmContent,
+  "ip-boutique-patent-research-ai": ipBoutiquePatentContent,
+  "real-estate-firm-lease-review-ai": realEstateFirmLeaseContent,
+  "insurance-claims-review-automation": insuranceClaimsContent,
+  "compliance-team-regulatory-monitoring": complianceRegulatoryContent,
+  "immigration-law-document-automation": immigrationLawContent,
 };

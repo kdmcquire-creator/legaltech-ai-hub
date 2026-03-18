@@ -141,7 +141,7 @@ export default function NewsletterSignup({
       </h3>
       <p className="text-gray-600 text-sm mb-4">
         Weekly analysis, tool reviews, and practical tips — delivered every
-        Tuesday.
+        Wednesday.
       </p>
 
       {success ? (

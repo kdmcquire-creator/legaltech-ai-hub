@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { reviews, typeLabels, typeColors } from "@/lib/reviews";
+import AdUnit from "@/components/AdUnit";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Reviews & Comparisons",
@@ -102,6 +104,14 @@ export default function ReviewsIndexPage() {
           </div>
         </div>
       </section>
+
+      {/* Ad + Newsletter */}
+      <div className="container mx-auto px-4 max-w-5xl py-4">
+        <AdUnit slot="SLOT_REVIEWS_MID" format="horizontal" />
+      </div>
+      <div className="container mx-auto px-4 max-w-5xl py-6">
+        <NewsletterSignup variant="inline" />
+      </div>
 
       {/* CTA */}
       <section className="bg-gray-50 border-t py-12">
