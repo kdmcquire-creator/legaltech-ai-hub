@@ -19,12 +19,12 @@ export default function ToolsDirectory() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero */}
-      <section className="bg-white border-b py-12">
+      <section className="bg-white border-b py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h1 className="text-4xl font-extrabold mb-4 text-gray-900">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 text-gray-900">
             AI Legal Tools Directory
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl">
             Real tools used by real legal professionals. Browse our curated
             directory, try our free tools, and read honest editorial coverage on
             every product.
@@ -47,7 +47,7 @@ export default function ToolsDirectory() {
                 <Link
                   key={tool.slug}
                   href={tool.websiteUrl || `/tools/${tool.slug}`}
-                  className="group bg-white rounded-xl border-2 border-emerald-200 p-6 hover:shadow-lg hover:border-emerald-400 transition block"
+                  className="group bg-white rounded-xl border-2 border-emerald-200 p-6 hover:shadow-lg hover:border-emerald-400 hover:-translate-y-1 transition-all duration-300 block"
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase">
@@ -122,7 +122,7 @@ export default function ToolsDirectory() {
                   <Link
                     key={tool.slug}
                     href={`/tools/${tool.slug}`}
-                    className="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md transition-shadow block group"
+                    className="bg-white rounded-xl border p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 block group"
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-xs font-bold text-blue-600 uppercase">

@@ -17,15 +17,15 @@ export default function CaseStudiesIndexPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-700 py-20">
+      <section className="bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-700 py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
             Real Stories, Real Results
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 leading-tight">
             How Legal Professionals Are Winning with AI
           </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
             From solo practitioners saving 70% of their review time to litigation firms
             cutting $1.2M in e-discovery costs — these are the stories behind the numbers.
           </p>
@@ -62,7 +62,7 @@ export default function CaseStudiesIndexPage() {
               <Link
                 key={cs.slug}
                 href={`/case-studies/${cs.slug}`}
-                className="group block border rounded-xl overflow-hidden hover:shadow-lg transition"
+                className="group block border rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 <div className={`h-3 bg-gradient-to-r ${cs.color}`} />
                 <div className="p-6">

@@ -1,4 +1,23 @@
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Learn about LegalTech AI Hub's privacy practices, how we collect and use your information, and your rights.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy - LegalTech AI Hub",
+    description: "Learn about LegalTech AI Hub's privacy practices, how we collect and use your information, and your rights.",
+    url: "https://legaltech-ai-hub.com/privacy",
+    siteName: "LegalTech AI Hub",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy - LegalTech AI Hub",
+    description: "Learn about LegalTech AI Hub's privacy practices.",
+  },
+};
 
 export default function PrivacyPolicy() {
   return (

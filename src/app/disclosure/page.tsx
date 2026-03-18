@@ -1,4 +1,23 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Affiliate Disclosure",
+  description: "Learn about LegalTech AI Hub's affiliate and advertising relationships and how they may influence our content.",
+  alternates: { canonical: "/disclosure" },
+  openGraph: {
+    title: "Affiliate Disclosure - LegalTech AI Hub",
+    description: "Learn about LegalTech AI Hub's affiliate and advertising relationships and how they may influence our content.",
+    url: "https://legaltech-ai-hub.com/disclosure",
+    siteName: "LegalTech AI Hub",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Affiliate Disclosure - LegalTech AI Hub",
+    description: "Learn about LegalTech AI Hub's affiliate and advertising relationships.",
+  },
+};
 
 export default function DisclosurePage() {
   return (
