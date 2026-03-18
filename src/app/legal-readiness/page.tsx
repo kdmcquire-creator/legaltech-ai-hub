@@ -269,12 +269,12 @@ export default function LegalReadinessPage() {
   if (stage === "start") {
     return (
       <div className="bg-white min-h-screen">
-        <section className="bg-blue-50 py-16">
+        <section className="bg-gradient-to-br from-rose-600 via-pink-600 to-purple-700 py-16">
           <div className="container mx-auto px-4 max-w-3xl text-center">
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+            <h1 className="text-4xl font-extrabold text-white mb-4">
               Legal Readiness Assessment
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-rose-100">
               Evaluate your business&apos;s legal health in under 5 minutes.
               Get a personalized score and action plan — completely free.
             </p>

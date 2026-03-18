@@ -53,12 +53,12 @@ export default function ContactPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-12 md:py-20">
+      <section className="bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-700 py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
             Get in Touch
           </h1>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-violet-100 max-w-2xl mx-auto">
             Have a question, suggestion, or partnership inquiry? We&apos;d love
             to hear from you.
           </p>
@@ -74,8 +74,10 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-blue-600" />
               </div>
               <h3 className="font-bold text-gray-900 mb-1">Email Us</h3>
-              <p className="text-gray-600 text-sm">
-                contact@legaltech-ai-hub.com
+              <p className="text-sm">
+                <a href="mailto:contact@legaltech-ai-hub.com" className="text-blue-600 hover:text-blue-800 underline">
+                  contact@legaltech-ai-hub.com
+                </a>
               </p>
             </div>
 
