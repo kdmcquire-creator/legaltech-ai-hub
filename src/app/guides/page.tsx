@@ -17,15 +17,17 @@ export default function GuidesIndexPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-emerald-50 to-teal-50 py-16">
+      <section className="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
-            Guides
+          <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            Practical Knowledge for Legal Professionals
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+            Your Playbook for AI Legal Tools
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Practical, actionable guides for evaluating, buying, and
-            implementing AI legal tools — written for legal professionals, not
-            tech enthusiasts.
+          <p className="text-xl text-emerald-100 max-w-2xl mx-auto leading-relaxed">
+            Skip the hype. These guides give you actionable frameworks for evaluating,
+            buying, and implementing AI tools — written by practitioners, for practitioners.
           </p>
         </div>
       </section>
