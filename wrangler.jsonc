@@ -22,6 +22,14 @@
   "observability": {
     "enabled": true
   },
+  // Cron triggers for scheduled tasks
+  "triggers": {
+    "crons": [
+      "0 15 * * 3",   // Wed 10:00 AM ET (15:00 UTC) — send newsletter
+      "0 12 * * *",   // Daily noon UTC — crawl news
+      "0 */6 * * *"   // Every 6 hours — check/process emails
+    ]
+  },
   // Environment variables (non-secret)
   "vars": {
     "SENDGRID_FROM_EMAIL": "contact@legaltech-ai-hub.com",
