@@ -35,8 +35,20 @@ export default function SubmitPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-6">Submit your LegalTech Tool</h1>
+    <div className="bg-white min-h-screen">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-teal-600 via-emerald-600 to-green-700 py-12 md:py-16">
+        <div className="container mx-auto px-4 max-w-2xl text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+            Submit Your LegalTech Tool
+          </h1>
+          <p className="text-base md:text-lg text-emerald-100 max-w-xl mx-auto">
+            Know a great AI-powered legal tool that should be in our directory? Tell us about it and we&apos;ll review it for inclusion.
+          </p>
+        </div>
+      </section>
+
+      <div className="max-w-2xl mx-auto py-12 px-4">
 
       {status === "sent" ? (
         <div className="bg-green-50 border border-green-200 text-green-800 rounded p-4">
@@ -68,6 +80,7 @@ export default function SubmitPage() {
           )}
         </form>
       )}
+      </div>
     </div>
   );
 }
