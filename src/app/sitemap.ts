@@ -1,4 +1,6 @@
 import { MetadataRoute } from "next";
+import { caseStudies } from "@/lib/case-studies";
+import { guides } from "@/lib/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://legaltech-ai-hub.com";
@@ -46,6 +48,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const caseStudyEntries = caseStudies
+    .filter((cs) => cs.published)
+    .map((cs) => ({
+      url: `${baseUrl}/case-studies/${cs.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
+  const guideEntries = guides
+    .filter((g) => g.published)
+    .map((g) => ({
+      url: `${baseUrl}/guides/${g.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+
   return [
     {
       url: baseUrl,
@@ -85,6 +105,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...reviewEntries,
+    {
+      url: `${baseUrl}/guides`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...guideEntries,
+    {
+      url: `${baseUrl}/case-studies`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...caseStudyEntries,
+    {
+      url: `${baseUrl}/glossary`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/terms`,
       lastModified: new Date(),

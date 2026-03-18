@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { tools, categories } from "@/lib/tools";
 import { reviews } from "@/lib/reviews";
+import { caseStudies } from "@/lib/case-studies";
+import { guides } from "@/lib/guides";
 import AdUnit from "@/components/AdUnit";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
   const freeTools = tools.filter((t) => t.isFree);
   const featuredTools = tools.filter((t) => !t.isFree).slice(0, 4);
   const latestReviews = reviews.slice(0, 3);
+  const latestCaseStudies = caseStudies.filter((cs) => cs.published).slice(0, 3);
+  const latestGuides = guides.filter((g) => g.published).slice(0, 3);
 
   return (
     <div className="bg-white">
@@ -237,6 +242,99 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Latest Guides */}
+      <section className="bg-emerald-50 py-16">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="flex justify-between items-end mb-10">
+            <div>
+              <h2 className="text-3xl font-bold">Latest Guides</h2>
+              <p className="text-gray-600">
+                Practical guides for evaluating and implementing AI legal tools.
+              </p>
+            </div>
+            <Link
+              href="/guides"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              All guides &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group bg-white border rounded-xl overflow-hidden hover:shadow-lg transition block"
+              >
+                <div className={`h-3 bg-gradient-to-r ${guide.color}`} />
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-gray-400 text-xs">{guide.date}</span>
+                    <span className="text-gray-400 text-xs">
+                      {guide.readTime}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition mb-2 leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm line-clamp-2">
+                    {guide.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="flex justify-between items-end mb-10">
+            <div>
+              <h2 className="text-3xl font-bold">Case Studies</h2>
+              <p className="text-gray-600">
+                Real results from firms and teams using AI legal tools.
+              </p>
+            </div>
+            <Link
+              href="/case-studies"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              All case studies &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestCaseStudies.map((cs) => (
+              <Link
+                key={cs.slug}
+                href={`/case-studies/${cs.slug}`}
+                className="group border rounded-xl overflow-hidden hover:shadow-lg transition block"
+              >
+                <div className={`h-3 bg-gradient-to-r ${cs.color}`} />
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded">
+                      {cs.metric}
+                    </span>
+                    <span className="text-gray-400 text-xs">{cs.readTime}</span>
+                  </div>
+                  <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition mb-2 leading-snug">
+                    {cs.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm line-clamp-2">
+                    {cs.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup variant="banner" />
     </div>
   );
 }
