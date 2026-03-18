@@ -8,7 +8,7 @@
 #   3. Gmail label + filter creation (LegalTech/Contact, Updates, Newsletter, Admin)
 #
 # Prerequisites:
-#   - curl, jq installed
+#   - curl installed (no jq required)
 #   - Cloudflare API token with Zone:Email Routing Rules:Edit + Zone:DNS:Edit
 #   - SendGrid API key (from Cloudflare Workers secrets or SendGrid dashboard)
 #   - Gmail OAuth token (see instructions below for obtaining one)
@@ -51,12 +51,32 @@ warn()    { echo -e "${YELLOW}[WARN]${NC} $*"; }
 error()   { echo -e "${RED}[ERROR]${NC} $*"; }
 
 check_deps() {
-    for cmd in curl jq; do
-        if ! command -v "$cmd" &>/dev/null; then
-            error "$cmd is required but not installed."
-            exit 1
-        fi
-    done
+    if ! command -v curl &>/dev/null; then
+        error "curl is required but not installed."
+        exit 1
+    fi
+}
+
+# Simple JSON value extractor (replaces jq for simple cases)
+# Usage: json_val "$json" "key"  — extracts the value of "key" from a flat JSON object
+json_val() {
+    local json="$1" key="$2"
+    echo "$json" | sed -n "s/.*\"${key}\"[[:space:]]*:[[:space:]]*\"\([^\"]*\)\".*/\1/p" | head -1
+}
+
+# Check if a JSON response has "success": true
+json_success() {
+    echo "$1" | grep -q '"success"[[:space:]]*:[[:space:]]*true'
+}
+
+# Extract error messages from Cloudflare response
+json_errors() {
+    echo "$1" | sed -n 's/.*"message"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p'
+}
+
+# Check if a string/pattern exists in JSON
+json_contains() {
+    echo "$1" | grep -q "$2"
 }
 
 # ─────────────────────────────────────────────
@@ -78,11 +98,9 @@ setup_cloudflare_email_routing() {
     info "Verifying Cloudflare API token..."
     local verify
     verify=$(curl -s "${CF_API}/user/tokens/verify" -H "$AUTH_HEADER")
-    local status
-    status=$(echo "$verify" | jq -r '.success')
-    if [[ "$status" != "true" ]]; then
+    if ! json_success "$verify"; then
         error "Cloudflare token verification failed:"
-        echo "$verify" | jq .
+        echo "$verify"
         return 1
     fi
     success "Cloudflare API token is valid."
@@ -92,11 +110,10 @@ setup_cloudflare_email_routing() {
     local destinations
     destinations=$(curl -s "${CF_API}/zones/${CLOUDFLARE_ZONE_ID}/email/routing/addresses" \
         -H "$AUTH_HEADER")
-    local dest_verified
-    dest_verified=$(echo "$destinations" | jq -r \
-        ".result[]? | select(.email == \"${DESTINATION_EMAIL}\") | .verified // empty")
 
-    if [[ -z "$dest_verified" ]]; then
+    if json_contains "$destinations" "\"email\":\"${DESTINATION_EMAIL}\"\\|\"email\": \"${DESTINATION_EMAIL}\""; then
+        success "Destination ${DESTINATION_EMAIL} is already verified."
+    else
         info "Adding destination email ${DESTINATION_EMAIL}..."
         local add_dest
         add_dest=$(curl -s -X POST \
@@ -104,19 +121,14 @@ setup_cloudflare_email_routing() {
             -H "$AUTH_HEADER" \
             -H "Content-Type: application/json" \
             --data "{\"email\": \"${DESTINATION_EMAIL}\"}")
-        local add_success
-        add_success=$(echo "$add_dest" | jq -r '.success')
-        if [[ "$add_success" == "true" ]]; then
+        if json_success "$add_dest"; then
             warn "Verification email sent to ${DESTINATION_EMAIL} — check inbox and verify before continuing."
             echo "    Press Enter after you've verified the destination email..."
             read -r
         else
-            # May already exist at account level
             warn "Could not add destination (may already exist at account level):"
-            echo "$add_dest" | jq -r '.errors[]?.message // empty'
+            json_errors "$add_dest"
         fi
-    else
-        success "Destination ${DESTINATION_EMAIL} is already verified."
     fi
 
     # Enable email routing if not already enabled
@@ -124,16 +136,14 @@ setup_cloudflare_email_routing() {
     local routing_settings
     routing_settings=$(curl -s "${CF_API}/zones/${CLOUDFLARE_ZONE_ID}/email/routing" \
         -H "$AUTH_HEADER")
-    local routing_enabled
-    routing_enabled=$(echo "$routing_settings" | jq -r '.result.enabled // false')
-    if [[ "$routing_enabled" != "true" ]]; then
+    if json_contains "$routing_settings" '"enabled"[[:space:]]*:[[:space:]]*true'; then
+        success "Email routing is already enabled."
+    else
         info "Enabling email routing for ${DOMAIN}..."
         curl -s -X PUT "${CF_API}/zones/${CLOUDFLARE_ZONE_ID}/email/routing/enable" \
             -H "$AUTH_HEADER" \
             -H "Content-Type: application/json" > /dev/null
         success "Email routing enabled."
-    else
-        success "Email routing is already enabled."
     fi
 
     # Create routing rules for each address
@@ -148,11 +158,7 @@ setup_cloudflare_email_routing() {
         local email="${prefix}@${DOMAIN}"
 
         # Check if rule already exists
-        local rule_exists
-        rule_exists=$(echo "$existing_rules" | jq -r \
-            ".result[]? | select(.matchers[]?.value == \"${email}\") | .name // empty")
-
-        if [[ -n "$rule_exists" ]]; then
+        if json_contains "$existing_rules" "\"value\":\"${email}\"\\|\"value\": \"${email}\""; then
             success "Rule for ${email} already exists — skipping."
             continue
         fi
@@ -177,13 +183,11 @@ setup_cloudflare_email_routing() {
                 }]
             }")
 
-        local create_success
-        create_success=$(echo "$create_result" | jq -r '.success')
-        if [[ "$create_success" == "true" ]]; then
+        if json_success "$create_result"; then
             success "Created routing rule for ${email}"
         else
             error "Failed to create rule for ${email}:"
-            echo "$create_result" | jq -r '.errors[]?.message // empty'
+            json_errors "$create_result"
         fi
     done
 
@@ -215,11 +219,7 @@ setup_sendgrid_sender() {
         -H "$AUTH_HEADER")
 
     # Check if updates@ is already verified
-    local updates_exists
-    updates_exists=$(echo "$senders" | jq -r \
-        ".results[]? | select(.from_email == \"updates@${DOMAIN}\") | .from_email // empty")
-
-    if [[ -n "$updates_exists" ]]; then
+    if json_contains "$senders" "\"from_email\":\"updates@${DOMAIN}\"\\|\"from_email\": \"updates@${DOMAIN}\""; then
         success "updates@${DOMAIN} is already a verified sender in SendGrid."
         return
     fi
@@ -243,11 +243,9 @@ setup_sendgrid_sender() {
         }")
 
     # Check for errors
-    local has_errors
-    has_errors=$(echo "$create_result" | jq -r '.errors // empty')
-    if [[ -n "$has_errors" && "$has_errors" != "null" ]]; then
+    if json_contains "$create_result" '"errors"'; then
         error "Failed to create sender:"
-        echo "$create_result" | jq .
+        echo "$create_result"
         return 1
     fi
 
@@ -284,24 +282,25 @@ setup_gmail_filters() {
     existing_labels=$(curl -s "${GMAIL_API}/labels" -H "$AUTH_HEADER")
 
     # Check if auth worked
-    local label_error
-    label_error=$(echo "$existing_labels" | jq -r '.error.message // empty')
-    if [[ -n "$label_error" ]]; then
-        error "Gmail API error: ${label_error}"
+    if json_contains "$existing_labels" '"error"'; then
+        local err_msg
+        err_msg=$(json_val "$existing_labels" "message")
+        error "Gmail API error: ${err_msg}"
         return 1
     fi
 
     # Define labels and their corresponding filter criteria
-    declare -A LABEL_FILTERS=(
-        ["LegalTech/Contact"]="contact@${DOMAIN}"
-        ["LegalTech/Updates"]="updates@${DOMAIN}"
-        ["LegalTech/Newsletter"]="newsletter@${DOMAIN}"
-        ["LegalTech/Admin"]="admin@${DOMAIN}"
-    )
+    local label_names=("LegalTech/Contact" "LegalTech/Updates" "LegalTech/Newsletter" "LegalTech/Admin")
+    local filter_emails=("contact@${DOMAIN}" "updates@${DOMAIN}" "newsletter@${DOMAIN}" "admin@${DOMAIN}")
 
     # First, ensure parent label "LegalTech" exists
     local parent_id
-    parent_id=$(echo "$existing_labels" | jq -r '.labels[]? | select(.name == "LegalTech") | .id // empty')
+    parent_id=$(echo "$existing_labels" | grep -o '"id"[[:space:]]*:[[:space:]]*"[^"]*"[^}]*"name"[[:space:]]*:[[:space:]]*"LegalTech"' | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+    # Also try reversed key order
+    if [[ -z "$parent_id" ]]; then
+        parent_id=$(echo "$existing_labels" | grep -o '"name"[[:space:]]*:[[:space:]]*"LegalTech"[^}]*"id"[[:space:]]*:[[:space:]]*"[^"]*"' | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+    fi
+
     if [[ -z "$parent_id" ]]; then
         info "Creating parent label 'LegalTech'..."
         local parent_result
@@ -313,26 +312,36 @@ setup_gmail_filters() {
                 "labelListVisibility": "labelShow",
                 "messageListVisibility": "show"
             }')
-        parent_id=$(echo "$parent_result" | jq -r '.id // empty')
+        parent_id=$(json_val "$parent_result" "id")
         if [[ -n "$parent_id" ]]; then
             success "Created parent label 'LegalTech'"
         else
             error "Failed to create parent label:"
-            echo "$parent_result" | jq .
+            echo "$parent_result"
             return 1
         fi
     else
         success "Parent label 'LegalTech' already exists."
     fi
 
-    # Create sub-labels and filters
-    for label_name in "${!LABEL_FILTERS[@]}"; do
-        local filter_email="${LABEL_FILTERS[$label_name]}"
+    # Get existing filters once
+    local existing_filters
+    existing_filters=$(curl -s "${GMAIL_API}/settings/filters" -H "$AUTH_HEADER")
 
-        # Check if label exists
-        local label_id
-        label_id=$(echo "$existing_labels" | jq -r \
-            ".labels[]? | select(.name == \"${label_name}\") | .id // empty")
+    # Create sub-labels and filters
+    for i in "${!label_names[@]}"; do
+        local label_name="${label_names[$i]}"
+        local filter_email="${filter_emails[$i]}"
+
+        # Check if label exists — search for the label name in the response
+        local label_id=""
+        # Gmail API returns labels as separate JSON objects; grep for the name and extract id
+        # Try name-then-id order
+        label_id=$(echo "$existing_labels" | grep -o '"name"[[:space:]]*:[[:space:]]*"'"${label_name}"'"[^}]*"id"[[:space:]]*:[[:space:]]*"[^"]*"' | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+        # Try id-then-name order
+        if [[ -z "$label_id" ]]; then
+            label_id=$(echo "$existing_labels" | grep -o '"id"[[:space:]]*:[[:space:]]*"[^"]*"[^}]*"name"[[:space:]]*:[[:space:]]*"'"${label_name}"'"' | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
+        fi
 
         if [[ -z "$label_id" ]]; then
             info "Creating label '${label_name}'..."
@@ -345,12 +354,12 @@ setup_gmail_filters() {
                     \"labelListVisibility\": \"labelShow\",
                     \"messageListVisibility\": \"show\"
                 }")
-            label_id=$(echo "$label_result" | jq -r '.id // empty')
+            label_id=$(json_val "$label_result" "id")
             if [[ -n "$label_id" ]]; then
                 success "Created label '${label_name}' (${label_id})"
             else
                 error "Failed to create label '${label_name}':"
-                echo "$label_result" | jq .
+                echo "$label_result"
                 continue
             fi
         else
@@ -358,13 +367,7 @@ setup_gmail_filters() {
         fi
 
         # Check if filter already exists for this criteria
-        local existing_filters
-        existing_filters=$(curl -s "${GMAIL_API}/settings/filters" -H "$AUTH_HEADER")
-        local filter_exists
-        filter_exists=$(echo "$existing_filters" | jq -r \
-            ".filter[]? | select(.criteria.to == \"${filter_email}\") | .id // empty")
-
-        if [[ -n "$filter_exists" ]]; then
+        if json_contains "$existing_filters" "\"to\":\"${filter_email}\"\\|\"to\": \"${filter_email}\""; then
             success "Filter for to:${filter_email} already exists — skipping."
             continue
         fi
@@ -385,12 +388,12 @@ setup_gmail_filters() {
             }")
 
         local filter_id
-        filter_id=$(echo "$filter_result" | jq -r '.id // empty')
+        filter_id=$(json_val "$filter_result" "id")
         if [[ -n "$filter_id" ]]; then
             success "Created filter: to:${filter_email} → ${label_name}"
         else
             error "Failed to create filter for ${filter_email}:"
-            echo "$filter_result" | jq .
+            echo "$filter_result"
         fi
     done
 
