@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   }
 
   const fromEmail =
-    process.env.SENDGRID_FROM_EMAIL || "contact@legaltech-ai-hub.com";
+    process.env.SENDGRID_NEWSLETTER_FROM_EMAIL || "updates@legaltech-ai-hub.com";
   const ownerEmail =
     process.env.CONTACT_TO_EMAIL || "moonsmoke.contact@gmail.com";
 
