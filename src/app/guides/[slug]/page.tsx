@@ -38,8 +38,64 @@ export default async function GuidePage({ params }: Props) {
 
   const content = guideContent[slug];
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    datePublished: guide.date,
+    dateModified: guide.date,
+    author: {
+      "@type": "Organization",
+      name: "LegalTech AI Hub",
+      url: "https://legaltech-ai-hub.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "LegalTech AI Hub",
+      url: "https://legaltech-ai-hub.com",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://legaltech-ai-hub.com/guides/${guide.slug}`,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://legaltech-ai-hub.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Guides",
+        item: "https://legaltech-ai-hub.com/guides",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: guide.title,
+        item: `https://legaltech-ai-hub.com/guides/${guide.slug}`,
+      },
+    ],
+  };
+
   return (
     <article className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className={`bg-gradient-to-br ${guide.color} py-16`}>
         <div className="container mx-auto px-4 max-w-4xl">
