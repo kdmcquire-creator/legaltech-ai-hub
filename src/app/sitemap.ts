@@ -1,48 +1,21 @@
 import { MetadataRoute } from "next";
+import { tools, categories } from "@/lib/tools";
+import { reviews } from "@/lib/reviews";
 import { caseStudies } from "@/lib/case-studies";
 import { guides } from "@/lib/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://legaltech-ai-hub.com";
 
-  const toolSlugs = [
-    "legal-readiness-assessment",
-    "contract-clause-checker",
-    "harvey-ai",
-    "casetext-cocounsel",
-    "ironclad-ai",
-    "spellbook",
-    "kira-systems",
-    "everlaw",
-    "luminance",
-    "lex-machina",
-    "lawgeex",
-    "relativity",
-    "legalzoom",
-    "lawdepot",
-    "legalnature",
-    "rocket-lawyer",
-    "legal-document-diff-checker",
-    "legal-argument-gap-analyzer",
-  ];
-
-  const reviewSlugs = [
-    "legalzoom-vs-lawdepot-vs-legalnature",
-    "best-ai-contract-review-tools-2026",
-    "best-ai-tools-for-solo-practitioners",
-    "ai-legal-research-showdown",
-    "how-to-choose-ai-contract-analysis-software",
-  ];
-
-  const toolEntries = toolSlugs.map((tool) => ({
-    url: `${baseUrl}/tools/${tool}`,
+  const toolEntries = tools.map((t) => ({
+    url: `${baseUrl}/tools/${t.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  const reviewEntries = reviewSlugs.map((slug) => ({
-    url: `${baseUrl}/reviews/${slug}`,
+  const reviewEntries = reviews.map((r) => ({
+    url: `${baseUrl}/reviews/${r.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
@@ -66,12 +39,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
+  const categoryEntries = categories.map((cat) => ({
+    url: `${baseUrl}/categories/${cat.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/tools`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/legal-readiness`,
@@ -119,6 +105,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...caseStudyEntries,
+    ...categoryEntries,
     {
       url: `${baseUrl}/glossary`,
       lastModified: new Date(),
@@ -126,7 +113,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/submit`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/advertise`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
       url: `${baseUrl}/terms`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/disclosure`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,

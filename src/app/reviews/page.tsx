@@ -15,15 +15,15 @@ export default function ReviewsIndexPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 py-20">
+      <section className="bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
             Unbiased, In-Depth Analysis
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 leading-tight">
             AI Legal Tool Reviews That Cut Through the Noise
           </h1>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
             We test the tools so you don&apos;t have to guess. Head-to-head comparisons,
             honest verdicts, and buyer guides for every budget and practice size.
           </p>
@@ -55,7 +55,7 @@ export default function ReviewsIndexPage() {
               <Link
                 key={review.slug}
                 href={`/reviews/${review.slug}`}
-                className="group block border rounded-xl overflow-hidden hover:shadow-lg transition"
+                className="group block border rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Colored header bar */}
                 <div

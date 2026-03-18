@@ -444,12 +444,12 @@ export default function GlossaryPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-16">
+      <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-12 md:py-16">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
             Legal Tech Glossary
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
             A comprehensive reference of legal technology terms, concepts, and
             acronyms — from AI contract review to zero-knowledge proofs.
           </p>
@@ -495,7 +495,7 @@ export default function GlossaryPage() {
 
             return (
               <div key={letter} id={`letter-${letter}`} className="mb-12 scroll-mt-20">
-                <h2 className="text-3xl font-extrabold text-gray-900 mb-6 pb-2 border-b-2 border-blue-100">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 pb-2 border-b-2 border-blue-100">
                   {letter}
                 </h2>
                 <div className="space-y-4">

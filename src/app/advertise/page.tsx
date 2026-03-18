@@ -1,4 +1,23 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Advertise with Us",
+  description: "Explore advertising opportunities on LegalTech AI Hub. Reach legal professionals with featured listings and sponsored placements.",
+  alternates: { canonical: "/advertise" },
+  openGraph: {
+    title: "Advertise with Us - LegalTech AI Hub",
+    description: "Explore advertising opportunities on LegalTech AI Hub. Reach legal professionals with featured listings and sponsored placements.",
+    url: "https://legaltech-ai-hub.com/advertise",
+    siteName: "LegalTech AI Hub",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Advertise with Us - LegalTech AI Hub",
+    description: "Explore advertising opportunities on LegalTech AI Hub.",
+  },
+};
 
 export default function AdvertisePage() {
   return (

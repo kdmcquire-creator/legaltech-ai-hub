@@ -14,12 +14,12 @@ export default function AboutPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-blue-50 py-16">
+      <section className="bg-blue-50 py-12 md:py-16">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
             About LegalTech AI Hub
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-base md:text-lg lg:text-xl text-gray-600">
             Your go-to resource for discovering and evaluating AI-powered legal
             technology.
           </p>
@@ -53,33 +53,33 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               What We Do
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-2">Tool Directory</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="border rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <h3 className="text-base md:text-lg font-bold mb-2">Tool Directory</h3>
                 <p className="text-gray-600 text-sm">
                   A searchable, categorized directory of AI legal tools — from
                   contract analysis and e-discovery to compliance and case
                   management.
                 </p>
               </div>
-              <div className="border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-2">Reviews &amp; Comparisons</h3>
+              <div className="border rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <h3 className="text-base md:text-lg font-bold mb-2">Reviews &amp; Comparisons</h3>
                 <p className="text-gray-600 text-sm">
                   Expert reviews, side-by-side comparisons, and practical
                   breakdowns that cut through the marketing and tell you what
                   actually works.
                 </p>
               </div>
-              <div className="border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-2">Buyer Guides</h3>
+              <div className="border rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <h3 className="text-base md:text-lg font-bold mb-2">Buyer Guides</h3>
                 <p className="text-gray-600 text-sm">
                   Category-specific guides to help solo practitioners, law
                   firms, and in-house teams find the right fit for their budget
                   and workflow.
                 </p>
               </div>
-              <div className="border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-2">Industry Insights</h3>
+              <div className="border rounded-xl p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <h3 className="text-base md:text-lg font-bold mb-2">Industry Insights</h3>
                 <p className="text-gray-600 text-sm">
                   Coverage of trends, funding rounds, and shifts in the legal AI
                   landscape so you stay ahead of the curve.
