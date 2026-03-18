@@ -17,14 +17,17 @@ export default function CaseStudiesIndexPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-50 to-blue-50 py-16">
+      <section className="bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-700 py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
-            Case Studies
+          <span className="inline-block bg-white/20 backdrop-blur text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            Real Stories, Real Results
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-5 leading-tight">
+            How Legal Professionals Are Winning with AI
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real results from real legal professionals. See how firms and teams
-            are using AI tools to transform their practice.
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+            From solo practitioners saving 70% of their review time to litigation firms
+            cutting $1.2M in e-discovery costs — these are the stories behind the numbers.
           </p>
         </div>
       </section>
