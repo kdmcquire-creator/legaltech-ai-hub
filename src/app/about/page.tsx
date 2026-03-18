@@ -14,12 +14,12 @@ export default function AboutPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
-      <section className="bg-blue-50 py-12 md:py-16">
+      <section className="bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4">
             About LegalTech AI Hub
           </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600">
+          <p className="text-base md:text-lg lg:text-xl text-sky-100">
             Your go-to resource for discovering and evaluating AI-powered legal
             technology.
           </p>

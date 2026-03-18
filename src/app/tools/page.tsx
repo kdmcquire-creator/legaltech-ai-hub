@@ -19,12 +19,12 @@ export default function ToolsDirectory() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero */}
-      <section className="bg-white border-b py-12 md:py-20">
+      <section className="bg-gradient-to-br from-slate-600 via-blue-600 to-indigo-700 py-12 md:py-20">
         <div className="container mx-auto px-4 max-w-5xl">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 text-gray-900">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 text-white">
             AI Legal Tools Directory
           </h1>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl">
+          <p className="text-base md:text-lg lg:text-xl text-blue-100 max-w-3xl">
             Real tools used by real legal professionals. Browse our curated
             directory, try our free tools, and read honest editorial coverage on
             every product.
