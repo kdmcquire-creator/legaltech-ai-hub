@@ -516,6 +516,457 @@ const aiVsTraditionalContent = (
   </>
 );
 
+const implementContractAutomationContent = (
+  <>
+    <Section title="Why Contract Automation Fails — And How to Avoid It">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Contract automation is one of the highest-ROI investments a legal team can make. Studies consistently show that automating routine contract workflows can reduce cycle times by 50-80% and cut administrative costs significantly. Yet nearly half of contract automation projects stall or fail within the first year. The problem is almost never the technology. It is the rollout. Teams that try to automate everything at once, skip stakeholder buy-in, or ignore existing workflows end up with expensive shelfware. The firms and legal departments that succeed treat automation as a change management initiative first and a technology project second.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 1: Assess and Prioritize">
+      <StepCard number={1} title="Map Your Current Contract Workflow">
+        <p className="text-gray-700 mb-3">
+          Before you automate anything, document exactly how contracts move through your organization today. Trace the lifecycle from request to signature to storage. Identify every person who touches the process — requestors, drafters, reviewers, approvers, and signers. Note where handoffs happen, where bottlenecks occur, and where errors are most common. This map becomes your baseline for measuring improvement and your guide for deciding what to automate first.
+        </p>
+        <p className="text-gray-600 text-sm">Most teams discover that 60-70% of their contract volume consists of just 3-5 agreement types. These are your automation candidates.</p>
+      </StepCard>
+
+      <StepCard number={2} title="Identify High-Volume, Low-Complexity Contracts">
+        <p className="text-gray-700 mb-3">
+          Start with contracts that are generated frequently, follow a predictable structure, and require minimal customization. Common starting points include:
+        </p>
+        <ul className="list-disc pl-6 text-gray-700 space-y-2">
+          <li><strong>Non-disclosure agreements (NDAs):</strong> High volume, standard terms, low risk — the ideal first automation target.</li>
+          <li><strong>Standard vendor agreements:</strong> Procurement contracts with established terms and predictable negotiation points.</li>
+          <li><strong>Employment offer letters:</strong> Template-driven documents with a few variable fields like salary, start date, and title.</li>
+          <li><strong>Renewal and amendment letters:</strong> Short documents that reference an existing master agreement with minor changes.</li>
+        </ul>
+        <p className="text-gray-600 text-sm mt-3">Resist the temptation to start with your most complex contracts. Complexity breeds resistance. Early wins with simple contracts build momentum and organizational confidence.</p>
+      </StepCard>
+
+      <StepCard number={3} title="Define Success Metrics Before You Start">
+        <p className="text-gray-700 mb-3">
+          Without clear metrics, you cannot prove the automation is working — and you cannot justify expanding it. Define specific, measurable targets for your first automation phase. Track cycle time (days from request to execution), error rate (redlines caused by incorrect terms), volume throughput (contracts processed per week), and user adoption (percentage of eligible contracts actually routed through the automated system). Capture current-state numbers for each metric so you have a real comparison point, not just anecdotal improvement.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 2: Build Your Foundation">
+      <StepCard number={4} title="Standardize Your Templates and Clause Library">
+        <p className="text-gray-700 mb-3">
+          Automation amplifies whatever you feed it. If your templates are inconsistent, outdated, or filled with conflicting fallback positions, automation will generate bad contracts faster. Before configuring any tool, audit your template library. Consolidate duplicates, update outdated language, and establish a single approved version for each contract type. Build a clause library with pre-approved alternative positions for common negotiation points — your standard indemnification clause, your fallback, and your walk-away position.
+        </p>
+        <p className="text-gray-600 text-sm">A well-organized clause library with 3-4 approved positions per key provision can reduce negotiation cycles by 30-40%.</p>
+      </StepCard>
+
+      <StepCard number={5} title="Configure Approval Workflows">
+        <p className="text-gray-700 mb-3">
+          Map your approval requirements into the automation platform. Determine which contracts need legal review, which can be self-served by business teams, and what thresholds trigger escalation. A well-designed approval matrix considers contract value, risk level, counterparty type, and deviation from standard terms. For low-risk, standard-terms contracts, consider enabling self-service generation where business users fill in a questionnaire and receive an approved contract without any legal touchpoint.
+        </p>
+      </StepCard>
+
+      <StepCard number={6} title="Integrate with Your Existing Systems">
+        <p className="text-gray-700 mb-3">
+          Contract automation that exists in a silo creates more friction than it eliminates. At minimum, integrate with your e-signature platform (DocuSign, Adobe Sign), your document management system, and your CRM or matter management tool. If you use a billing system that tracks contract values, connect that too. Every manual re-entry point you eliminate reduces errors and saves time. Prioritize integrations that eliminate the most manual data transfer first.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 3: Roll Out Without Disruption">
+      <StepCard number={7} title="Run a Parallel Process First">
+        <p className="text-gray-700 mb-3">
+          Do not flip the switch overnight. Run the automated system alongside your existing process for 2-4 weeks. Have your team generate contracts using both the old method and the new platform, then compare outputs. This parallel period catches configuration errors, identifies edge cases the automation does not handle, and gives users a low-pressure environment to learn the new system. Once the automated output consistently matches or exceeds the quality of the manual process, sunset the old method.
+        </p>
+      </StepCard>
+
+      <StepCard number={8} title="Train Users by Role, Not by Feature">
+        <p className="text-gray-700 mb-3">
+          The biggest mistake in automation rollout is training everyone on everything. Business users who request contracts do not need to know how to configure approval workflows. Attorneys who review flagged provisions do not need to understand template administration. Create role-specific training that shows each user exactly what they need to do and nothing more. A 20-minute focused training session for each role is far more effective than a 90-minute comprehensive walkthrough that overwhelms everyone.
+        </p>
+      </StepCard>
+
+      <StepCard number={9} title="Designate Automation Champions">
+        <p className="text-gray-700 mb-3">
+          Identify one or two people in each department who will serve as first-line support and advocates for the new system. These champions answer basic questions, troubleshoot common issues, and report feedback to the administration team. They are the difference between users who abandon the system when they hit a snag and users who get help quickly and stay engaged. Choose people who are respected by their peers and enthusiastic about the change — not necessarily the most tech-savvy person in the room.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 4: Measure, Iterate, Expand">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        After your first contract type is running smoothly — typically 4-6 weeks post-launch — measure your results against the success metrics you defined in Phase 1. If cycle times dropped, error rates fell, and adoption is above 70%, you have a proven model to replicate. Expand to the next contract type, applying the same template standardization, workflow configuration, and phased rollout process. Most organizations can automate 3-5 contract types within the first six months and achieve significant volume coverage within a year.
+      </p>
+      <p className="text-gray-700">
+        Resist the urge to add complexity too quickly. Each new contract type you automate should be fully stable before you move to the next. Teams that try to automate ten contract types simultaneously end up with ten half-working processes instead of one excellent one.
+      </p>
+    </Section>
+
+    <Callout title="The Hidden Benefit: Data and Visibility">
+      <p className="text-gray-700">
+        Beyond speed and efficiency, contract automation creates something most legal teams have never had: data. Once contracts flow through an automated system, you can report on cycle times by contract type, identify bottleneck approvers, track negotiation patterns, and forecast renewal and expiration dates. This data transforms legal from a reactive cost center into a strategic function that can quantify its value to the business. Many general counsel report that the data generated by automation was more valuable than the time savings alone.
+      </p>
+    </Callout>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Map your current workflow first</strong> — you cannot automate what you do not understand. Document every step, handoff, and bottleneck.</li>
+        <li><strong>Start with high-volume, low-complexity contracts</strong> like NDAs and offer letters. Early wins build organizational momentum.</li>
+        <li><strong>Standardize templates and clause libraries</strong> before configuring any tool. Automation amplifies whatever you feed it.</li>
+        <li><strong>Run a parallel process for 2-4 weeks</strong> before cutting over. This catches configuration issues and builds user confidence.</li>
+        <li><strong>Train by role, not by feature,</strong> and designate champions in each department to provide first-line support.</li>
+        <li><strong>Measure results against pre-defined metrics</strong> and expand only after each contract type is fully stable.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const buildBusinessCaseContent = (
+  <>
+    <Section title="Why Good Technology Gets Rejected">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Legal technology vendors build tools that save time, reduce risk, and improve accuracy. Yet most legal tech proposals die in committee — not because the technology is bad, but because the business case is weak. Law firm partners and corporate legal leadership evaluate investments differently than technology teams. They want to see financial returns, risk reduction, and competitive advantage, expressed in language they understand. A proposal that leads with features and functionality loses to one that leads with dollars, hours, and client outcomes. Building a compelling business case is a skill that separates legal teams that modernize from those that stay stuck in manual processes.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <StepCard number={1} title="Quantify the Current Cost of Doing Nothing">
+      <p className="text-gray-700 mb-3">
+        Every business case starts with the status quo cost. Decision-makers need to understand what the organization is already spending on the problem the technology solves. Calculate the fully loaded cost of current manual processes:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Labor costs:</strong> Hours spent on the task per week, multiplied by the blended hourly rate of the people doing it. Include attorneys, paralegals, and administrative staff.</li>
+        <li><strong>Error costs:</strong> Estimate the cost of mistakes — missed deadlines, incorrect contract terms, compliance violations. Even rare errors can be extraordinarily expensive.</li>
+        <li><strong>Opportunity costs:</strong> What high-value work could your team be doing instead? If associates spend 15 hours per week on contract review that AI could handle, that is 15 hours not spent on billable client work or strategic projects.</li>
+        <li><strong>Turnover costs:</strong> Repetitive, low-value work drives attrition. Replacing an associate costs 1.5-2x their annual salary when you factor in recruiting, training, and lost productivity.</li>
+      </ul>
+      <p className="text-gray-600 text-sm mt-3">Be conservative with your estimates. Overstating current costs undermines your credibility. Use real timekeeping data wherever possible.</p>
+    </StepCard>
+
+    <StepCard number={2} title="Build the ROI Model">
+      <p className="text-gray-700 mb-3">
+        A credible ROI model projects costs and benefits over a 12-36 month period. On the cost side, include the software license, implementation fees, training time, and ongoing administration. On the benefit side, quantify time savings, error reduction, and capacity recovery. Use three scenarios — conservative, moderate, and optimistic — to show the range of potential outcomes. Decision-makers distrust single-point estimates, but a range that shows positive ROI even in the conservative case is persuasive.
+      </p>
+      <p className="text-gray-700 mb-3">
+        A straightforward formula for legal technology ROI: take the number of hours saved per month, multiply by the blended hourly rate of the people whose time is freed, and subtract the monthly cost of the tool. For example, if a contract automation platform saves 60 attorney hours per month at a $275 blended rate, the monthly value of recovered time is $16,500. If the platform costs $3,000 per month, the net monthly benefit is $13,500 — a 450% ROI.
+      </p>
+    </StepCard>
+
+    <StepCard number={3} title="Address Risk Reduction">
+      <p className="text-gray-700 mb-3">
+        For many decision-makers, risk reduction is more compelling than cost savings. Frame the technology as a risk mitigation tool and quantify the exposure it reduces. Contract automation reduces the risk of unapproved terms reaching counterparties. AI-powered review catches deviations from playbooks that manual review might miss under time pressure. Compliance monitoring tools prevent regulatory violations that carry fines, sanctions, or reputational damage. Attach dollar figures to these risks wherever possible — the cost of a single compliance violation or a contract executed with unauthorized terms can dwarf the annual cost of the tool that would have prevented it.
+      </p>
+    </StepCard>
+
+    <StepCard number={4} title="Map Benefits to Strategic Priorities">
+      <p className="text-gray-700 mb-3">
+        Every organization has stated strategic priorities — growth targets, efficiency mandates, client service improvements, or competitive positioning goals. Your business case must connect the technology investment directly to at least one of these priorities. If the firm is focused on growth, show how automation frees attorney capacity to take on more matters without increasing headcount. If the priority is efficiency, demonstrate how the tool reduces cost-per-contract or cost-per-matter. If client service is the focus, show how faster turnaround and fewer errors improve satisfaction scores and retention.
+      </p>
+      <p className="text-gray-600 text-sm">A business case that aligns with existing strategic goals gets approved. One that creates a new priority for leadership to evaluate gets tabled.</p>
+    </StepCard>
+
+    <StepCard number={5} title="Anticipate and Address Objections">
+      <p className="text-gray-700 mb-3">
+        Decision-makers will raise predictable objections. Prepare answers in advance:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>&quot;We tried legal tech before and it did not work.&quot;</strong> Acknowledge previous failures, explain what was different (usually poor implementation or wrong tool for the need), and describe what you will do differently this time.</li>
+        <li><strong>&quot;Our processes work fine.&quot;</strong> Present the cost data you gathered in Step 1. &quot;Fine&quot; has a quantifiable cost — show them what it is.</li>
+        <li><strong>&quot;This is too expensive.&quot;</strong> Reframe as an investment, not an expense. Show the payback period — typically 3-6 months for well-chosen legal tech.</li>
+        <li><strong>&quot;What about data security?&quot;</strong> Come prepared with the vendor&apos;s security certifications, data handling policies, and encryption standards.</li>
+        <li><strong>&quot;Our team will not adopt it.&quot;</strong> Present your change management plan — phased rollout, role-based training, and designated champions.</li>
+      </ul>
+    </StepCard>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Structuring the Presentation">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        The format of your business case matters as much as the content. Lead with the problem and its cost, not with the technology. Decision-makers need to feel the pain before they evaluate the solution. Follow with the proposed solution — described in business terms, not technical features. Then present the ROI model with your three scenarios. Close with the implementation plan: timeline, resource requirements, milestones, and risk mitigation steps. Keep the main presentation to 10-15 minutes with supporting data in an appendix. Partners and executives lose patience with lengthy decks — respect their time and you earn their attention.
+      </p>
+    </Section>
+
+    <Callout title="The Pilot Proposal: A Lower-Risk Path to Approval">
+      <p className="text-gray-700 mb-2">
+        If a full commitment feels like too big an ask, propose a paid pilot instead. A 60-90 day pilot with a single use case and clear success criteria is far easier to approve than a multi-year enterprise license. Define the pilot scope (one contract type, one team, one practice area), set measurable success criteria (cycle time reduction, user satisfaction, error rate), and agree upfront on the decision framework: if the pilot hits its targets, the organization commits to full deployment. Pilots reduce risk for decision-makers and give you real data to strengthen the full business case.
+      </p>
+    </Callout>
+
+    <Section title="Common Mistakes That Kill Business Cases">
+      <ul className="space-y-3 text-gray-700">
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Leading with features instead of outcomes.</strong> Decision-makers do not care about natural language processing or machine learning. They care about saving money, reducing risk, and serving clients better.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Using vendor marketing as your evidence.</strong> Build your case on internal data — your hours, your error rates, your costs. Vendor case studies from other organizations are supporting evidence, not the foundation.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Ignoring change management costs.</strong> If your business case accounts for the license fee but not the 40 hours of training and configuration time, you are understating the true investment and will lose credibility when the real costs emerge.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Presenting only the optimistic scenario.</strong> A single rosy projection invites skepticism. Three scenarios with positive ROI even in the conservative case builds confidence.</span>
+        </li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Start with the cost of doing nothing</strong> — quantify labor, errors, opportunity costs, and turnover driven by the current manual process.</li>
+        <li><strong>Build a three-scenario ROI model</strong> over 12-36 months that shows positive returns even in the conservative case.</li>
+        <li><strong>Frame technology as risk mitigation,</strong> not just efficiency. Quantify the cost of compliance violations, unauthorized terms, and missed deadlines.</li>
+        <li><strong>Align benefits to existing strategic priorities</strong> — growth, efficiency, or client service — so leadership sees the investment as supporting their goals.</li>
+        <li><strong>Prepare for objections</strong> with data-backed answers and consider proposing a 60-90 day pilot as a lower-risk path to approval.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const manualToAutomatedContent = (
+  <>
+    <Section title="The Real Cost of Spreadsheet-Based Contract Management">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Most organizations begin managing contracts the same way: a shared drive full of Word documents, a spreadsheet tracking key dates, and a handful of people who know where everything is. This works when you have 50 contracts. It breaks catastrophically at 500. Missed renewal deadlines auto-renew unfavorable agreements. Key terms live in documents no one can find. Obligations go untracked because the person who maintained the spreadsheet left the company. Industry data shows that poor contract management costs organizations 9% of their annual revenue on average — through missed savings, auto-renewals, compliance failures, and unfavorable terms that no one flagged. Migration to automated contract management is not a luxury. For growing organizations, it is a financial imperative.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 1: Discovery and Inventory (Weeks 1-3)">
+      <StepCard number={1} title="Locate Every Contract in Your Organization">
+        <p className="text-gray-700 mb-3">
+          The first and most painful step is finding all of your contracts. They are not all in one place. Check shared drives, email attachments, local hard drives, filing cabinets, and the desk drawers of long-tenured employees. Talk to every department head — procurement, sales, HR, IT, and facilities all have contracts that the legal team may never have seen. Do not try to organize them yet. The goal of this step is simply to gather everything into a single staging area, whether that is a shared folder or an intake inbox.
+        </p>
+        <p className="text-gray-600 text-sm">Most organizations discover 30-50% more contracts than they thought they had. This is normal and underscores why migration is necessary.</p>
+      </StepCard>
+
+      <StepCard number={2} title="Classify and Prioritize Your Contract Portfolio">
+        <p className="text-gray-700 mb-3">
+          Once gathered, classify contracts by type (vendor, customer, employment, real estate, IP), by status (active, expired, pending renewal), and by risk level (high-value, high-obligation, or high-exposure agreements). Create a priority matrix:
+        </p>
+        <ul className="list-disc pl-6 text-gray-700 space-y-2">
+          <li><strong>Tier 1 — Migrate first:</strong> Active contracts with upcoming renewal or expiration dates, high-value agreements, and any contract with performance obligations that need tracking.</li>
+          <li><strong>Tier 2 — Migrate second:</strong> Active contracts with distant renewal dates, standard-form agreements, and moderate-value vendor contracts.</li>
+          <li><strong>Tier 3 — Migrate last or archive:</strong> Expired contracts with no ongoing obligations, superseded agreements, and fully performed one-time contracts.</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={3} title="Extract Key Metadata from Priority Contracts">
+        <p className="text-gray-700 mb-3">
+          For each Tier 1 contract, extract the essential metadata that your new system will track: parties, effective date, expiration or renewal date, contract value, auto-renewal terms, notice periods, governing law, and key obligations. This is tedious manual work, but AI-powered extraction tools can accelerate it dramatically. Several CLM platforms offer migration-specific ingestion features that use AI to read uploaded documents and auto-populate metadata fields. Even with AI assistance, plan for human review of extracted data — accuracy on automated extraction typically runs 80-90%, which means 1 in 5 to 1 in 10 fields will need correction.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 2: Platform Selection and Configuration (Weeks 4-6)">
+      <StepCard number={4} title="Choose a CLM Platform That Fits Your Scale">
+        <p className="text-gray-700 mb-3">
+          Contract lifecycle management platforms range from lightweight repository tools to full enterprise suites. Match the platform to your current needs and near-term growth, not to an aspirational future state. For organizations with under 500 active contracts, a mid-market CLM with repository, alerting, and basic workflow capabilities is sufficient. Enterprise platforms with advanced AI, obligation management, and complex approval routing are designed for organizations managing thousands of contracts across multiple jurisdictions and business units. Over-buying creates complexity that delays adoption and wastes budget.
+        </p>
+        <p className="text-gray-600 text-sm">Evaluate at least three platforms. Run a proof of concept with your actual contracts, not the vendor&apos;s demo data. Prioritize ease of use over feature count — the best platform is the one your team will actually use.</p>
+      </StepCard>
+
+      <StepCard number={5} title="Configure Your Taxonomy and Metadata Schema">
+        <p className="text-gray-700 mb-3">
+          Before uploading a single contract, design your metadata schema carefully. This is the structure that will organize and make your contracts searchable for years to come. Define contract types and subtypes, required fields versus optional fields, standardized picklist values (do not allow free-text for fields like contract type or governing law), and naming conventions. Build your taxonomy based on how people actually search for contracts — by counterparty, by type, by business unit, and by date range. A well-designed taxonomy makes every future interaction with the system faster and more reliable.
+        </p>
+      </StepCard>
+
+      <StepCard number={6} title="Set Up Alerts and Notification Rules">
+        <p className="text-gray-700 mb-3">
+          Automated alerts are one of the highest-value features of any CLM platform and the primary reason many organizations migrate in the first place. Configure notifications for renewal and expiration dates (typically 90, 60, and 30 days in advance), notice period deadlines, obligation milestones and deliverable dates, and contract value thresholds that trigger review requirements. Assign alert recipients by role — contract owners, legal reviewers, and business stakeholders should each receive relevant notifications without being overwhelmed by alerts that are not actionable for them.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 3: Data Migration and Validation (Weeks 7-10)">
+      <StepCard number={7} title="Migrate Tier 1 Contracts First">
+        <p className="text-gray-700 mb-3">
+          Upload your highest-priority contracts to the new platform, attach extracted metadata, and link related documents (amendments, exhibits, side letters). Do not migrate everything at once. Start with Tier 1, validate the data, confirm that alerts are firing correctly, and resolve any configuration issues before proceeding to Tier 2. This staged approach lets you catch problems when the stakes are high enough to warrant attention but the volume is manageable enough to correct course.
+        </p>
+      </StepCard>
+
+      <StepCard number={8} title="Validate Extracted Data Against Source Documents">
+        <p className="text-gray-700 mb-3">
+          After migration, run a systematic validation pass. For each Tier 1 contract, verify that key dates match the source document, financial terms are correctly captured, party names and roles are accurate, and related documents are properly linked. Assign validation to people who know the contracts — not to the technical team that configured the platform. A contract manager who has worked with these agreements for years will catch errors that a system administrator would miss. Document your error rate and use it to calibrate the level of human review needed for subsequent tiers.
+        </p>
+      </StepCard>
+
+      <StepCard number={9} title="Migrate Remaining Tiers">
+        <p className="text-gray-700 mb-3">
+          Once Tier 1 is validated and stable, proceed with Tier 2 and then Tier 3. Each subsequent tier should require less manual intervention as your team becomes proficient with the platform and your AI extraction accuracy improves through feedback. For Tier 3 expired contracts, consider a lighter-touch migration — upload the documents for archival purposes but invest less time in detailed metadata extraction unless the contracts have ongoing relevance for benchmarking or precedent.
+        </p>
+      </StepCard>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Phase 4: Adoption and Process Change (Weeks 11-14)">
+      <StepCard number={10} title="Establish the CLM as the Single Source of Truth">
+        <p className="text-gray-700 mb-3">
+          The migration is only successful when the old system is decommissioned. Set a clear cutover date after which all new contracts must be created, stored, and managed in the CLM platform. Archive — do not delete — the old shared drives and spreadsheets, but make it clear that they are no longer the authoritative source. Any team member who continues to store contracts outside the CLM undermines the entire system. This requires executive sponsorship and consistent enforcement during the transition period.
+        </p>
+      </StepCard>
+
+      <StepCard number={11} title="Train Users on Their Specific Workflows">
+        <p className="text-gray-700 mb-3">
+          Different users interact with the CLM differently. Business users need to know how to request contracts and check status. Legal reviewers need to know how to access documents, complete reviews, and manage approvals. Administrators need to understand reporting, configuration, and user management. Create role-specific training guides and conduct focused sessions — 30 minutes per role is far more effective than a two-hour all-hands training that tries to cover everything. Record the sessions so new hires can self-serve.
+        </p>
+      </StepCard>
+    </Section>
+
+    <Callout title="The 90-Day Checkpoint">
+      <p className="text-gray-700 mb-2">
+        Schedule a formal review 90 days after your cutover date. By this point, you should be able to answer these questions with data:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-1">
+        <li>How many contracts are in the system versus estimated total? (Target: 90%+ of active contracts)</li>
+        <li>Are renewal alerts firing on time and reaching the right people?</li>
+        <li>What is the average time to locate a specific contract? (Should be under 2 minutes)</li>
+        <li>How many contracts have been created or renewed outside the system? (Target: zero)</li>
+        <li>What is user satisfaction with the platform? (Survey your top 20 users)</li>
+      </ul>
+      <p className="text-gray-600 text-sm mt-2">If adoption is below 80%, investigate the barriers — usually usability issues, insufficient training, or lack of executive enforcement — and address them before expanding platform capabilities.</p>
+    </Callout>
+
+    <Section title="Common Migration Pitfalls">
+      <ul className="space-y-3 text-gray-700">
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Trying to migrate everything at once.</strong> A phased, tiered approach is slower to start but far more likely to succeed. Big-bang migrations overwhelm teams and produce unreliable data.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Skipping data validation.</strong> Garbage in, garbage out. If your metadata is wrong, every alert, report, and search result will be unreliable — and users will lose trust in the system.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Allowing parallel systems to persist.</strong> If teams can still use the shared drive, they will. Set a hard cutover date with executive backing and enforce it.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-red-500 font-bold mt-0.5">!</span>
+          <span><strong>Under-investing in taxonomy design.</strong> A poorly designed metadata schema is extremely expensive to fix after migration. Spend the time upfront to get the structure right.</span>
+        </li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Start by finding every contract</strong> in your organization — expect to discover 30-50% more than you thought existed.</li>
+        <li><strong>Classify contracts into three tiers</strong> by priority and migrate them in phases, starting with active, high-value agreements.</li>
+        <li><strong>Choose a CLM platform that matches your scale</strong> — over-buying creates complexity that delays adoption.</li>
+        <li><strong>Design your metadata taxonomy carefully</strong> before uploading a single document. This structure will serve you for years.</li>
+        <li><strong>Validate migrated data against source documents</strong> — automated extraction is good but not perfect.</li>
+        <li><strong>Set a hard cutover date</strong> and decommission old systems. Parallel systems undermine adoption.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const freeToolsContractAuditContent = (
+  <>
+    <Section title="Why Every Business Needs a Contract Audit">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Most businesses sign contracts and file them away, never looking at them again until a problem arises. This is a costly habit. Contracts contain obligations that evolve over time — auto-renewal clauses that lock you into unfavorable terms, indemnification provisions that expose you to uncapped liability, and compliance requirements that may no longer match your operations. A contract audit systematically reviews your active agreements to identify risks, missed opportunities, and terms that need renegotiation. Until recently, a thorough contract audit required hiring outside counsel at hundreds of dollars per hour. Today, free AI-powered tools make it possible to conduct a meaningful audit on your own — not as a substitute for legal advice on complex issues, but as a first pass that identifies where to focus your attention and budget.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Before You Start: Gather Your Contracts">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        An audit is only as good as the documents you feed it. Before using any tool, collect all of your active agreements into a single folder. Check your email archives, shared drives, filing cabinets, and any cloud storage where contracts might live. Focus on agreements that are currently active or have ongoing obligations — vendor contracts, customer agreements, leases, employment agreements, partnership deals, and insurance policies. Organize them by type and label each file clearly with the counterparty name and agreement type. This upfront organization saves significant time during the analysis phase and ensures you do not miss critical agreements.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <StepCard number={1} title="Run Each Contract Through an AI Clause Analyzer">
+      <p className="text-gray-700 mb-3">
+        Free AI clause analysis tools scan your contracts and identify key provisions, flag potential risks, and highlight missing clauses. Upload each contract individually and review the analysis for:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Risk flags:</strong> One-sided indemnification, uncapped liability, broad IP assignment clauses, and unreasonable non-compete terms.</li>
+        <li><strong>Missing provisions:</strong> No limitation of liability, no termination for convenience, no data protection clause, or no force majeure provision.</li>
+        <li><strong>Unusual language:</strong> Terms that deviate significantly from standard market practice, which may indicate provisions that were not properly negotiated.</li>
+        <li><strong>Key dates:</strong> Expiration dates, renewal deadlines, and notice periods that require action before they pass.</li>
+      </ul>
+      <p className="text-gray-600 text-sm mt-3">Create a simple spreadsheet to log findings for each contract: contract name, counterparty, risk flags found, missing clauses, and key dates. This becomes your audit tracker.</p>
+    </StepCard>
+
+    <StepCard number={2} title="Compare Contract Versions to Catch Unauthorized Changes">
+      <p className="text-gray-700 mb-3">
+        If you have both your original draft and the executed version of any contract, run them through a document comparison tool. Free comparison tools highlight every difference between two document versions — additions, deletions, and modifications. This is especially valuable for contracts that went through negotiation, where the counterparty may have made changes that were not fully reviewed before signing. Look for changes to key financial terms, liability caps, warranty disclaimers, and governing law provisions. Any difference between what you thought you signed and what the executed document actually says is a finding worth investigating.
+      </p>
+    </StepCard>
+
+    <StepCard number={3} title="Check for Consistency Across Related Agreements">
+      <p className="text-gray-700 mb-3">
+        Many business relationships involve multiple agreements — a master services agreement plus statements of work, or a lease plus amendments. Use free tools to verify that related documents are consistent with each other. Common inconsistencies include conflicting payment terms across documents, indemnification obligations in an SOW that exceed the cap in the MSA, amendment terms that contradict the master agreement without explicitly superseding it, and different governing law clauses across related documents. Upload related agreements sequentially and note any conflicts between them in your audit tracker.
+      </p>
+    </StepCard>
+
+    <StepCard number={4} title="Assess Your Overall Legal Readiness">
+      <p className="text-gray-700 mb-3">
+        Beyond individual contract analysis, evaluate whether your contract portfolio as a whole adequately protects your business. Free legal readiness assessment tools ask structured questions about your business operations and compare your answers against the protections in your contracts. Key questions to evaluate include whether all customer relationships are governed by written agreements, whether your vendor contracts include appropriate data protection provisions, whether employment agreements include non-solicitation and IP assignment clauses where needed, and whether your insurance coverage aligns with the indemnification obligations you have accepted in your contracts.
+      </p>
+    </StepCard>
+
+    <StepCard number={5} title="Prioritize Findings and Create an Action Plan">
+      <p className="text-gray-700 mb-3">
+        After analyzing all contracts, review your audit tracker and categorize findings by severity:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Critical (act immediately):</strong> Uncapped liability exposure, missing insurance requirements, approaching renewal deadlines for unfavorable contracts, and any unauthorized changes discovered during comparison.</li>
+        <li><strong>High (act within 30 days):</strong> Missing standard protections like limitation of liability or termination rights, inconsistencies between related agreements, and contracts with auto-renewal clauses that need monitoring.</li>
+        <li><strong>Medium (act within 90 days):</strong> Non-standard terms that should be renegotiated at the next renewal, missing but non-critical clauses, and contracts that need updated data protection language.</li>
+        <li><strong>Low (monitor):</strong> Minor language inconsistencies, stylistic issues, and contracts that are performing well but could be improved at the next opportunity.</li>
+      </ul>
+    </StepCard>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="What Free Tools Can and Cannot Do">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        Free AI tools are remarkably capable for a first-pass audit. They can identify standard clauses, flag missing provisions, extract key dates, and compare document versions with high accuracy. What they cannot do is provide legal advice, interpret how a clause applies to your specific situation, or predict how a court would rule on an ambiguous provision. Treat the output as a screening tool: it tells you where to look, not what to do. For any critical finding — especially those involving significant financial exposure, regulatory compliance, or potential disputes — consult a qualified attorney. The value of the free audit is not that it replaces professional counsel, but that it dramatically reduces the scope and cost of the professional review you need.
+      </p>
+    </Section>
+
+    <Callout title="Schedule Regular Audits, Not Just One-Time Reviews">
+      <p className="text-gray-700">
+        A contract audit should not be a one-time event. Business relationships evolve, regulations change, and new risks emerge. Schedule a quarterly review of your highest-value and highest-risk contracts, and a comprehensive annual audit of your full portfolio. Set calendar reminders 90 days before every major renewal deadline. The 30 minutes you spend reviewing a contract before its auto-renewal window closes can save you from another year locked into unfavorable terms. Free tools make this cadence practical even for businesses without dedicated legal staff — the technology does the heavy lifting, and you focus your attention on the findings that matter.
+      </p>
+    </Callout>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Gather all active contracts into one place</strong> before starting. Check email, shared drives, and filing cabinets — you likely have more contracts than you think.</li>
+        <li><strong>Use free AI clause analyzers</strong> to identify risk flags, missing provisions, unusual language, and key dates in each contract.</li>
+        <li><strong>Compare original and executed versions</strong> to catch unauthorized changes made during negotiation.</li>
+        <li><strong>Check consistency across related agreements</strong> — master agreements, SOWs, and amendments should not contradict each other.</li>
+        <li><strong>Prioritize findings by severity</strong> and create a concrete action plan with timelines for remediation.</li>
+        <li><strong>Treat free tools as a screening pass,</strong> not legal advice. Consult an attorney for critical findings involving significant exposure.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
 export const guideContent: Record<string, React.ReactNode> = {
   "evaluating-ai-legal-tools": evaluatingContent,
   "ai-legal-research-guide": researchGuideContent,
@@ -523,4 +974,8 @@ export const guideContent: Record<string, React.ReactNode> = {
   "small-business-ai-legal-tools": smallBusinessContent,
   "data-privacy-ai-legal-tools": dataPrivacyContent,
   "ai-legal-assistants-vs-traditional-research": aiVsTraditionalContent,
+  "implement-contract-automation": implementContractAutomationContent,
+  "build-business-case-legal-technology": buildBusinessCaseContent,
+  "manual-to-automated-contract-management": manualToAutomatedContent,
+  "free-tools-contract-audit": freeToolsContractAuditContent,
 };

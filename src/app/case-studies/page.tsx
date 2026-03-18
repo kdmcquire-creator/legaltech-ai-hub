@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { caseStudies, industryColors } from "@/lib/case-studies";
+import AdUnit from "@/components/AdUnit";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -107,6 +109,16 @@ export default function CaseStudiesIndexPage() {
           </div>
         </div>
       </section>
+
+      {/* Ad */}
+      <div className="container mx-auto px-4 max-w-5xl py-4">
+        <AdUnit slot="SLOT_CASESTUDIES_MID" format="horizontal" />
+      </div>
+
+      {/* Newsletter */}
+      <div className="container mx-auto px-4 max-w-5xl py-6">
+        <NewsletterSignup variant="inline" />
+      </div>
 
       {/* CTA */}
       <section className="bg-gray-50 border-t py-12">

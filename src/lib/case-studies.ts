@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "9 min read",
     tags: ["Due Diligence", "Automation", "Cost Savings"],
     color: "from-emerald-500 to-teal-600",
-    published: false,
+    published: true,
   },
   {
     slug: "legal-aid-nonprofit-ai-tools",
@@ -62,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "10 min read",
     tags: ["In-House", "CLM", "Cost Reduction"],
     color: "from-violet-500 to-purple-600",
-    published: false,
+    published: true,
   },
   {
     slug: "small-business-ai-employment-contracts",
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "8 min read",
     tags: ["Intellectual Property", "Patent Research", "AI Search"],
     color: "from-cyan-500 to-blue-600",
-    published: false,
+    published: true,
   },
   {
     slug: "real-estate-firm-lease-review-ai",
@@ -101,7 +101,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "7 min read",
     tags: ["Real Estate", "Lease Review", "Volume Processing"],
     color: "from-teal-500 to-emerald-600",
-    published: false,
+    published: true,
   },
   {
     slug: "insurance-claims-review-automation",
@@ -114,7 +114,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "8 min read",
     tags: ["Insurance", "Claims Review", "Automation"],
     color: "from-orange-500 to-red-600",
-    published: false,
+    published: true,
   },
   {
     slug: "startup-series-a-legal-free-tools",
@@ -140,7 +140,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "9 min read",
     tags: ["Compliance", "Regulatory", "Multi-Jurisdiction"],
     color: "from-gray-600 to-gray-800",
-    published: false,
+    published: true,
   },
   {
     slug: "immigration-law-document-automation",
@@ -153,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "7 min read",
     tags: ["Immigration Law", "Document Automation", "Efficiency"],
     color: "from-purple-500 to-indigo-600",
-    published: false,
+    published: true,
   },
   {
     slug: "litigation-firm-ediscovery-cost-savings",

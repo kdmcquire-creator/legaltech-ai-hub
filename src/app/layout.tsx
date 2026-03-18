@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MobileNav from "@/components/MobileNav";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://legaltech-ai-hub.com"),
@@ -132,6 +133,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
         <GoogleAnalytics />
+        <ExitIntentPopup />
         <div className="flex flex-col min-h-screen">
           {/* Header */}
           <header className="bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-30">

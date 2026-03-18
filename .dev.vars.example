@@ -2,3 +2,6 @@
 # These are used by wrangler for local development
 
 SENDGRID_API_KEY=SG.your_api_key_here
+ADMIN_API_KEY=your_admin_api_key_here
+ANTHROPIC_API_KEY=sk-ant-your_key_here
+CRON_SECRET=your_cron_secret_here

@@ -25,10 +25,13 @@
   // Environment variables (non-secret)
   "vars": {
     "SENDGRID_FROM_EMAIL": "contact@legaltech-ai-hub.com",
+    "SENDGRID_NEWSLETTER_FROM_EMAIL": "updates@legaltech-ai-hub.com",
     "CONTACT_TO_EMAIL": "moonsmoke.contact@gmail.com"
   }
-  // Secret variables (SENDGRID_API_KEY) should be set via:
+  // Secret variables should be set via:
   //   Local dev:  .dev.vars file
-  //   Production: `npx wrangler secret put SENDGRID_API_KEY`
+  //   Production: `npx wrangler secret put <SECRET_NAME>`
   //   Or via Cloudflare Dashboard → Workers → Settings → Variables and Secrets
+  //
+  // Required secrets: SENDGRID_API_KEY, ADMIN_API_KEY, ANTHROPIC_API_KEY, CRON_SECRET
 }

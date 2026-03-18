@@ -33,7 +33,7 @@ export const guides: Guide[] = [
     readTime: "10 min read",
     tags: ["Implementation", "Contracts", "Workflow"],
     color: "from-emerald-500 to-teal-600",
-    published: false,
+    published: true,
   },
   {
     slug: "ai-legal-research-guide",
@@ -81,7 +81,7 @@ export const guides: Guide[] = [
     readTime: "8 min read",
     tags: ["ROI", "Business Case", "Leadership"],
     color: "from-gray-600 to-gray-800",
-    published: false,
+    published: true,
   },
   {
     slug: "data-privacy-ai-legal-tools",
@@ -105,7 +105,7 @@ export const guides: Guide[] = [
     readTime: "11 min read",
     tags: ["Contract Management", "Migration", "CLM"],
     color: "from-cyan-500 to-blue-600",
-    published: false,
+    published: true,
   },
   {
     slug: "ai-legal-assistants-vs-traditional-research",
@@ -129,7 +129,7 @@ export const guides: Guide[] = [
     readTime: "8 min read",
     tags: ["Free Tools", "Contract Audit", "How-To"],
     color: "from-teal-500 to-emerald-600",
-    published: false,
+    published: true,
   },
 ];
 
