@@ -9,16 +9,16 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-function KeyMetric({ label, value }: { label: string; value: string }) {
+function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border rounded-lg p-4 text-center">
-      <p className="text-3xl font-bold text-blue-600">{value}</p>
-      <p className="text-gray-500 text-sm mt-1">{label}</p>
+    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
+      <p className="text-3xl font-bold text-emerald-700 mb-1">{value}</p>
+      <p className="text-gray-600 text-sm">{label}</p>
     </div>
   );
 }
 
-function Takeaway({ children }: { children: React.ReactNode }) {
+function KeyTakeaway({ children }: { children: React.ReactNode }) {
   return (
     <div className="p-8 bg-blue-50 rounded-xl border border-blue-100">
       <h2 className="text-2xl font-semibold mb-4 text-blue-900">Key Takeaways</h2>
@@ -27,399 +27,353 @@ function Takeaway({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ---------- ARTICLE CONTENT ---------- */
+
+const soloAttorneyContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Sarah Chen is a solo attorney based in Austin, Texas, specializing in commercial contract law. Her practice focuses on small-to-midsize businesses that need lease agreements, vendor contracts, partnership agreements, and service-level agreements reviewed or drafted from scratch. On a typical month, Sarah handles between 15 and 20 contracts — a volume that kept her working evenings and weekends just to stay current.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        With no associates or paralegals on staff, every hour spent buried in contract markup was an hour she couldn&apos;t spend on business development, client consultations, or the strategic advisory work that commands higher fees.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Each contract required 3 to 4 hours of manual review. Sarah would read every clause line by line, cross-reference state-specific requirements, flag non-standard indemnification language, and draft redline suggestions — all by hand. At 15 contracts per month, that consumed roughly 50 to 60 billable hours on review alone. The remaining hours barely covered client calls, filings, and administrative tasks.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Client relationships were suffering. Response times stretched to 5 to 7 business days, and Sarah had to turn away prospective clients simply because she lacked the bandwidth. She explored hiring a part-time associate, but the overhead — salary, benefits, malpractice insurance — would have cost $80K or more annually, a figure that didn&apos;t make financial sense for a solo practice.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        After evaluating several platforms, Sarah adopted an AI-powered contract review tool that offered automatic clause detection, risk scoring, and redline generation. The tool integrated directly with Microsoft Word, allowing her to review contracts inside her existing workflow without switching between applications.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        She spent the first two weeks calibrating the tool to her practice area — uploading her preferred clause language, configuring risk thresholds for indemnification and liability caps, and testing it against contracts she had already reviewed manually. By week three, the AI was flagging the same issues she would have caught herself, plus a handful of subtle inconsistencies in defined terms that she admitted she might have missed on a late-night review.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Within the first full month, Sarah&apos;s average contract review time dropped from 3.5 hours to approximately 1 hour — a 70% reduction. The AI handled the initial clause identification and risk scoring in under two minutes. Sarah&apos;s role shifted from line-by-line reading to targeted review of flagged items, strategic analysis, and client-specific customization.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The freed-up hours had a cascading effect. She increased her monthly contract volume from 15 to 25 without extending her work hours. Response times improved to 1 to 2 business days, which led to stronger client retention and more referrals. Over the first year, the additional capacity translated to more than $40,000 in new revenue — against a tool cost of roughly $3,600 annually.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="70%" label="Time saved per contract" />
+        <Metric value="15→25" label="Monthly contracts handled" />
+        <Metric value="$40K+" label="Additional annual revenue" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>AI review works best as a force multiplier, not a replacement.</strong> Sarah still reviews every contract — the AI simply eliminates the mechanical work and lets her focus on judgment calls.</li>
+        <li><strong>Calibration time is an investment.</strong> The two weeks spent configuring the tool to her practice area paid dividends in accuracy and trust.</li>
+        <li><strong>Capacity gains compound.</strong> Faster turnaround didn&apos;t just increase volume — it improved client satisfaction and generated referrals.</li>
+        <li><strong>The math favors adoption.</strong> At $300 per month versus $80K+ for a junior hire, AI tooling is the most cost-effective way for a solo attorney to scale.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const legalAidContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Community Legal Partners is a small legal aid organization in Cleveland, Ohio, with four staff attorneys and two administrative employees. The nonprofit serves low-income individuals and families facing housing disputes, family law matters, benefit denials, and consumer protection issues. Demand for their services had grown steadily for years, driven by rising housing costs and an expanding service area.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Despite the team&apos;s dedication, the math was unforgiving. Four attorneys, each carrying a caseload of 40 to 50 active matters, could only serve roughly 600 clients per year. The waitlist had grown to over six months.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The biggest bottlenecks were document preparation and legal research. Housing attorneys spent hours drafting motions to dismiss, answers to eviction complaints, and habitability demand letters — documents that followed predictable patterns but still required manual assembly for each client. Family law attorneys faced similar repetition with custody agreements, protective order petitions, and modification motions.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Grant funding covered salaries and office costs, but there was no budget for additional attorneys. The organization needed to do more with the same resources — or accept that hundreds of eligible clients would go unserved.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The executive director assembled a small working group to identify free and low-cost AI tools that could reduce time spent on repetitive tasks. Over the course of two months, they implemented three categories of tools.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        First, a free AI document assembly platform that allowed attorneys to build templates for their most common filings. Client-specific information was entered through a simple questionnaire, and the tool generated a complete, court-ready document in minutes. Second, an AI-powered legal research tool with a free tier for nonprofit organizations, which dramatically reduced the time spent finding relevant case law and statutes. Third, an AI intake chatbot deployed on the organization&apos;s website that could screen potential clients for eligibility, gather basic case information, and schedule appointments — all before an attorney ever touched the file.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The impact was transformative. Document assembly time for standard filings dropped from 90 minutes to 15 minutes. Research time on routine matters fell by roughly 60%. The intake chatbot screened out ineligible inquiries before they consumed attorney time and pre-populated case files with the information attorneys needed to hit the ground running.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Within six months, the organization tripled its client capacity — serving over 1,800 clients annually with the same four-attorney team. The waitlist shrank from six months to approximately three weeks. Attorney satisfaction improved as well; the team reported spending more time on substantive legal work and less time on copy-paste document assembly.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="3x" label="Client capacity increase" />
+        <Metric value="6mo→3wk" label="Waitlist reduction" />
+        <Metric value="$0" label="Additional tool costs" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Free tiers and nonprofit pricing exist.</strong> Many AI legal tools offer free access or steep discounts for legal aid organizations — you just have to ask.</li>
+        <li><strong>Template-heavy practices benefit the most.</strong> Legal aid work is often high-volume and pattern-driven, making it an ideal fit for AI document assembly.</li>
+        <li><strong>Intake automation is a hidden multiplier.</strong> Screening clients before they reach an attorney saves more time than most organizations realize.</li>
+        <li><strong>Technology doesn&apos;t replace compassion.</strong> The attorneys now spend more face-to-face time with clients, not less — because the paperwork no longer dominates their day.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const smallBusinessContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Priya Mehta founded BrightCart, an e-commerce company selling sustainable home goods, in 2023. The business grew quickly — from 5 employees working out of a warehouse in Portland, Oregon, to 25 team members spread across Oregon, California, and Texas. That growth was exciting, but it created a legal headache that Priya hadn&apos;t anticipated: employment contracts.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Each new hire needed an employment agreement that complied with the specific labor laws of their state. Non-compete enforceability, at-will employment language, paid leave requirements, and wage transparency rules all varied significantly between Oregon, California, and Texas.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Priya initially hired outside counsel to draft employment contracts. The cost was approximately $500 per contract, and turnaround took 5 to 7 business days. With 20 new hires planned over six months, that meant $10,000 in legal fees just for employment agreements — not counting amendments, contractor agreements, or the inevitable revisions when state laws changed.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The slow turnaround was equally painful. Priya lost a strong candidate who accepted another offer while waiting for BrightCart&apos;s contract to be finalized. She needed a faster, cheaper approach that didn&apos;t sacrifice compliance.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Priya adopted an AI-powered contract drafting platform designed for small businesses. The tool offered state-specific employment contract templates that were regularly updated to reflect current labor laws. She selected her state, answered a guided questionnaire about the role (full-time vs. part-time, exempt vs. non-exempt, remote vs. on-site), and the AI generated a complete draft in under five minutes.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The platform also included a compliance-checking feature that scanned the generated contract against the relevant state&apos;s employment regulations and flagged any provisions that might create legal risk. For California hires, it automatically excluded non-compete clauses (which are unenforceable in that state) and included required meal and rest break language. For Texas hires, it included at-will provisions with the proper statutory references.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Contract drafting time dropped from 5 to 7 days to under 30 minutes — a 90% reduction in turnaround. Priya could generate a compliant contract the same day she extended an offer, eliminating the candidate-loss problem entirely. Over the next six months, she drafted 20 employment agreements, 8 contractor agreements, and 4 amendments using the platform.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The total cost savings exceeded $15,000 compared to outside counsel rates. Priya did have an employment attorney review the first three AI-generated contracts to validate accuracy, and the feedback was positive — the attorney flagged only minor stylistic preferences, not compliance gaps. That initial validation gave Priya the confidence to use the tool independently for subsequent hires.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="90%" label="Faster contract drafting" />
+        <Metric value="3" label="States covered compliantly" />
+        <Metric value="$15K+" label="Saved in outside legal fees" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Multi-state compliance is where AI shines.</strong> Keeping up with different employment laws across states is exactly the kind of rule-based, detail-heavy work that AI handles well.</li>
+        <li><strong>Validate early, then trust the process.</strong> Having a human attorney review the first few AI-generated contracts builds confidence without ongoing expense.</li>
+        <li><strong>Speed matters for hiring.</strong> In a competitive labor market, being able to send a compliant offer letter the same day is a real advantage.</li>
+        <li><strong>Small businesses don&apos;t need enterprise tools.</strong> Purpose-built AI platforms for SMBs are affordable and often more user-friendly than the tools designed for law firms.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const startupSeriesAContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Jordan Rivera is a first-time founder building DataPulse, a B2B SaaS platform that provides analytics dashboards for mid-market retailers. After 18 months of bootstrapping, the product had gained traction — 35 paying customers, $420K in ARR, and growing interest from venture capital firms. Two investors had expressed serious interest in leading a Series A round.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        But Jordan had a problem. The company&apos;s legal foundation was held together with free templates downloaded from the internet and handshake agreements with early contractors. Investor due diligence would expose every gap.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Jordan needed a comprehensive set of legal documents: a proper terms of service, a GDPR- and CCPA-compliant privacy policy, mutual NDAs for investor conversations, employee and contractor agreements for 8 team members, an IP assignment agreement to ensure the company owned all code, and a clean cap table with proper documentation.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Quotes from startup-focused law firms ranged from $12,000 to $25,000 for the full package. With $60K in the bank and a burn rate of $15K per month, spending that much on legal work before the funding closed was a risk Jordan couldn&apos;t take. But going into due diligence unprepared was an even bigger risk — investors would either walk away or demand punitive terms.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Jordan took a methodical, tool-by-tool approach using free AI legal platforms. For contract analysis and risk checking, Jordan used a free AI contract review tool to scan existing agreements — including the hastily drafted contractor agreements and the original co-founder agreement — identifying missing clauses, ambiguous IP provisions, and unsigned documents that needed immediate attention.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        For document generation, Jordan used AI-powered document assembly tools to draft a terms of service, privacy policy, mutual NDA template, and standard employment agreement. Each tool asked guided questions about the business (SaaS model, data handling practices, jurisdictions served) and generated documents tailored to those specifics. For clause-level analysis, Jordan ran every generated document through an AI clause analyzer that benchmarked the language against market-standard terms, flagging anything that was unusually broad, narrow, or missing.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The entire process took four weeks of part-time work — evenings and weekends alongside product development. Jordan spent $0 on tools, using only free tiers and open-source resources.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        When due diligence began, the lead investor&apos;s counsel reviewed DataPulse&apos;s legal documentation and flagged only two minor issues: a missing arbitration clause in the terms of service and a contractor agreement that lacked a proper work-for-hire provision. Both were corrected in under an hour using the same AI tools.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The investor&apos;s general counsel later told Jordan it was &quot;one of the cleaner legal packages we&apos;ve seen from a pre-Series A company.&quot; The round closed at $2.5M on founder-friendly terms. Jordan estimated the AI-driven approach saved approximately $15,000 in legal fees and — critically — preserved four months of runway that would have been consumed by traditional legal preparation.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="$15K" label="Saved in legal fees" />
+        <Metric value="12" label="Documents prepared" />
+        <Metric value="4 weeks" label="Total preparation time" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Due diligence readiness is non-negotiable.</strong> Investors expect a clean legal house. AI tools can get you there without draining your runway.</li>
+        <li><strong>Free tools are genuinely capable.</strong> Jordan used exclusively free tiers and produced documents that passed investor scrutiny with minimal revisions.</li>
+        <li><strong>Scan existing agreements first.</strong> The biggest risks were in documents that already existed — not the ones that needed to be created.</li>
+        <li><strong>AI doesn&apos;t replace a lawyer forever.</strong> Jordan hired startup counsel after closing the round. AI bridged the gap when budget constraints made traditional legal fees impractical.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
+const litigationEdiscoveryContent = (
+  <>
+    <Section title="Background">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Brennan &amp; Cole LLP is a 20-attorney litigation boutique in Chicago specializing in complex commercial disputes. The firm was retained to defend a mid-size manufacturing company in a breach-of-contract and trade-secret misappropriation case brought by a former supplier. The stakes were high — the plaintiff sought $18M in damages — and the discovery obligations were massive.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The client&apos;s document universe included 2.3 million files: emails, Slack messages, shared drive documents, engineering specifications, and financial records spanning seven years of the business relationship. All of it was potentially discoverable.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Challenge">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The firm obtained estimates from two traditional e-discovery vendors. Both projected a review cost of approximately $1.8M, based on a linear review model using contract attorneys at $45 to $65 per hour. The timeline was equally daunting: 8 months for first-pass review, with production deadlines set at 6 months by the court. The numbers simply did not work.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Beyond cost and time, quality was a concern. Linear review — where contract attorneys read documents one by one — is prone to inconsistency. Different reviewers apply different judgment to the same privilege and relevance questions, especially over an 8-month engagement with reviewer turnover. The risk of inadvertent privilege waiver on a dataset this large was significant.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Solution">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The litigation team selected an AI-powered e-discovery platform that combined predictive coding (technology-assisted review, or TAR) with advanced analytics including email threading, near-duplicate detection, and concept clustering. The workflow proceeded in three phases.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        In Phase 1, the platform ingested and processed all 2.3 million documents, automatically de-duplicating the set down to 1.4 million unique items. Email threading further reduced the review set by grouping conversation chains into single review units. In Phase 2, a senior associate and two partners reviewed a seed set of 2,500 documents, coding each for relevance, privilege, and key issues. The AI model trained on these decisions, then scored the entire corpus. After two additional rounds of active learning — where the model surfaced the most uncertain documents for human review — the system achieved a recall rate above 90% and precision above 85%. In Phase 3, a targeted human review of the AI-identified relevant and privileged documents was conducted by a team of six attorneys over four weeks, focusing on the approximately 180,000 documents the AI flagged as potentially responsive.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Results">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The entire review was completed in 10 weeks — well within the court&apos;s 6-month production deadline and roughly 75% faster than the traditional estimate. Total cost came in at $600,000, saving the client $1.2M compared to the linear review estimates.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        Quality metrics were equally strong. The AI-assisted review achieved higher consistency than linear review benchmarks, with inter-reviewer agreement rates above 92%. A post-review quality control sample of 1,500 documents found only 11 coding errors — a 0.73% error rate, compared to the 3 to 5% error rates typical of large-scale linear reviews. No privilege documents were inadvertently produced.
+      </p>
+      <p className="text-lg leading-relaxed text-gray-700 mt-4">
+        The case ultimately settled favorably for the client, with opposing counsel acknowledging that the speed and thoroughness of production put pressure on their own, more disorganized discovery process.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="By the Numbers">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Metric value="$1.2M" label="Cost savings vs. traditional review" />
+        <Metric value="2.3M" label="Documents reviewed" />
+        <Metric value="10 weeks" label="Total review time (vs. 8 months)" />
+      </div>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <KeyTakeaway>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>TAR is no longer experimental.</strong> Courts have accepted technology-assisted review for over a decade. The question is no longer whether to use it, but how to use it well.</li>
+        <li><strong>Senior attorney involvement in seed sets is critical.</strong> The quality of the AI model depends entirely on the quality of the training decisions. This is not a task to delegate to the most junior person on the team.</li>
+        <li><strong>Cost savings scale with document volume.</strong> The larger the dataset, the greater the advantage of AI-assisted review over linear review. At 2.3M documents, the savings were dramatic.</li>
+        <li><strong>Speed is a strategic advantage.</strong> Producing documents quickly and thoroughly shifts litigation dynamics in your favor and demonstrates confidence in your position.</li>
+      </ul>
+    </KeyTakeaway>
+  </>
+);
+
 export const caseStudyContent: Record<string, React.ReactNode> = {
-  "solo-attorney-contract-review-ai": (
-    <>
-      <Section title="Overview">
-        <p className="text-gray-700 leading-relaxed">
-          Sarah Chen is a solo commercial contracts attorney based in Austin, Texas, specializing in commercial leases
-          and vendor agreements for small and mid-sized businesses. Like many solo practitioners, she found herself
-          spending the majority of her working hours on document review rather than strategic legal work and client
-          development. After adopting an AI-powered contract review tool, she reduced her review time by 70% and
-          transformed the trajectory of her practice.
-        </p>
-      </Section>
-
-      <Section title="The Challenge">
-        <p className="text-gray-700 leading-relaxed">
-          Before implementing AI, Sarah was processing 25 to 30 contracts per month, dedicating more than 15 hours
-          each week solely to contract review. The work was repetitive but demanded intense concentration — a single
-          missed clause or inconsistency could expose her clients to significant liability. As her practice grew,
-          the volume became unsustainable. She was turning away new clients because she simply didn&apos;t have the
-          bandwidth, and the fatigue from marathon review sessions was increasing her risk of errors. Hiring an
-          associate wasn&apos;t financially viable, and outsourcing to contract attorneys introduced quality control
-          concerns she wasn&apos;t comfortable with.
-        </p>
-      </Section>
-
-      <Section title="The Solution">
-        <p className="text-gray-700 leading-relaxed">
-          Sarah adopted an AI contract review platform that integrates directly with her document management system.
-          The tool analyzes each contract against a customizable playbook of her preferred terms, flagging deviations,
-          missing clauses, and internal inconsistencies. She spent approximately two weeks configuring the playbook to
-          reflect her standard positions on indemnification, limitation of liability, termination provisions, and
-          insurance requirements. The AI now performs the initial review pass, highlighting issues and generating a
-          redline summary that Sarah refines before sending to opposing counsel.
-        </p>
-      </Section>
-
-      <Section title="Results">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <KeyMetric label="Time Saved on Review" value="70%" />
-          <KeyMetric label="Contracts Per Month" value="25-30" />
-          <KeyMetric label="Revenue Growth" value="40%" />
-          <KeyMetric label="Weekly Hours Freed" value="10+" />
-        </div>
-        <p className="text-gray-700 leading-relaxed">
-          What previously took Sarah 30 to 45 minutes per contract now takes 10 to 15 minutes. The AI&apos;s first-pass
-          review catches clause inconsistencies that she admits she occasionally missed during long review sessions —
-          particularly cross-reference errors between indemnification and insurance provisions. With more than 10 hours
-          per week freed up, Sarah has invested that time in client development, attending networking events, and
-          offering advisory consultations. Her practice revenue has grown 40% year over year, and she has not needed
-          to hire additional staff.
-        </p>
-      </Section>
-
-      <Section title="Implementation Details">
-        <p className="text-gray-700 leading-relaxed">
-          The transition required a modest upfront investment of time and money. The AI platform costs approximately
-          $350 per month, which Sarah considers negligible compared to the revenue it has enabled. The two-week
-          playbook configuration period was the most labor-intensive phase — she reviewed her last 50 contracts to
-          identify her standard positions and exceptions. She also maintains a quarterly review cycle, updating the
-          playbook as market standards and client needs evolve. Sarah emphasizes that the AI does not replace her
-          judgment; it accelerates the mechanical aspects of review so she can focus on the strategic and
-          relationship-driven parts of her practice.
-        </p>
-      </Section>
-
-      <Takeaway>
-        <ul className="space-y-2 text-blue-900">
-          <li>• AI contract review tools can reduce review time by 70% for solo practitioners handling routine commercial agreements.</li>
-          <li>• The initial playbook configuration is critical — invest the time to customize the tool to your practice area and preferred terms.</li>
-          <li>• Freed capacity can be redirected to revenue-generating activities like client development, making the ROI substantial even for solo practices.</li>
-          <li>• AI catches consistency errors that fatigued human reviewers may miss, improving work product quality alongside efficiency.</li>
-        </ul>
-      </Takeaway>
-    </>
-  ),
-
-  "legal-aid-nonprofit-ai-tools": (
-    <>
-      <Section title="Overview">
-        <p className="text-gray-700 leading-relaxed">
-          Greater Boston Legal Aid (GBLA) is a nonprofit legal services organization providing free representation to
-          low-income residents across the greater Boston metropolitan area. With a 12-person team serving a community
-          with overwhelming demand for civil legal assistance, GBLA faced a persistent backlog that left vulnerable
-          clients waiting six months or longer for help. By strategically implementing free and low-cost AI tools
-          across intake, document assembly, and legal research, GBLA tripled its client capacity without adding staff.
-        </p>
-      </Section>
-
-      <Section title="The Challenge">
-        <p className="text-gray-700 leading-relaxed">
-          GBLA&apos;s waiting list had grown to more than 400 individuals, with average wait times exceeding six months
-          for non-emergency matters. The organization&apos;s attorneys were spending a disproportionate amount of time
-          on administrative tasks — initial intake screenings, drafting routine court filings, and conducting baseline
-          legal research for common housing and benefits disputes. Many callers had issues that could be resolved with
-          self-help resources, but staff lacked the bandwidth to properly triage and redirect them. Meanwhile, clients
-          with urgent needs, including those facing eviction or domestic violence situations, were caught in the same
-          queue as individuals seeking general legal information.
-        </p>
-      </Section>
-
-      <Section title="The Solution">
-        <p className="text-gray-700 leading-relaxed">
-          GBLA implemented a three-pronged AI strategy using primarily free and open-source tools. First, an AI-powered
-          intake chatbot was deployed on their website and phone system to conduct initial screening. The chatbot asks
-          structured questions to assess case type, urgency, income eligibility, and jurisdiction, then either schedules
-          an attorney consultation or directs the caller to curated self-help resources. Second, a document automation
-          system generates housing court forms, benefits appeal letters, and other routine filings based on attorney-approved
-          templates. Third, an AI legal research assistant helps staff attorneys prepare for hearings by quickly identifying
-          relevant case law and statutory provisions for common civil legal issues in Massachusetts.
-        </p>
-      </Section>
-
-      <Section title="Results">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <KeyMetric label="Client Capacity Increase" value="3x" />
-          <KeyMetric label="Inquiries Triaged by AI" value="60%" />
-          <KeyMetric label="Form Generation Time" value="Minutes" />
-          <KeyMetric label="Wait Time Reduction" value="75%" />
-        </div>
-        <p className="text-gray-700 leading-relaxed">
-          The AI chatbot now handles 60% of initial inquiries, filtering those who can benefit from self-help resources
-          and prioritizing urgent cases for immediate attorney attention. Document automation has reduced the time to
-          produce housing court filings from 2 to 3 hours of manual drafting down to approximately 15 minutes of
-          attorney review and customization. The research assistant saves an estimated 4 hours per case on legal
-          research for common dispute types. Combined, these efficiencies have allowed GBLA to serve three times as
-          many clients with the same 12-person team, and the average wait time for non-emergency matters has dropped
-          from over six months to approximately six weeks.
-        </p>
-      </Section>
-
-      <Section title="Implementation Details">
-        <p className="text-gray-700 leading-relaxed">
-          GBLA secured a small technology grant of $12,000 to cover initial setup and integration costs. The intake
-          chatbot was built using an open-source conversational AI framework, customized with GBLA&apos;s screening
-          criteria and resource directory. Document templates were developed by senior attorneys and reviewed for
-          compliance with Massachusetts court filing requirements. The organization conducted a three-month pilot
-          with the housing unit before rolling the tools out to all practice areas. Staff training took approximately
-          two weeks, and GBLA assigned one paralegal as the &quot;technology liaison&quot; responsible for maintaining
-          templates and monitoring chatbot accuracy. The team reviews AI-generated outputs on a monthly basis to ensure
-          quality standards are maintained.
-        </p>
-      </Section>
-
-      <Takeaway>
-        <ul className="space-y-2 text-blue-900">
-          <li>• Legal aid organizations can dramatically expand capacity using free and low-cost AI tools without increasing headcount.</li>
-          <li>• AI-powered intake triage is especially impactful — routing self-help-eligible inquiries frees attorneys for complex cases that require representation.</li>
-          <li>• Document automation delivers outsized returns for organizations that handle high volumes of standardized court filings.</li>
-          <li>• A phased rollout with a dedicated technology liaison helps ensure quality and staff buy-in during the transition.</li>
-        </ul>
-      </Takeaway>
-    </>
-  ),
-
-  "small-business-ai-employment-contracts": (
-    <>
-      <Section title="Overview">
-        <p className="text-gray-700 leading-relaxed">
-          Marcus Rivera is the founder and CEO of BrightCart, a 45-person e-commerce company headquartered in Dallas,
-          Texas. When BrightCart expanded operations into California and New York, Marcus needed employment contracts
-          that complied with each state&apos;s distinct labor and employment laws. Rather than engage outside counsel
-          for every contract iteration, he used AI-powered legal drafting tools to produce compliant agreements in hours
-          instead of weeks — saving more than $15,000 in outside counsel fees for routine employment documentation.
-        </p>
-      </Section>
-
-      <Section title="The Challenge">
-        <p className="text-gray-700 leading-relaxed">
-          Multi-state employment compliance is notoriously complex. California&apos;s strict non-compete restrictions,
-          mandatory paid sick leave provisions, and at-will employment notice requirements differ substantially from
-          Texas and New York law. Marcus had been quoted $4,000 to $6,000 per state by employment law firms to draft
-          compliant offer letters, employment agreements, and contractor agreements. With plans to hire 15 new employees
-          across three states, the projected legal costs for routine documentation alone exceeded $18,000. As a growing
-          company, BrightCart needed those funds for product development and marketing, not for boilerplate contract
-          drafting that followed well-established legal patterns.
-        </p>
-      </Section>
-
-      <Section title="The Solution">
-        <p className="text-gray-700 leading-relaxed">
-          Marcus used an AI legal drafting platform designed for employment documentation. The tool includes
-          state-specific templates that are updated regularly to reflect current employment law requirements. He
-          selected the relevant states, specified key terms such as compensation structure, benefits eligibility,
-          intellectual property assignment, and confidentiality provisions, and the AI generated draft agreements
-          tailored to each jurisdiction. The platform flagged specific provisions where California law differed from
-          his Texas-based defaults — including meal and rest break requirements, expense reimbursement obligations, and
-          the prohibition on non-compete clauses. Marcus then had a local employment attorney in each state conduct a
-          focused review of the AI-generated drafts, which took roughly one hour per state rather than the full
-          drafting engagement originally quoted.
-        </p>
-      </Section>
-
-      <Section title="Results">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <KeyMetric label="Drafting Speed Improvement" value="90%" />
-          <KeyMetric label="Legal Cost Savings" value="$15K+" />
-          <KeyMetric label="States Covered" value="3" />
-          <KeyMetric label="Time to Final Contracts" value="3 Days" />
-        </div>
-        <p className="text-gray-700 leading-relaxed">
-          The AI platform generated initial drafts for all three states within a single afternoon. Attorney review and
-          final revisions were completed within three business days — a process that would have taken three to four weeks
-          through traditional outside counsel engagement. Total legal spend came to approximately $2,800 (platform
-          subscription plus attorney review hours), compared to the original estimate of $18,000 or more. Marcus
-          reports that the AI-generated drafts were substantively strong, with attorneys making only minor adjustments
-          to severability clauses and jurisdiction-specific notice periods. He continues to use the platform for new
-          hire documentation and has extended it to independent contractor agreements.
-        </p>
-      </Section>
-
-      <Section title="Implementation Details">
-        <p className="text-gray-700 leading-relaxed">
-          Marcus subscribes to the AI drafting platform at $199 per month, which includes unlimited document generation
-          and access to all state templates. He maintains a relationship with employment attorneys in each state for
-          final review of AI-generated documents — a focused review engagement that costs $300 to $500 per state rather
-          than a full drafting project. For complex provisions such as intellectual property assignment clauses and
-          non-compete or non-solicitation agreements where permitted, Marcus still engages outside counsel directly.
-          He treats the AI tool as appropriate for &quot;established law with clear patterns&quot; and relies on human
-          attorneys for provisions requiring strategic judgment or where the law is unsettled.
-        </p>
-      </Section>
-
-      <Takeaway>
-        <ul className="space-y-2 text-blue-900">
-          <li>• AI drafting tools excel at generating multi-state employment contracts where the legal requirements are well-established and template-driven.</li>
-          <li>• The most cost-effective approach combines AI drafting with focused attorney review — reducing lawyer hours from full drafting to targeted revision.</li>
-          <li>• Small businesses expanding to new states can save 80% or more on routine employment documentation costs.</li>
-          <li>• Complex or strategically sensitive provisions (IP assignment, non-competes) should still involve direct attorney engagement.</li>
-        </ul>
-      </Takeaway>
-    </>
-  ),
-
-  "startup-series-a-legal-free-tools": (
-    <>
-      <Section title="Overview">
-        <p className="text-gray-700 leading-relaxed">
-          Priya Sharma is a first-time founder who built DataLens, a B2B SaaS platform for supply chain analytics.
-          When she began preparing for her Series A fundraise, she faced the daunting reality of legal costs that
-          could consume a significant portion of her remaining seed capital. By strategically using free AI-powered
-          legal tools — including contract checkers, legal readiness assessments, and document comparison utilities —
-          Priya prepared her company for due diligence and reduced her total Series A legal spend from an estimated
-          $23,000 to just $8,000.
-        </p>
-      </Section>
-
-      <Section title="The Challenge">
-        <p className="text-gray-700 leading-relaxed">
-          Series A fundraising involves substantial legal complexity: reviewing and cleaning up existing SAFE agreements
-          and convertible notes, organizing corporate records, ensuring IP assignments are properly executed, preparing
-          disclosure schedules, and negotiating the term sheet and definitive documents. Priya had raised her seed round
-          using standard SAFE agreements from Y Combinator, but she wasn&apos;t certain they were properly executed or
-          that the terms were consistent across her five investor SAFEs. Her corporate records were disorganized, stored
-          across Google Drive folders and email attachments. Outside counsel estimated $20,000 to $25,000 for full
-          Series A legal representation, a figure that would strain DataLens&apos;s remaining $180,000 in runway.
-        </p>
-      </Section>
-
-      <Section title="The Solution">
-        <p className="text-gray-700 leading-relaxed">
-          Priya used a combination of free AI legal tools to do the preparatory work herself before engaging an attorney.
-          She ran her five SAFE agreements through a free AI contract checker, which identified three critical issues: one
-          SAFE had an incorrect valuation cap that didn&apos;t match the signed term sheet, another was missing the
-          pro-rata rights side letter that had been agreed upon verbally, and a third contained an outdated
-          most-favored-nation clause that conflicted with a later SAFE. She then used a free legal readiness quiz tool
-          to identify gaps in her corporate housekeeping — discovering that two employees had never signed IP assignment
-          agreements and that her Delaware franchise tax was overdue. Finally, she used a document comparison tool to
-          verify consistency across her corporate formation documents.
-        </p>
-      </Section>
-
-      <Section title="Results">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <KeyMetric label="Total Legal Savings" value="$15K" />
-          <KeyMetric label="Critical Issues Caught" value="3" />
-          <KeyMetric label="Final Legal Spend" value="$8K" />
-          <KeyMetric label="Due Diligence Prep Time" value="2 Weeks" />
-        </div>
-        <p className="text-gray-700 leading-relaxed">
-          By catching the three SAFE agreement issues before attorney review, Priya avoided what could have been a
-          deal-disrupting discovery during investor due diligence. The incorrect valuation cap alone could have created
-          a $200,000 discrepancy in her cap table calculations. With her documents organized and preliminary issues
-          resolved, her attorney&apos;s work was focused on final review, term sheet negotiation, and closing — reducing
-          billable hours from an estimated 50 to 60 hours down to approximately 20 hours. Priya closed her $2.5 million
-          Series A within six weeks of engaging counsel, a timeline her attorney described as unusually efficient for a
-          first-time founder.
-        </p>
-      </Section>
-
-      <Section title="Implementation Details">
-        <p className="text-gray-700 leading-relaxed">
-          Priya spent approximately two weeks on self-service preparation before engaging her attorney. The free AI
-          contract checker she used required uploading each SAFE agreement individually and generated a plain-language
-          summary of key terms, potential issues, and deviations from standard YC SAFE templates. The legal readiness
-          quiz was a 30-minute online assessment that produced a checklist of corporate housekeeping items needed for
-          due diligence. She used the checklist to gather and organize all corporate records into a virtual data room
-          before her first attorney meeting. Priya emphasizes that the AI tools didn&apos;t replace her lawyer — they
-          allowed her to be a more prepared and efficient client, which directly translated to lower legal bills and a
-          smoother fundraising process.
-        </p>
-      </Section>
-
-      <Takeaway>
-        <ul className="space-y-2 text-blue-900">
-          <li>• Free AI legal tools can help startup founders identify critical issues in existing agreements before costly attorney review.</li>
-          <li>• Preparing due diligence materials with AI assistance reduces attorney hours and compresses fundraising timelines.</li>
-          <li>• The biggest value comes from catching errors early — a single mismatched valuation cap could derail an entire funding round.</li>
-          <li>• AI tools work best as preparation aids, not attorney replacements. The goal is to be a better-prepared client, not to eliminate legal counsel.</li>
-        </ul>
-      </Takeaway>
-    </>
-  ),
-
-  "litigation-firm-ediscovery-cost-savings": (
-    <>
-      <Section title="Overview">
-        <p className="text-gray-700 leading-relaxed">
-          Morrison &amp; Associates is a 15-attorney litigation firm based in Chicago, Illinois, specializing in complex
-          commercial disputes. When the firm took on a breach-of-contract case involving 2.3 million documents in
-          discovery, the projected cost of traditional manual review threatened to make the case economically unviable
-          for their client. By deploying an AI-powered e-discovery platform with predictive coding and automated
-          document classification, the firm reduced the reviewable document set by 92% and saved $1.2 million in
-          review costs on a single matter.
-        </p>
-      </Section>
-
-      <Section title="The Challenge">
-        <p className="text-gray-700 leading-relaxed">
-          The case involved a dispute between two manufacturing companies over a multi-year supply agreement. The
-          opposing party produced 2.3 million documents, including emails, spreadsheets, contracts, invoices, and
-          internal memoranda spanning a seven-year period. Traditional document review using contract attorneys at
-          market rates would have required approximately 35 to 40 reviewers working for four months, at a projected
-          cost exceeding $1.8 million. The client&apos;s total damages claim was $4.5 million, meaning that discovery
-          costs alone could consume 40% of the potential recovery. Morrison &amp; Associates needed a way to conduct a
-          defensible review at a fraction of the traditional cost, without sacrificing quality or creating grounds for
-          sanctions.
-        </p>
-      </Section>
-
-      <Section title="The Solution">
-        <p className="text-gray-700 leading-relaxed">
-          The firm engaged an AI-powered e-discovery platform that combines predictive coding (technology-assisted
-          review) with machine learning document classification. The process began with senior attorneys reviewing and
-          coding a seed set of 3,000 documents across relevance, privilege, and key issue categories. The AI model
-          trained on these coding decisions and then scored the entire 2.3 million document collection. Documents
-          scoring below the relevance threshold were set aside after statistical validation confirmed a recall rate
-          above 90%. The AI also applied automated privilege classification, flagging documents containing attorney
-          names, legal terminology, and communication patterns consistent with privileged material. This reduced the
-          reviewable set to approximately 180,000 documents, which a team of 8 contract reviewers completed in six
-          weeks.
-        </p>
-      </Section>
-
-      <Section title="Results">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <KeyMetric label="Total Cost Savings" value="$1.2M" />
-          <KeyMetric label="Document Reduction" value="92%" />
-          <KeyMetric label="Final Review Cost" value="$600K" />
-          <KeyMetric label="Privileged Docs Caught by AI" value="340+" />
-        </div>
-        <p className="text-gray-700 leading-relaxed">
-          The total review cost came to approximately $600,000 — one-third of the projected $1.8 million for manual
-          review. Beyond cost savings, the AI platform delivered measurably higher quality. During validation sampling,
-          the AI&apos;s privilege classification identified 340 privileged documents that human reviewers had missed or
-          miscoded in a parallel test sample. This was particularly significant because inadvertent privilege waiver
-          could have had severe consequences for the client. The case ultimately settled favorably, and the client
-          credited the firm&apos;s cost-effective discovery management as a key factor in their decision to pursue the
-          litigation rather than accepting an early lowball settlement.
-        </p>
-      </Section>
-
-      <Section title="Implementation Details">
-        <p className="text-gray-700 leading-relaxed">
-          Morrison &amp; Associates worked with the e-discovery vendor to establish a defensible workflow that would
-          withstand judicial scrutiny. The firm documented the predictive coding methodology in a detailed protocol
-          submitted to the court, including the seed set selection process, training rounds, statistical validation
-          metrics, and quality control sampling procedures. Senior partners invested approximately 40 hours in seed set
-          review and model training over the first two weeks. The firm also negotiated with opposing counsel to accept
-          the technology-assisted review protocol, citing case law supporting predictive coding as a proportionate
-          discovery method under Federal Rule of Civil Procedure 26(b)(1). The platform&apos;s analytics dashboard
-          allowed the litigation team to track review progress, identify key document clusters, and develop case themes
-          during the review process — turning discovery from a pure cost center into a strategic advantage.
-        </p>
-      </Section>
-
-      <Takeaway>
-        <ul className="space-y-2 text-blue-900">
-          <li>• AI-powered e-discovery can reduce document review costs by 65% or more on large-scale litigation matters.</li>
-          <li>• Predictive coding is not just cheaper — it can be more accurate than manual review, particularly for privilege identification.</li>
-          <li>• Proper documentation of the AI methodology is essential for defensibility; courts increasingly accept technology-assisted review when properly validated.</li>
-          <li>• The cost savings from AI e-discovery can make litigation economically viable for cases that would otherwise be too expensive to pursue.</li>
-        </ul>
-      </Takeaway>
-    </>
-  ),
+  "solo-attorney-contract-review-ai": soloAttorneyContent,
+  "legal-aid-nonprofit-ai-tools": legalAidContent,
+  "small-business-ai-employment-contracts": smallBusinessContent,
+  "startup-series-a-legal-free-tools": startupSeriesAContent,
+  "litigation-firm-ediscovery-cost-savings": litigationEdiscoveryContent,
 };
