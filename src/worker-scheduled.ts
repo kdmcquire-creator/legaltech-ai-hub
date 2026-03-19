@@ -1,15 +1,15 @@
 /**
  * Cloudflare Worker scheduled event handler.
  *
- * Uses a single cron trigger ("0 * /6 * * *") to stay within the free-plan
- * limit of 5 cron triggers per account. Dispatches tasks based on current
- * day/time:
+ * Uses a single cron trigger ("0 0,6,12,15,18 * * *") to stay within the
+ * free-plan limit of 5 cron triggers per account. Dispatches tasks based
+ * on current day/time:
  *
- *   Every run (4x daily):
+ *   Every run (5x daily):
  *     - /api/cron/crawl-news
  *     - /api/cron/check-emails
  *
- *   Wednesday 12:00 UTC run only (~10 AM ET):
+ *   Wednesday 15:00 UTC only (10:00 AM ET):
  *     - /api/cron/send-newsletter
  */
 
@@ -67,8 +67,8 @@ export default {
       callRoute(env, "/api/cron/check-emails", authToken),
     ];
 
-    // Newsletter: Wednesday at 12:00 UTC (closest 6-hour slot to 15:00 UTC / 10 AM ET)
-    if (utcDay === 3 && utcHour === 12) {
+    // Newsletter: Wednesday at 15:00 UTC (10:00 AM ET)
+    if (utcDay === 3 && utcHour === 15) {
       tasks.push(callRoute(env, "/api/cron/send-newsletter", authToken));
     }
 
