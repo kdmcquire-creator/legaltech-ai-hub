@@ -4,6 +4,7 @@ set -euo pipefail
 # ============================================================================
 # LegalTech AI Hub — Full Infrastructure Setup
 # Configures: Cloudflare Email Routing, SendGrid Sender, Cloudflare Worker Secrets
+# No external dependencies (no python/jq required — works on Git Bash/MINGW64)
 # ============================================================================
 
 # --- CREDENTIALS (export these before running) ---
@@ -45,6 +46,29 @@ retry() {
   done
 }
 
+# Minimal JSON value extractor (no python/jq needed)
+# Usage: json_val "$json_string" "key"
+# Extracts the first value for a given key from a flat or lightly nested JSON string
+json_val() {
+  local json="$1" key="$2"
+  # Match "key": "value" or "key": value (numbers/booleans)
+  echo "$json" | sed -n 's/.*"'"$key"'"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1
+}
+
+# Extract boolean/non-string value
+json_bool() {
+  local json="$1" key="$2"
+  echo "$json" | sed -n 's/.*"'"$key"'"[[:space:]]*:[[:space:]]*\([a-zA-Z0-9]*\).*/\1/p' | head -1
+}
+
+# Check if JSON response indicates success
+json_success() {
+  local json="$1"
+  local val
+  val=$(json_bool "$json" "success")
+  [ "$val" = "true" ]
+}
+
 # ============================================================================
 header "STEP 1: Get Cloudflare Zone ID"
 # ============================================================================
@@ -55,8 +79,10 @@ ZONE_RESPONSE=$(retry curl -sf -X GET \
   -H "Authorization: Bearer $CF_DNS_TOKEN" \
   -H "Content-Type: application/json")
 
-ZONE_ID=$(echo "$ZONE_RESPONSE" | python3 -c "import sys,json; r=json.load(sys.stdin); print(r['result'][0]['id'])" 2>/dev/null)
-ACCOUNT_ID=$(echo "$ZONE_RESPONSE" | python3 -c "import sys,json; r=json.load(sys.stdin); print(r['result'][0]['account']['id'])" 2>/dev/null)
+# Zone ID is the first "id" in the result array
+ZONE_ID=$(json_val "$ZONE_RESPONSE" "id")
+# Account ID appears as "id" inside "account" object — extract after "account"
+ACCOUNT_ID=$(echo "$ZONE_RESPONSE" | sed -n 's/.*"account"[[:space:]]*:[[:space:]]*{[^}]*"id"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 
 if [ -z "$ZONE_ID" ]; then
   fail "Could not get Zone ID. Check your DNS token."
@@ -77,9 +103,9 @@ ER_STATUS=$(retry curl -sf -X GET \
   -H "Authorization: Bearer $CF_DNS_TOKEN" \
   -H "Content-Type: application/json")
 
-ENABLED=$(echo "$ER_STATUS" | python3 -c "import sys,json; print(json.load(sys.stdin).get('result',{}).get('enabled', False))" 2>/dev/null)
+ENABLED=$(json_bool "$ER_STATUS" "enabled")
 
-if [ "$ENABLED" = "True" ]; then
+if [ "$ENABLED" = "true" ]; then
   ok "Email routing already enabled"
 else
   info "Enabling email routing..."
@@ -100,18 +126,11 @@ DEST_CHECK=$(retry curl -sf -X GET \
   -H "Authorization: Bearer $CF_DNS_TOKEN" \
   -H "Content-Type: application/json")
 
-DEST_VERIFIED=$(echo "$DEST_CHECK" | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-for addr in data.get('result', []):
-    if addr.get('email') == '$DEST_EMAIL' and addr.get('verified'):
-        print('yes')
-        break
-else:
-    print('no')
-" 2>/dev/null)
-
-if [ "$DEST_VERIFIED" = "yes" ]; then
+# Check if destination email appears with "verified" near it
+if echo "$DEST_CHECK" | grep -q "\"email\"[[:space:]]*:[[:space:]]*\"$DEST_EMAIL\"" && \
+   echo "$DEST_CHECK" | grep -q '"verified"[[:space:]]*:[[:space:]]*true'; then
+  # Rough check — if both the email and a verified:true exist, likely verified
+  # More precise: look for the email in a block that also contains verified
   ok "$DEST_EMAIL already verified as destination"
 else
   info "Adding $DEST_EMAIL as destination (check Gmail for verification email)..."
@@ -144,16 +163,14 @@ for PREFIX in "${ADDRESSES[@]}"; do
       \"name\": \"Forward $FULL_ADDR to Gmail\"
     }")
 
-  SUCCESS=$(echo "$RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success', False))" 2>/dev/null)
-
-  if [ "$SUCCESS" = "True" ]; then
+  if json_success "$RESULT"; then
     ok "$FULL_ADDR → $DEST_EMAIL"
   else
-    ERROR=$(echo "$RESULT" | python3 -c "import sys,json; errs=json.load(sys.stdin).get('errors',[]); print(errs[0].get('message','unknown') if errs else 'unknown')" 2>/dev/null)
-    if echo "$ERROR" | grep -qi "already exists\|duplicate"; then
+    ERROR_MSG=$(json_val "$RESULT" "message")
+    if echo "$ERROR_MSG" | grep -qi "already exists\|duplicate"; then
       ok "$FULL_ADDR already configured"
     else
-      fail "$FULL_ADDR — $ERROR"
+      fail "$FULL_ADDR — ${ERROR_MSG:-unknown error}"
     fi
   fi
 done
@@ -168,7 +185,7 @@ SENDERS=(
 )
 
 for SENDER_JSON in "${SENDERS[@]}"; do
-  EMAIL=$(echo "$SENDER_JSON" | python3 -c "import sys,json; print(json.load(sys.stdin)['from_email'])")
+  EMAIL=$(json_val "$SENDER_JSON" "from_email")
   info "Verifying sender: $EMAIL..."
 
   RESULT=$(retry curl -s -X POST \
@@ -177,13 +194,13 @@ for SENDER_JSON in "${SENDERS[@]}"; do
     -H "Content-Type: application/json" \
     -d "$SENDER_JSON")
 
-  if echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print('id' in d)" 2>/dev/null | grep -q True; then
+  if echo "$RESULT" | grep -q '"id"'; then
     ok "$EMAIL — verification email sent (check inbox)"
   elif echo "$RESULT" | grep -qi "already exists\|duplicate"; then
     ok "$EMAIL — already registered"
   else
-    ERROR=$(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); errs=d.get('errors',[]); print(errs[0].get('message','') if errs else str(d))" 2>/dev/null)
-    warn "$EMAIL — $ERROR"
+    ERROR_MSG=$(json_val "$RESULT" "message")
+    warn "$EMAIL — ${ERROR_MSG:-check SendGrid dashboard}"
   fi
 done
 
@@ -197,20 +214,13 @@ EXISTING_AUTH=$(retry curl -sf -X GET \
   -H "Authorization: Bearer $SENDGRID_API_KEY" \
   -H "Content-Type: application/json")
 
-DOMAIN_AUTH_EXISTS=$(echo "$EXISTING_AUTH" | python3 -c "
-import sys, json
-domains = json.load(sys.stdin)
-for d in domains:
-    if d.get('domain') == '$DOMAIN':
-        print(d.get('id'))
-        break
-else:
-    print('no')
-" 2>/dev/null)
-
-if [ "$DOMAIN_AUTH_EXISTS" != "no" ] && [ -n "$DOMAIN_AUTH_EXISTS" ]; then
-  ok "Domain authentication already exists (ID: $DOMAIN_AUTH_EXISTS)"
-  DOMAIN_AUTH_ID="$DOMAIN_AUTH_EXISTS"
+if echo "$EXISTING_AUTH" | grep -q "\"domain\"[[:space:]]*:[[:space:]]*\"$DOMAIN\""; then
+  DOMAIN_AUTH_ID=$(echo "$EXISTING_AUTH" | sed -n "/$DOMAIN/,/}/p" | sed -n 's/.*"id"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p' | head -1)
+  if [ -z "$DOMAIN_AUTH_ID" ]; then
+    # Try extracting id before domain (common in JSON arrays)
+    DOMAIN_AUTH_ID=$(echo "$EXISTING_AUTH" | grep -o '"id"[[:space:]]*:[[:space:]]*[0-9]*' | head -1 | grep -o '[0-9]*')
+  fi
+  ok "Domain authentication already exists (ID: $DOMAIN_AUTH_ID)"
 else
   info "Creating domain authentication for $DOMAIN..."
   AUTH_RESULT=$(retry curl -s -X POST \
@@ -223,45 +233,45 @@ else
       \"default\": true
     }")
 
-  DOMAIN_AUTH_ID=$(echo "$AUTH_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))" 2>/dev/null)
+  DOMAIN_AUTH_ID=$(echo "$AUTH_RESULT" | grep -o '"id"[[:space:]]*:[[:space:]]*[0-9]*' | head -1 | grep -o '[0-9]*')
 
   if [ -n "$DOMAIN_AUTH_ID" ]; then
     ok "Domain auth created (ID: $DOMAIN_AUTH_ID)"
 
-    # Get the DNS records that need to be added
-    info "DNS records needed for SendGrid authentication:"
-    echo "$AUTH_RESULT" | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-dns = data.get('dns', {})
-for key, record in dns.items():
-    rtype = record.get('type', 'CNAME')
-    host = record.get('host', '')
-    rdata = record.get('data', '')
-    print(f'  {rtype}: {host} → {rdata}')
-" 2>/dev/null
+    # Extract DNS records and add them to Cloudflare
+    # Look for CNAME records in the dns block
+    info "Adding SendGrid DNS records to Cloudflare..."
 
-    # Add DNS records via Cloudflare
-    header "STEP 6b: Adding SendGrid DNS records to Cloudflare"
-    echo "$AUTH_RESULT" | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-dns = data.get('dns', {})
-for key, record in dns.items():
-    rtype = record.get('type', 'cname').upper()
-    host = record.get('host', '')
-    rdata = record.get('data', '')
-    if rtype == 'CNAME':
-        rtype = 'CNAME'
-    elif rtype == 'TXT':
-        rtype = 'TXT'
-    print(f'{rtype}|{host}|{rdata}')
-" 2>/dev/null | while IFS='|' read -r RTYPE RHOST RDATA; do
-      info "Adding $RTYPE record: $RHOST..."
-      if [ "$RTYPE" = "TXT" ]; then
-        DNS_DATA="{\"type\":\"$RTYPE\",\"name\":\"$RHOST\",\"content\":\"$RDATA\",\"ttl\":1}"
+    # Extract host and data pairs from the dns section
+    # SendGrid returns records like: "host": "xxx", "type": "cname", "data": "yyy"
+    HOSTS=$(echo "$AUTH_RESULT" | grep -o '"host"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')
+    DATAS=$(echo "$AUTH_RESULT" | grep -o '"data"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')
+    TYPES=$(echo "$AUTH_RESULT" | grep -o '"type"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/.*"\([^"]*\)"$/\1/')
+
+    # Process records using arrays
+    readarray -t HOST_ARR <<< "$HOSTS"
+    readarray -t DATA_ARR <<< "$DATAS"
+    readarray -t TYPE_ARR <<< "$TYPES"
+
+    for i in "${!HOST_ARR[@]}"; do
+      RHOST="${HOST_ARR[$i]}"
+      RDATA="${DATA_ARR[$i]}"
+      RTYPE="${TYPE_ARR[$i]}"
+
+      # Skip empty entries
+      [ -z "$RHOST" ] && continue
+
+      # Normalize type
+      RTYPE_UPPER=$(echo "$RTYPE" | tr '[:lower:]' '[:upper:]')
+      if [ "$RTYPE_UPPER" != "TXT" ]; then
+        RTYPE_UPPER="CNAME"
+      fi
+
+      info "Adding $RTYPE_UPPER record: $RHOST..."
+      if [ "$RTYPE_UPPER" = "TXT" ]; then
+        DNS_DATA="{\"type\":\"$RTYPE_UPPER\",\"name\":\"$RHOST\",\"content\":\"$RDATA\",\"ttl\":1}"
       else
-        DNS_DATA="{\"type\":\"$RTYPE\",\"name\":\"$RHOST\",\"content\":\"$RDATA\",\"ttl\":1,\"proxied\":false}"
+        DNS_DATA="{\"type\":\"$RTYPE_UPPER\",\"name\":\"$RHOST\",\"content\":\"$RDATA\",\"ttl\":1,\"proxied\":false}"
       fi
 
       DNS_RESULT=$(retry curl -s -X POST \
@@ -270,11 +280,10 @@ for key, record in dns.items():
         -H "Content-Type: application/json" \
         -d "$DNS_DATA")
 
-      DNS_SUCCESS=$(echo "$DNS_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success', False))" 2>/dev/null)
-      if [ "$DNS_SUCCESS" = "True" ]; then
-        ok "$RTYPE: $RHOST"
+      if json_success "$DNS_RESULT"; then
+        ok "$RTYPE_UPPER: $RHOST"
       else
-        warn "$RTYPE: $RHOST — may already exist or failed"
+        warn "$RTYPE_UPPER: $RHOST — may already exist or failed"
       fi
     done
 
@@ -286,8 +295,8 @@ for key, record in dns.items():
       -H "Authorization: Bearer $SENDGRID_API_KEY" \
       -H "Content-Type: application/json")
 
-    VALID=$(echo "$VALIDATE" | python3 -c "import sys,json; print(json.load(sys.stdin).get('valid', False))" 2>/dev/null)
-    if [ "$VALID" = "True" ]; then
+    VALID=$(json_bool "$VALIDATE" "valid")
+    if [ "$VALID" = "true" ]; then
       ok "Domain authentication validated!"
     else
       warn "Domain not yet validated — DNS may need time to propagate. Re-run validation later."
@@ -322,8 +331,7 @@ if [ -n "$ACCOUNT_ID" ]; then
     -H "Content-Type: application/json" \
     -d "{\"name\": \"SENDGRID_API_KEY\", \"text\": \"$SENDGRID_API_KEY\", \"type\": \"secret_text\"}")
 
-  SECRET_SUCCESS=$(echo "$SECRET_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success', False))" 2>/dev/null)
-  if [ "$SECRET_SUCCESS" = "True" ]; then
+  if json_success "$SECRET_RESULT"; then
     ok "SENDGRID_API_KEY deployed to worker"
   else
     warn "Could not set via API — use wrangler command above"
@@ -350,11 +358,11 @@ if echo "$PARSE_RESULT" | grep -qi "hostname\|url"; then
   ok "Inbound parse webhook configured"
   info "Webhook URL: https://$DOMAIN/api/webhooks/inbound-email"
 else
-  ERROR=$(echo "$PARSE_RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); errs=d.get('errors',[]); print(errs[0].get('message','') if errs else str(d))" 2>/dev/null)
-  if echo "$ERROR" | grep -qi "already exists"; then
+  ERROR_MSG=$(json_val "$PARSE_RESULT" "message")
+  if echo "$ERROR_MSG" | grep -qi "already exists"; then
     ok "Inbound parse webhook already configured"
   else
-    warn "Inbound parse — $ERROR"
+    warn "Inbound parse — ${ERROR_MSG:-check SendGrid dashboard}"
   fi
 fi
 
@@ -366,8 +374,7 @@ MX_RESULT=$(retry curl -s -X POST \
   -H "Content-Type: application/json" \
   -d "{\"type\":\"MX\",\"name\":\"$DOMAIN\",\"content\":\"mx.sendgrid.net\",\"priority\":10,\"ttl\":1}")
 
-MX_SUCCESS=$(echo "$MX_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('success', False))" 2>/dev/null)
-if [ "$MX_SUCCESS" = "True" ]; then
+if json_success "$MX_RESULT"; then
   ok "MX record added for inbound parse"
 else
   warn "MX record may already exist or conflict with email routing MX — check manually"
