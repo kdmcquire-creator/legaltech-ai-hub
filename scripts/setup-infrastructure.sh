@@ -11,10 +11,16 @@
 #   export CF_DNS_TOKEN="your_cloudflare_dns_token"
 #   export CF_WORKERS_TOKEN="your_cloudflare_workers_token"
 #   export SENDGRID_API_KEY="your_sendgrid_api_key"
+#   export ADMIN_API_KEY="your_admin_api_key"
+#   export ANTHROPIC_API_KEY="your_anthropic_api_key"
+#   export CRON_SECRET="your_cron_secret"
 
 if [ -z "${CF_DNS_TOKEN:-}" ]; then echo "ERROR: Set CF_DNS_TOKEN environment variable"; exit 1; fi
 if [ -z "${CF_WORKERS_TOKEN:-}" ]; then echo "ERROR: Set CF_WORKERS_TOKEN environment variable"; exit 1; fi
 if [ -z "${SENDGRID_API_KEY:-}" ]; then echo "ERROR: Set SENDGRID_API_KEY environment variable"; exit 1; fi
+if [ -z "${ADMIN_API_KEY:-}" ]; then echo "ERROR: Set ADMIN_API_KEY environment variable"; exit 1; fi
+if [ -z "${ANTHROPIC_API_KEY:-}" ]; then echo "ERROR: Set ANTHROPIC_API_KEY environment variable"; exit 1; fi
+if [ -z "${CRON_SECRET:-}" ]; then echo "ERROR: Set CRON_SECRET environment variable"; exit 1; fi
 
 DOMAIN="legaltech-ai-hub.com"
 DEST_EMAIL="moonsmoke.contact@gmail.com"
@@ -298,29 +304,43 @@ header "STEP 7: Cloudflare Worker Secrets"
 # ============================================================================
 
 info "Deploying secrets to Cloudflare Worker: $WORKER_NAME"
-warn "You'll need to set these values. Using wrangler is recommended:"
-echo ""
-echo "  npx wrangler secret put SENDGRID_API_KEY"
-echo "  npx wrangler secret put ADMIN_API_KEY"
-echo "  npx wrangler secret put ANTHROPIC_API_KEY"
-echo "  npx wrangler secret put CRON_SECRET"
-echo ""
+
+SECRETS_OK=0
+SECRETS_FAIL=0
 
 if [ -n "${ACCOUNT_ID:-}" ]; then
-  info "Setting SENDGRID_API_KEY via API..."
-  SECRET_RESULT=$(apicall -X PUT \
-    "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$WORKER_NAME/secrets" \
-    -H "Authorization: Bearer $CF_WORKERS_TOKEN" \
-    -H "Content-Type: application/json" \
-    -d "{\"name\": \"SENDGRID_API_KEY\", \"text\": \"$SENDGRID_API_KEY\", \"type\": \"secret_text\"}")
+  for SECRET_NAME in SENDGRID_API_KEY ADMIN_API_KEY ANTHROPIC_API_KEY CRON_SECRET; do
+    eval SECRET_VALUE="\${$SECRET_NAME:-}"
+    if [ -z "$SECRET_VALUE" ]; then
+      warn "$SECRET_NAME — not set, skipping"
+      SECRETS_FAIL=$((SECRETS_FAIL + 1))
+      continue
+    fi
 
-  if json_success "$SECRET_RESULT"; then
-    ok "SENDGRID_API_KEY deployed to worker"
+    info "Setting $SECRET_NAME..."
+    SECRET_RESULT=$(apicall -X PUT \
+      "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$WORKER_NAME/secrets" \
+      -H "Authorization: Bearer $CF_WORKERS_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "{\"name\": \"$SECRET_NAME\", \"text\": \"$SECRET_VALUE\", \"type\": \"secret_text\"}")
+
+    if json_success "$SECRET_RESULT"; then
+      ok "$SECRET_NAME deployed"
+      SECRETS_OK=$((SECRETS_OK + 1))
+    else
+      fail "$SECRET_NAME — could not deploy"
+      SECRETS_FAIL=$((SECRETS_FAIL + 1))
+    fi
+  done
+
+  if [ "$SECRETS_FAIL" -eq 0 ]; then
     STEP_WORKER_SECRETS="ok"
   else
-    warn "Could not set via API — use wrangler commands above"
-    STEP_WORKER_SECRETS="fail"
+    STEP_WORKER_SECRETS="partial"
   fi
+else
+  warn "No Account ID — cannot deploy secrets via API"
+  STEP_WORKER_SECRETS="fail"
 fi
 
 # ============================================================================
@@ -399,9 +419,11 @@ fi
 
 # Worker secrets
 if [ "$STEP_WORKER_SECRETS" = "ok" ]; then
-  ok "Cloudflare Worker Secrets: SENDGRID_API_KEY deployed"
+  ok "Cloudflare Worker Secrets: All 4 deployed"
+elif [ "$STEP_WORKER_SECRETS" = "partial" ]; then
+  warn "Cloudflare Worker Secrets: $SECRETS_OK/4 deployed, $SECRETS_FAIL failed"
 else
-  warn "Cloudflare Worker Secrets: Set manually via wrangler"
+  fail "Cloudflare Worker Secrets: Could not deploy"
 fi
 
 # Inbound parse
@@ -415,9 +437,8 @@ echo ""
 warn "ACTION ITEMS:"
 echo "  1. Check moonsmoke.contact@gmail.com for Cloudflare destination verification email"
 echo "  2. Check moonsmoke.contact@gmail.com for SendGrid sender verification emails"
-echo "  3. Set remaining worker secrets: ADMIN_API_KEY, ANTHROPIC_API_KEY, CRON_SECRET"
-echo "  4. Set up Gmail filters (see CLAUDE.md for filter rules)"
-echo "  5. Deploy worker: npx wrangler deploy"
+echo "  3. Set up Gmail filters (see CLAUDE.md for filter rules)"
+echo "  4. Deploy worker: npx wrangler deploy"
 
 if [ "$STEP_EMAIL_RULES_FAIL" -gt 0 ]; then
   echo ""
