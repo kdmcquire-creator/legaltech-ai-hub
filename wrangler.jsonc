@@ -22,12 +22,13 @@
   "observability": {
     "enabled": true
   },
-  // Cron triggers for scheduled tasks
+  // Single cron trigger — runs every 6 hours, dispatches tasks based on day/time
+  // Newsletter: Wed 12:00 UTC window (closest to 10 AM ET)
+  // News crawl: every run (4x daily)
+  // Email check: every run (4x daily)
   "triggers": {
     "crons": [
-      "0 15 * * 3",   // Wed 10:00 AM ET (15:00 UTC) — send newsletter
-      "0 12 * * *",   // Daily noon UTC — crawl news
-      "0 */6 * * *"   // Every 6 hours — check/process emails
+      "0 */6 * * *"
     ]
   },
   // Environment variables (non-secret)

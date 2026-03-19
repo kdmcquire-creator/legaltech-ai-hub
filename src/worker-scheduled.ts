@@ -1,14 +1,16 @@
 /**
  * Cloudflare Worker scheduled event handler.
  *
- * Maps cron triggers (defined in wrangler.jsonc) to the corresponding
- * Next.js API routes by making internal fetch calls via the worker's
- * own WORKER_SELF_REFERENCE service binding.
+ * Uses a single cron trigger ("0 * /6 * * *") to stay within the free-plan
+ * limit of 5 cron triggers per account. Dispatches tasks based on current
+ * day/time:
  *
- * Cron schedule:
- *   "0 15 * * 3"   → /api/cron/send-newsletter  (Wed 10 AM ET)
- *   "0 12 * * *"   → /api/cron/crawl-news        (Daily noon UTC)
- *   "0 * /6 * * *" → /api/cron/check-emails       (Every 6 hours)
+ *   Every run (4x daily):
+ *     - /api/cron/crawl-news
+ *     - /api/cron/check-emails
+ *
+ *   Wednesday 12:00 UTC run only (~10 AM ET):
+ *     - /api/cron/send-newsletter
  */
 
 // Cloudflare Worker types (inline to avoid @cloudflare/workers-types dependency)
@@ -29,11 +31,19 @@ interface Env {
   ADMIN_API_KEY?: string;
 }
 
-const CRON_ROUTES: Record<string, string> = {
-  "0 15 * * 3": "/api/cron/send-newsletter",
-  "0 12 * * *": "/api/cron/crawl-news",
-  "0 */6 * * *": "/api/cron/check-emails",
-};
+async function callRoute(env: Env, route: string, authToken: string): Promise<void> {
+  const url = `https://legaltech-ai-hub.com${route}`;
+  console.log(`Cron → ${route}`);
+  try {
+    const res = await env.WORKER_SELF_REFERENCE.fetch(url, {
+      headers: { "x-cron-secret": authToken },
+    });
+    const body = await res.text();
+    console.log(`${route} response ${res.status}: ${body}`);
+  } catch (err) {
+    console.error(`${route} failed:`, err);
+  }
+}
 
 export default {
   async scheduled(
@@ -41,32 +51,27 @@ export default {
     env: Env,
     ctx: ExecutionContext
   ) {
-    const route = CRON_ROUTES[controller.cron];
-    if (!route) {
-      console.error(`Unknown cron schedule: ${controller.cron}`);
-      return;
-    }
-
     const authToken = env.CRON_SECRET || env.ADMIN_API_KEY;
     if (!authToken) {
       console.error("No CRON_SECRET or ADMIN_API_KEY configured");
       return;
     }
 
-    const url = `https://legaltech-ai-hub.com${route}`;
-    console.log(`Cron [${controller.cron}] → ${route}`);
+    const now = new Date(controller.scheduledTime);
+    const utcHour = now.getUTCHours();
+    const utcDay = now.getUTCDay(); // 0=Sun, 3=Wed
 
-    try {
-      const res = await env.WORKER_SELF_REFERENCE.fetch(url, {
-        headers: {
-          "x-cron-secret": authToken,
-        },
-      });
+    // These run every 6 hours (4x daily)
+    const tasks: Promise<void>[] = [
+      callRoute(env, "/api/cron/crawl-news", authToken),
+      callRoute(env, "/api/cron/check-emails", authToken),
+    ];
 
-      const body = await res.text();
-      console.log(`Cron [${controller.cron}] response ${res.status}: ${body}`);
-    } catch (err) {
-      console.error(`Cron [${controller.cron}] failed:`, err);
+    // Newsletter: Wednesday at 12:00 UTC (closest 6-hour slot to 15:00 UTC / 10 AM ET)
+    if (utcDay === 3 && utcHour === 12) {
+      tasks.push(callRoute(env, "/api/cron/send-newsletter", authToken));
     }
+
+    ctx.waitUntil(Promise.all(tasks));
   },
 };
