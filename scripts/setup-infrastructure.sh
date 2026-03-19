@@ -33,6 +33,15 @@ info() { echo -e "${BLUE}→${NC} $1"; }
 warn() { echo -e "${YELLOW}!${NC} $1"; }
 header() { echo -e "\n${BLUE}━━━ $1 ━━━${NC}"; }
 
+# Track step results for accurate summary
+STEP_EMAIL_ROUTING="unknown"
+STEP_EMAIL_RULES=0
+STEP_EMAIL_RULES_FAIL=0
+STEP_SENDGRID_SENDERS="unknown"
+STEP_DOMAIN_AUTH="unknown"
+STEP_INBOUND_PARSE="unknown"
+STEP_WORKER_SECRETS="unknown"
+
 # Safe curl wrapper — never fails, returns {} on error
 apicall() {
   curl -s --max-time 30 "$@" 2>/dev/null || echo '{}'
@@ -91,6 +100,7 @@ ENABLED=$(json_bool "$ER_STATUS" "enabled")
 
 if [ "$ENABLED" = "true" ]; then
   ok "Email routing already enabled"
+  STEP_EMAIL_ROUTING="ok"
 else
   info "Enabling email routing..."
   ENABLE_RESULT=$(apicall -X PUT \
@@ -99,9 +109,11 @@ else
     -H "Content-Type: application/json")
   if json_success "$ENABLE_RESULT"; then
     ok "Email routing enabled"
+    STEP_EMAIL_ROUTING="ok"
   else
     warn "Could not enable via API — enable it in Cloudflare dashboard > Email > Email Routing"
     warn "Response: $ENABLE_RESULT"
+    STEP_EMAIL_ROUTING="fail"
   fi
 fi
 
@@ -148,12 +160,15 @@ for PREFIX in contact updates newsletter admin; do
 
   if json_success "$RESULT"; then
     ok "$FULL_ADDR → $DEST_EMAIL"
+    STEP_EMAIL_RULES=$((STEP_EMAIL_RULES + 1))
   else
     ERROR_MSG=$(json_val "$RESULT" "message")
     if echo "$ERROR_MSG" | grep -qi "already exists\|duplicate"; then
       ok "$FULL_ADDR already configured"
+      STEP_EMAIL_RULES=$((STEP_EMAIL_RULES + 1))
     else
       fail "$FULL_ADDR — ${ERROR_MSG:-unknown error}"
+      STEP_EMAIL_RULES_FAIL=$((STEP_EMAIL_RULES_FAIL + 1))
     fi
   fi
 done
@@ -177,11 +192,14 @@ for SENDER_JSON in \
 
   if echo "$RESULT" | grep -q '"id"'; then
     ok "$EMAIL — verification email sent (check inbox)"
+    STEP_SENDGRID_SENDERS="ok"
   elif echo "$RESULT" | grep -qi "already exists\|duplicate"; then
     ok "$EMAIL — already registered"
+    STEP_SENDGRID_SENDERS="ok"
   else
     ERROR_MSG=$(json_val "$RESULT" "message")
     warn "$EMAIL — ${ERROR_MSG:-check SendGrid dashboard}"
+    [ "$STEP_SENDGRID_SENDERS" != "ok" ] && STEP_SENDGRID_SENDERS="fail"
   fi
 done
 
@@ -198,6 +216,7 @@ EXISTING_AUTH=$(apicall -X GET \
 if echo "$EXISTING_AUTH" | grep -q "\"domain\".*\"$DOMAIN\""; then
   DOMAIN_AUTH_ID=$(echo "$EXISTING_AUTH" | grep -o '"id"[[:space:]]*:[[:space:]]*[0-9]*' | head -1 | grep -o '[0-9]*')
   ok "Domain authentication already exists (ID: ${DOMAIN_AUTH_ID:-unknown})"
+  STEP_DOMAIN_AUTH="ok"
 else
   info "Creating domain authentication for $DOMAIN..."
   AUTH_RESULT=$(apicall -X POST \
@@ -262,11 +281,14 @@ else
     VALID=$(json_bool "$VALIDATE" "valid")
     if [ "$VALID" = "true" ]; then
       ok "Domain authentication validated!"
+      STEP_DOMAIN_AUTH="ok"
     else
       warn "Not yet validated — DNS may need time to propagate. Re-run validation later."
+      STEP_DOMAIN_AUTH="pending"
     fi
   else
     fail "Domain auth creation failed"
+    STEP_DOMAIN_AUTH="fail"
     echo "Response: $AUTH_RESULT"
   fi
 fi
@@ -294,8 +316,10 @@ if [ -n "${ACCOUNT_ID:-}" ]; then
 
   if json_success "$SECRET_RESULT"; then
     ok "SENDGRID_API_KEY deployed to worker"
+    STEP_WORKER_SECRETS="ok"
   else
     warn "Could not set via API — use wrangler commands above"
+    STEP_WORKER_SECRETS="fail"
   fi
 fi
 
@@ -318,35 +342,75 @@ PARSE_RESULT=$(apicall -X POST \
 if echo "$PARSE_RESULT" | grep -qi "hostname\|url"; then
   ok "Inbound parse webhook configured"
   info "Webhook URL: https://$DOMAIN/api/webhooks/inbound-email"
+  STEP_INBOUND_PARSE="ok"
 elif echo "$PARSE_RESULT" | grep -qi "already exists"; then
   ok "Inbound parse webhook already configured"
+  STEP_INBOUND_PARSE="ok"
 else
   ERROR_MSG=$(json_val "$PARSE_RESULT" "message")
   warn "Inbound parse — ${ERROR_MSG:-check SendGrid dashboard}"
+  STEP_INBOUND_PARSE="fail"
 fi
 
-info "Adding MX record for SendGrid inbound parse..."
-MX_RESULT=$(apicall -X POST \
-  "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
-  -H "Authorization: Bearer $CF_DNS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d "{\"type\":\"MX\",\"name\":\"$DOMAIN\",\"content\":\"mx.sendgrid.net\",\"priority\":10,\"ttl\":1}")
-
-if json_success "$MX_RESULT"; then
-  ok "MX record added for inbound parse"
-else
-  warn "MX record may already exist or conflict with email routing MX — check manually"
-fi
+warn "SKIPPING SendGrid MX record — Cloudflare Email Routing manages its own MX records."
+warn "Adding mx.sendgrid.net would conflict with email routing and break inbound forwarding."
+warn "Inbound parse requires a subdomain MX (e.g., parse.legaltech-ai-hub.com) if needed alongside email routing."
 
 # ============================================================================
 header "SETUP COMPLETE"
 # ============================================================================
 
 echo ""
-ok "Cloudflare Email Routing: 4 addresses → Gmail"
-ok "SendGrid Sender Verification: Initiated"
-ok "SendGrid Domain Authentication: DKIM/SPF configured"
-ok "SendGrid Inbound Parse: Webhook registered"
+echo "Results:"
+
+# Email routing
+if [ "$STEP_EMAIL_ROUTING" = "ok" ]; then
+  ok "Cloudflare Email Routing: Enabled"
+else
+  fail "Cloudflare Email Routing: Not enabled — do it in dashboard"
+fi
+
+# Forwarding rules
+if [ "$STEP_EMAIL_RULES_FAIL" -gt 0 ]; then
+  if [ "$STEP_EMAIL_RULES" -gt 0 ]; then
+    warn "Email Forwarding Rules: $STEP_EMAIL_RULES/4 configured, $STEP_EMAIL_RULES_FAIL failed"
+  else
+    fail "Email Forwarding Rules: All 4 failed — check API token permissions (needs Email Routing)"
+  fi
+else
+  ok "Email Forwarding Rules: $STEP_EMAIL_RULES/4 addresses → Gmail"
+fi
+
+# SendGrid senders
+if [ "$STEP_SENDGRID_SENDERS" = "ok" ]; then
+  ok "SendGrid Sender Verification: Initiated"
+else
+  fail "SendGrid Sender Verification: Failed"
+fi
+
+# Domain auth
+if [ "$STEP_DOMAIN_AUTH" = "ok" ]; then
+  ok "SendGrid Domain Authentication: DKIM/SPF configured"
+elif [ "$STEP_DOMAIN_AUTH" = "pending" ]; then
+  warn "SendGrid Domain Authentication: Created, pending DNS propagation"
+else
+  fail "SendGrid Domain Authentication: Failed"
+fi
+
+# Worker secrets
+if [ "$STEP_WORKER_SECRETS" = "ok" ]; then
+  ok "Cloudflare Worker Secrets: SENDGRID_API_KEY deployed"
+else
+  warn "Cloudflare Worker Secrets: Set manually via wrangler"
+fi
+
+# Inbound parse
+if [ "$STEP_INBOUND_PARSE" = "ok" ]; then
+  ok "SendGrid Inbound Parse: Webhook registered"
+else
+  fail "SendGrid Inbound Parse: Failed"
+fi
+
 echo ""
 warn "ACTION ITEMS:"
 echo "  1. Check moonsmoke.contact@gmail.com for Cloudflare destination verification email"
@@ -354,8 +418,14 @@ echo "  2. Check moonsmoke.contact@gmail.com for SendGrid sender verification em
 echo "  3. Set remaining worker secrets: ADMIN_API_KEY, ANTHROPIC_API_KEY, CRON_SECRET"
 echo "  4. Set up Gmail filters (see CLAUDE.md for filter rules)"
 echo "  5. Deploy worker: npx wrangler deploy"
-echo ""
-echo "  NOTE: MX records for email routing and inbound parse may conflict."
-echo "  Cloudflare Email Routing typically manages its own MX records."
-echo "  If inbound parse is needed, you may need to choose one approach for MX."
+
+if [ "$STEP_EMAIL_RULES_FAIL" -gt 0 ]; then
+  echo ""
+  warn "EMAIL ROUTING FIX:"
+  echo "  Your CF_DNS_TOKEN lacks Email Routing permissions."
+  echo "  Option A: Edit token in Cloudflare → My Profile → API Tokens"
+  echo "           Add permission: Zone → Email Routing Rules → Edit"
+  echo "  Option B: Set up manually in Cloudflare Dashboard → Email → Email Routing"
+  echo "           Create: contact@, updates@, newsletter@, admin@ → moonsmoke.contact@gmail.com"
+fi
 echo ""
