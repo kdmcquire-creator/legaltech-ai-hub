@@ -11,6 +11,18 @@
  *   "0 * /6 * * *" → /api/cron/check-emails       (Every 6 hours)
  */
 
+// Cloudflare Worker types (inline to avoid @cloudflare/workers-types dependency)
+interface ScheduledController {
+  cron: string;
+  scheduledTime: number;
+  noRetry: () => void;
+}
+
+interface ExecutionContext {
+  waitUntil: (promise: Promise<unknown>) => void;
+  passThroughOnException: () => void;
+}
+
 interface Env {
   WORKER_SELF_REFERENCE: { fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response> };
   CRON_SECRET?: string;
