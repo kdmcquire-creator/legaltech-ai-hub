@@ -12,7 +12,7 @@
  */
 
 interface Env {
-  WORKER_SELF_REFERENCE: Fetcher;
+  WORKER_SELF_REFERENCE: { fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response> };
   CRON_SECRET?: string;
   ADMIN_API_KEY?: string;
 }
