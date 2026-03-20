@@ -4,11 +4,12 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = categories.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     return {
@@ -25,8 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CategoryPage({ params }: Props) {
-  const category = categories.find((c) => c.slug === params.slug);
+export default async function CategoryPage({ params }: Props) {
+  const { slug } = await params;
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     notFound();
@@ -59,8 +61,8 @@ export default function CategoryPage({ params }: Props) {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categoryTools.map((tool) => (
-              <div key={tool.slug} className="bg-white rounded-xl border p-8 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-2xl font-bold mb-4">{tool.name}</h3>
+              <Link key={tool.slug} href={tool.isFree ? (tool.websiteUrl || `/tools/${tool.slug}`) : `/tools/${tool.slug}`} className="bg-white rounded-xl border p-8 shadow-sm hover:shadow-lg transition-shadow block group">
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-600 transition-colors">{tool.name}</h3>
                 <p className="text-gray-600 mb-8 line-clamp-3">
                   {tool.description}
                 </p>
@@ -71,13 +73,10 @@ export default function CategoryPage({ params }: Props) {
                     </span>
                   ))}
                 </div>
-                <Link 
-                  href={`/tools/${tool.slug}`} 
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition inline-block text-center"
-                >
-                  View Details
-                </Link>
-              </div>
+                <span className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold group-hover:bg-blue-700 transition inline-block text-center">
+                  {tool.isFree ? "Use It Now" : "View Details"}
+                </span>
+              </Link>
             ))}
           </div>
 
