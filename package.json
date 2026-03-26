@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
     "@sendgrid/mail": "^8.1.6",
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",
