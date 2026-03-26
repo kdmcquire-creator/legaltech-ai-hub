@@ -5,6 +5,7 @@ import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MobileNav from "@/components/MobileNav";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://legaltech-ai-hub.com"),
@@ -242,6 +243,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <BackToTop />
       </body>
     </html>
   );

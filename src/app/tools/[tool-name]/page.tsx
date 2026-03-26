@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
 import { reviews } from "@/lib/reviews";
 import AdUnit from "@/components/AdUnit";
+import { ToolJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 type Props = {
   params: Promise<{ "tool-name": string }>;
@@ -46,6 +47,14 @@ export default async function ToolPage({ params }: Props) {
 
   return (
     <div className="bg-white min-h-screen">
+      <ToolJsonLd tool={tool} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://legaltech-ai-hub.com" },
+          { name: "Tools", url: "https://legaltech-ai-hub.com/tools/" },
+          { name: tool.name, url: `https://legaltech-ai-hub.com/tools/${tool.slug}/` },
+        ]}
+      />
       {/* Hero */}
       <section className={`bg-gradient-to-br ${tool.color || "from-gray-700 to-gray-900"} text-white py-16`}>
         <div className="container mx-auto px-4 max-w-5xl">
