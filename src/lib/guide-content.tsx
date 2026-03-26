@@ -967,6 +967,570 @@ const freeToolsContractAuditContent = (
   </>
 );
 
+/* ─── NEW GUIDE CONTENT (6) ──────────────────────────── */
+
+const implementAiLawFirmContent = (
+  <>
+    <Section title="Why Most AI Implementations Fail in Law Firms">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Industry data shows that nearly 40% of legal technology investments fail to achieve meaningful adoption within the first year. The failure is almost never the technology itself — it is a combination of poor change management, misaligned expectations, and a lack of clear success metrics. This guide provides a practical, phase-by-phase roadmap that addresses each of these failure points head-on.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <StepCard number={1} title="Assess Your Current State">
+      <p className="text-gray-600 mb-3">Before selecting any tool, audit your firm&apos;s existing workflows to identify where AI will have the highest impact. Focus on tasks that are:</p>
+      <ul className="list-disc pl-6 text-gray-600 space-y-1">
+        <li>High volume and repetitive (e.g., contract review, document drafting)</li>
+        <li>Time-intensive but low complexity (e.g., initial legal research, time entry)</li>
+        <li>Error-prone due to human fatigue (e.g., cite checking, privilege review)</li>
+        <li>Revenue-impacting when delayed (e.g., client intake, billing capture)</li>
+      </ul>
+      <Callout title="Tip">
+        <p className="text-amber-800 text-sm">Interview 5-10 attorneys across different practice areas and seniority levels. Their pain points will reveal opportunities that firm management may not see from above.</p>
+      </Callout>
+    </StepCard>
+
+    <StepCard number={2} title="Build Stakeholder Buy-In">
+      <p className="text-gray-600 mb-3">AI adoption requires support from three groups:</p>
+      <ul className="list-disc pl-6 text-gray-600 space-y-1">
+        <li><strong>Firm leadership:</strong> Needs a clear business case with projected ROI and competitive positioning.</li>
+        <li><strong>Practicing attorneys:</strong> Need to see how the tool saves them time without threatening their role or autonomy.</li>
+        <li><strong>IT and operations:</strong> Need to understand security requirements, integration scope, and ongoing maintenance.</li>
+      </ul>
+      <p className="text-gray-600 mt-3">Frame AI as an associate-level assistant, not a replacement. The most successful firms position AI tools as leverage that lets attorneys focus on higher-value strategic work.</p>
+    </StepCard>
+
+    <StepCard number={3} title="Select and Pilot a Tool">
+      <p className="text-gray-600 mb-3">Choose one high-impact use case for your initial pilot. Do not try to implement multiple AI tools simultaneously. Evaluate 2-3 vendors against these criteria:</p>
+      <ul className="list-disc pl-6 text-gray-600 space-y-1">
+        <li>Accuracy on your specific document types and practice areas</li>
+        <li>Security posture (SOC 2 compliance, data residency, model training policies)</li>
+        <li>Integration with your existing tech stack (DMS, PMS, email)</li>
+        <li>Vendor stability and support responsiveness</li>
+        <li>Total cost of ownership including training and configuration</li>
+      </ul>
+      <p className="text-gray-600 mt-3">Run a 30-60 day pilot with a small group of willing early adopters. Measure specific metrics: time saved per task, accuracy rate, user satisfaction, and billable hour impact.</p>
+    </StepCard>
+
+    <StepCard number={4} title="Train Your Team">
+      <p className="text-gray-600 mb-3">Training determines adoption. Plan three levels of training:</p>
+      <ul className="list-disc pl-6 text-gray-600 space-y-1">
+        <li><strong>Awareness sessions (all staff):</strong> 30-minute overview of what the tool does, what it does not do, and ethical guardrails.</li>
+        <li><strong>Hands-on workshops (daily users):</strong> 2-hour practice sessions with real work product. Let attorneys try the tool on actual matters, not demo data.</li>
+        <li><strong>Power user training (champions):</strong> Deep-dive sessions for 2-3 attorneys per practice group who become the go-to resource for colleagues.</li>
+      </ul>
+    </StepCard>
+
+    <StepCard number={5} title="Roll Out and Measure">
+      <p className="text-gray-600 mb-3">Expand from pilot to firm-wide deployment in phases — typically one practice group at a time. Establish a feedback loop:</p>
+      <ul className="list-disc pl-6 text-gray-600 space-y-1">
+        <li>Weekly check-ins during the first month of each phase</li>
+        <li>Monthly usage dashboards showing adoption rates and time savings</li>
+        <li>Quarterly ROI reviews presented to firm leadership</li>
+        <li>Ongoing prompt engineering tips and best practices shared via internal channels</li>
+      </ul>
+    </StepCard>
+
+    <StepCard number={6} title="Iterate and Expand">
+      <p className="text-gray-600">Once your first AI tool is delivering measurable value and has strong adoption (target 70%+ active usage), evaluate the next use case. The credibility built by a successful first implementation makes subsequent adoptions significantly easier. Most firms find that AI time tracking, AI research, and AI contract review form a natural sequence of adoption.</p>
+    </StepCard>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Assess</strong> your current workflows to identify high-impact AI opportunities.</li>
+        <li><strong>Build buy-in</strong> by framing AI as leverage, not replacement.</li>
+        <li><strong>Pilot rigorously</strong> with one tool and measurable success criteria.</li>
+        <li><strong>Train at three levels</strong> — awareness, hands-on, and power users.</li>
+        <li><strong>Roll out in phases</strong> with continuous feedback and ROI measurement.</li>
+        <li><strong>Expand thoughtfully</strong> once you have a proven playbook for adoption.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const aiContractReviewBestPracticesContent = (
+  <>
+    <Section title="Why Best Practices Matter">
+      <p className="text-lg leading-relaxed text-gray-700">
+        AI contract review tools can reduce review time by 60-90%, but only when implemented with proper processes around quality assurance, playbook management, and attorney oversight. Without best practices, teams risk over-relying on AI outputs, missing edge cases the model was not trained on, and creating inconsistent review standards across attorneys. This guide codifies the practices used by legal teams that have successfully integrated AI contract review into their daily workflow.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="1. Configure Your Playbook Before Going Live">
+      <p className="text-gray-700 mb-4">
+        The single most important step in AI contract review implementation is configuring the tool with your firm&apos;s or department&apos;s preferred positions. A well-configured playbook ensures the AI flags deviations from your standards rather than generic risk factors.
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li>Document your preferred and fallback positions for the 20-30 most commonly negotiated clauses.</li>
+        <li>Define risk thresholds: what deviations are acceptable, what requires escalation, and what is a deal-breaker.</li>
+        <li>Include client-specific or industry-specific requirements where applicable.</li>
+        <li>Review and update the playbook quarterly as your negotiation standards evolve.</li>
+      </ul>
+    </Section>
+
+    <Section title="2. Establish a Human-in-the-Loop Workflow">
+      <p className="text-gray-700 mb-4">
+        AI contract review should augment, not replace, attorney judgment. Design your workflow to ensure meaningful human oversight at critical points:
+      </p>
+      <div className="space-y-3">
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Tier 1: AI-Only (Low Risk)</h4>
+          <p className="text-gray-600 text-sm">Standard NDAs, routine amendments, and low-value contracts where the AI summary and risk flags are sufficient for a quick attorney sign-off.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Tier 2: AI + Attorney Review (Medium Risk)</h4>
+          <p className="text-gray-600 text-sm">Commercial agreements, vendor contracts, and partnership agreements where the AI does the initial review and the attorney focuses on flagged issues and strategic provisions.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Tier 3: Full Attorney Review with AI Assist (High Risk)</h4>
+          <p className="text-gray-600 text-sm">M&A agreements, high-value transactions, and novel contract types where the attorney conducts a full review and uses AI as a second set of eyes to catch anything missed.</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section title="3. Validate AI Accuracy Regularly">
+      <p className="text-gray-700 mb-4">
+        Trust in AI outputs must be earned and maintained. Implement a regular validation cadence:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Monthly spot checks:</strong> Review 5-10 AI-reviewed contracts against full manual review to measure accuracy.</li>
+        <li><strong>Track false positives and false negatives:</strong> Monitor what the AI flags incorrectly and what it misses.</li>
+        <li><strong>Feed corrections back to the vendor:</strong> Most AI contract review tools improve with feedback. Report systematic errors.</li>
+        <li><strong>Benchmark quarterly:</strong> Compare AI accuracy rates against your baseline to ensure they are improving, not degrading.</li>
+      </ul>
+    </Section>
+
+    <Section title="4. Standardize AI-Assisted Redlining">
+      <p className="text-gray-700 mb-4">
+        When using AI to suggest redline edits, establish clear standards:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li>AI-suggested redlines should be reviewed and accepted/modified by an attorney before sending to counterparty.</li>
+        <li>Track which redlines originated from AI vs. attorney to measure AI suggestion quality over time.</li>
+        <li>Do not let AI-generated language go to counterparties without attorney review — tone and strategic positioning matter.</li>
+        <li>Use AI redline suggestions as a starting point for junior attorneys, then review as a training exercise for senior attorneys.</li>
+      </ul>
+    </Section>
+
+    <Section title="5. Manage Attorney Trust and Adoption">
+      <p className="text-gray-700 mb-4">
+        The biggest barrier to successful AI contract review is not technology — it is attorney trust. Best practices for building and maintaining trust:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li>Start skeptics with Tier 2 workflows where they review AI outputs against their own analysis. Seeing the AI catch something they missed builds confidence.</li>
+        <li>Share accuracy metrics transparently — including limitations and error rates.</li>
+        <li>Create a Slack or Teams channel for sharing AI wins and learnings across the team.</li>
+        <li>Never force adoption. Mandate availability of the tool but let attorneys choose when to use it.</li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Configure your playbook first</strong> — AI review is only as good as the standards it measures against.</li>
+        <li><strong>Tier your workflows</strong> by contract risk level to ensure appropriate human oversight.</li>
+        <li><strong>Validate accuracy regularly</strong> with monthly spot checks and quarterly benchmarks.</li>
+        <li><strong>Standardize redlining practices</strong> so AI suggestions are reviewed before reaching counterparties.</li>
+        <li><strong>Build trust through transparency</strong> — share both wins and limitations openly with your team.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const completeGuideAiLegalResearchContent = (
+  <>
+    <Section title="The AI Legal Research Landscape in 2026">
+      <p className="text-lg leading-relaxed text-gray-700">
+        AI has fundamentally changed how legal research works. Natural language queries have replaced complex Boolean strings, AI-generated summaries provide instant orientation on unfamiliar topics, and citation verification happens in seconds rather than minutes. But choosing the right tool — and using it effectively — requires understanding what is available, how each platform differs, and where AI research still falls short. This guide covers everything you need to know.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Types of AI Legal Research Tools">
+      <p className="text-gray-700 mb-4">AI legal research tools fall into three categories:</p>
+      <div className="space-y-4">
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Database-Enhanced AI</h3>
+          <p className="text-gray-600">Traditional legal databases (Westlaw, LexisNexis) enhanced with AI features. These pair the deepest content libraries with AI-powered search, summarization, and analytics. Best for practices that need comprehensive coverage and citation reliability.</p>
+          <p className="text-gray-500 text-sm mt-2"><strong>Examples:</strong> Westlaw Edge, Lexis+ AI</p>
+        </div>
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">AI-Native Research Assistants</h3>
+          <p className="text-gray-600">Platforms built from the ground up around conversational AI. These offer the most intuitive user experience and often include capabilities beyond research (document analysis, drafting). Content libraries are growing but may not match incumbents for regulatory or statutory depth.</p>
+          <p className="text-gray-500 text-sm mt-2"><strong>Examples:</strong> CoCounsel, Harvey AI</p>
+        </div>
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Specialized Research Tools</h3>
+          <p className="text-gray-600">Tools focused on specific research tasks: brief analysis, cite checking, judicial analytics, or regulatory monitoring. These are used alongside a primary research platform to add specialized capabilities.</p>
+          <p className="text-gray-500 text-sm mt-2"><strong>Examples:</strong> CARA AI (brief-based search), Lex Machina (litigation analytics), Fastcase (free/low-cost research)</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section title="Key Features to Evaluate">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Natural Language Search</h4>
+          <p className="text-gray-600 text-sm">Can you describe your research question in plain English and get relevant results? The best tools understand legal concepts, not just keywords.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Citation Verification</h4>
+          <p className="text-gray-600 text-sm">Does the tool verify that cited cases are still good law? This is non-negotiable. AI-generated citations must be independently verifiable.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Summarization Quality</h4>
+          <p className="text-gray-600 text-sm">Are case summaries accurate and useful? Test with cases you know well to calibrate trust in the AI&apos;s summarization.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Jurisdictional Coverage</h4>
+          <p className="text-gray-600 text-sm">Does the database cover your jurisdiction adequately? Federal coverage is generally strong; state-level coverage varies by platform.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Document Upload and Analysis</h4>
+          <p className="text-gray-600 text-sm">Can you upload a brief or contract and have the AI analyze it against relevant law? This saves enormous time on opposition research.</p>
+        </div>
+        <div className="border rounded-lg p-4">
+          <h4 className="font-bold text-gray-900 mb-1">Export and Integration</h4>
+          <p className="text-gray-600 text-sm">Can you export results to Word, your brief, or your case management system? Seamless workflow integration matters for daily use.</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section title="Platform Comparison">
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse">
+          <thead>
+            <tr className="border-b-2 border-gray-200">
+              <th className="py-3 pr-4 text-gray-900 font-bold">Platform</th>
+              <th className="py-3 px-4 text-gray-900 font-bold">Best For</th>
+              <th className="py-3 px-4 text-gray-900 font-bold">AI Quality</th>
+              <th className="py-3 pl-4 text-gray-900 font-bold">Price Range</th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-700 text-sm">
+            <tr className="border-b"><td className="py-3 pr-4 font-medium">Westlaw Edge</td><td className="py-3 px-4">Comprehensive research, litigation analytics</td><td className="py-3 px-4">Good</td><td className="py-3 pl-4">$300-600+/mo</td></tr>
+            <tr className="border-b"><td className="py-3 pr-4 font-medium">Lexis+ AI</td><td className="py-3 px-4">Statutory/regulatory research, Shepard&apos;s</td><td className="py-3 px-4">Good</td><td className="py-3 pl-4">$250-500+/mo</td></tr>
+            <tr className="border-b"><td className="py-3 pr-4 font-medium">CoCounsel</td><td className="py-3 px-4">Conversational research, document analysis</td><td className="py-3 px-4">Excellent</td><td className="py-3 pl-4">~$250/mo</td></tr>
+            <tr className="border-b"><td className="py-3 pr-4 font-medium">Harvey AI</td><td className="py-3 px-4">Complex analysis, cross-jurisdictional work</td><td className="py-3 px-4">Best</td><td className="py-3 pl-4">Enterprise only</td></tr>
+            <tr className="border-b"><td className="py-3 pr-4 font-medium">Fastcase</td><td className="py-3 px-4">Budget-conscious firms, basic research</td><td className="py-3 px-4">Basic</td><td className="py-3 pl-4">Free-$65/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </Section>
+
+    <Section title="Best Practices for AI-Assisted Research">
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Always verify citations independently.</strong> No AI research tool is immune to hallucination. Check every citation before it goes in a filing.</li>
+        <li><strong>Use AI for initial research, then go deep manually.</strong> AI excels at finding starting points and relevant authorities quickly. Deep analysis of key cases still benefits from full human reading.</li>
+        <li><strong>Craft specific prompts.</strong> &quot;What are the elements of a breach of fiduciary duty claim in Delaware?&quot; will get better results than &quot;fiduciary duty Delaware.&quot;</li>
+        <li><strong>Cross-reference across tools.</strong> No single platform has everything. Use your primary tool for initial research and a secondary tool to fill gaps.</li>
+        <li><strong>Document your AI research process.</strong> As courts increasingly require AI disclosure, maintaining a record of what AI tools you used and how you verified the output protects you professionally.</li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Choose your primary platform</strong> based on your practice area needs, budget, and desired AI sophistication.</li>
+        <li><strong>Always verify AI-generated citations</strong> — hallucination risk is real and the consequences are severe.</li>
+        <li><strong>Use AI for speed, humans for depth</strong> — the combination is more effective than either alone.</li>
+        <li><strong>Invest in prompt skills</strong> — better questions produce dramatically better AI research results.</li>
+        <li><strong>Document your process</strong> as AI disclosure requirements expand across jurisdictions.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const aiEdiscoveryPrivilegeContent = (
+  <>
+    <Section title="The Privilege Paradox in AI E-Discovery">
+      <p className="text-lg leading-relaxed text-gray-700">
+        E-discovery is one of the most promising applications of AI in legal practice — and one of the most dangerous when it comes to privilege protection. AI document review tools can process millions of documents in a fraction of the time required for manual review, but a single privilege breach during production can waive protection over an entire subject matter. This guide provides a framework for using AI in e-discovery while maintaining robust privilege protection.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Understanding the Risks">
+      <p className="text-gray-700 mb-4">AI-based document review creates three specific privilege risks:</p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>False negatives in privilege screening:</strong> The AI fails to flag a privileged document, and it is produced to opposing counsel.</li>
+        <li><strong>Inconsistent privilege calls:</strong> Different AI confidence thresholds or model versions make different calls on similar documents, creating defensibility problems.</li>
+        <li><strong>Data exposure to AI vendors:</strong> Privileged documents are sent to third-party AI platforms for processing, potentially risking waiver depending on the vendor&apos;s data handling practices.</li>
+      </ul>
+    </Section>
+
+    <Section title="Building a Privilege-Safe AI Workflow">
+      <StepCard number={1} title="Negotiate Clawback Agreements Early">
+        <p className="text-gray-600">Before any production, negotiate a Federal Rule of Evidence 502(d) order or equivalent clawback agreement. This provides a safety net if privileged documents are inadvertently produced despite your best efforts. Courts have generally been receptive to clawback orders in AI-assisted review, but getting the order in place before review begins is essential.</p>
+      </StepCard>
+
+      <StepCard number={2} title="Use AI as a First Pass, Not a Final Call">
+        <p className="text-gray-600">Configure your AI review to flag potentially privileged documents for human review rather than making final privilege calls. Set a low confidence threshold for privilege flags — it is better to over-flag and have attorneys review more documents than to miss privileged material. A tiered approach works well:</p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 mt-2">
+          <li><strong>AI flags as likely privileged:</strong> Goes to attorney for confirmation</li>
+          <li><strong>AI flags as possibly privileged:</strong> Goes to attorney for review</li>
+          <li><strong>AI flags as non-privileged:</strong> Sampled by attorneys at a defined rate (e.g., 5-10%)</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={3} title="Configure Privilege-Specific Training">
+        <p className="text-gray-600">If your AI review tool supports custom model training, invest in privilege-specific training. Provide examples of your organization&apos;s privileged communications — internal legal counsel emails, outside counsel communications, attorney work product — so the model learns your specific privilege patterns. Generic models miss organization-specific privilege indicators like internal counsel&apos;s non-obvious email addresses or legal department nicknames.</p>
+      </StepCard>
+
+      <StepCard number={4} title="Implement Attorney-Client Privilege Indicators">
+        <p className="text-gray-600">Configure the AI tool to recognize privilege indicators beyond simple keyword lists:</p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 mt-2">
+          <li>Email domains and addresses for all outside counsel firms</li>
+          <li>Internal legal department member names and aliases</li>
+          <li>Common privilege markers (&quot;privileged and confidential,&quot; &quot;attorney-client privilege&quot;)</li>
+          <li>Communication patterns (e.g., emails forwarded to legal after a triggering event)</li>
+          <li>Document types commonly associated with work product (legal memos, draft briefs, litigation hold notices)</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={5} title="Quality Control and Sampling">
+        <p className="text-gray-600">Establish a rigorous QC protocol for privilege review:</p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 mt-2">
+          <li>Sample at least 10% of documents coded as non-privileged by the AI for human verification</li>
+          <li>Increase sampling rates in document families that contain any privileged material</li>
+          <li>Track privilege recall rates and adjust AI thresholds if the miss rate exceeds your tolerance</li>
+          <li>Conduct a final privilege sweep before any production using keyword and domain-based searches as a backstop</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={6} title="Document Your Process for Defensibility">
+        <p className="text-gray-600">Courts evaluate the reasonableness of your privilege review process, not its perfection. Document every step: the AI tool used, confidence thresholds set, human QC rates, training data provided, and any corrections made. This documentation creates a defensibility record if privilege is challenged. Courts have generally accepted AI-assisted privilege review as reasonable when supported by documented quality controls.</p>
+      </StepCard>
+    </Section>
+
+    <Section title="Vendor Data Security Considerations">
+      <Callout title="Critical: Vendor Privilege Implications">
+        <p className="text-amber-800 text-sm">Before sending any documents to a cloud-based AI review platform, confirm in writing: (1) the vendor does not use your documents to train their AI models, (2) data is encrypted in transit and at rest, (3) the vendor will comply with preservation obligations, and (4) the engagement is structured to preserve privilege (e.g., under the direction of counsel). Consider on-premises deployment for the most sensitive matters.</p>
+      </Callout>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Get a clawback order first</strong> — it is your most important safety net.</li>
+        <li><strong>Use AI for flagging, not final privilege calls</strong> — keep attorneys in the loop for all privilege decisions.</li>
+        <li><strong>Train the AI on your specific privilege patterns</strong> for better recall accuracy.</li>
+        <li><strong>Sample aggressively</strong> — 10%+ of non-privileged calls should be verified by humans.</li>
+        <li><strong>Document everything</strong> for defensibility if your process is challenged.</li>
+        <li><strong>Vet vendor data practices</strong> to avoid inadvertent waiver through third-party disclosure.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const aiEthicsLegalPracticeContent = (
+  <>
+    <Section title="The Ethical Imperative">
+      <p className="text-lg leading-relaxed text-gray-700">
+        The legal profession&apos;s adoption of AI is outpacing the ethical frameworks that govern its use. While AI tools offer transformative efficiency gains, they create novel ethical challenges around competence, supervision, confidentiality, and candor to the tribunal. Multiple bar associations have now issued formal guidance, and courts are establishing disclosure requirements. Every lawyer using AI — or supervising others who do — must understand these obligations. Ignorance is not a defense.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Competence (Model Rule 1.1)">
+      <p className="text-gray-700 mb-4">
+        The duty of competence requires lawyers to provide competent representation, which includes staying current with &quot;the benefits and risks associated with relevant technology.&quot; In the context of AI, this means:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Understand how your AI tools work</strong> at a functional level. You do not need to understand transformer architectures, but you must understand that LLMs can hallucinate, that AI contract review has accuracy limitations, and that AI outputs require verification.</li>
+        <li><strong>Know the limitations</strong> of each tool you use. What does it do well? Where does it fail? What types of errors has it made?</li>
+        <li><strong>Stay current</strong> with AI developments relevant to your practice. Competence is an ongoing obligation, not a one-time training box to check.</li>
+        <li><strong>Invest in training.</strong> Firms should provide regular CLE and internal training on AI tools and their ethical implications.</li>
+      </ul>
+    </Section>
+
+    <Section title="Supervision (Model Rules 5.1 and 5.3)">
+      <p className="text-gray-700 mb-4">
+        When AI generates work product that an attorney reviews and submits, the attorney is supervising the AI much as they would supervise a paralegal or junior associate. The supervision duty requires:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Meaningful review of AI outputs.</strong> Rubber-stamping AI-generated research or documents without genuine review violates supervision obligations.</li>
+        <li><strong>Proportionate oversight.</strong> The level of review should match the stakes — a routine memo may need less scrutiny than a dispositive motion brief.</li>
+        <li><strong>Verification of citations and legal analysis.</strong> Every citation in an AI-generated document must be independently verified as still good law.</li>
+        <li><strong>Clear internal policies</strong> about who can use AI tools, for what tasks, and what review protocols apply.</li>
+      </ul>
+    </Section>
+
+    <Section title="Confidentiality (Model Rule 1.6)">
+      <p className="text-gray-700 mb-4">
+        Client data entered into AI tools must be protected with the same care as any other client communication. Key considerations:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Vendor agreements:</strong> Ensure your AI vendor does not use client data to train their models and provides adequate data security commitments.</li>
+        <li><strong>Data residency:</strong> Know where client data is processed and stored. Some matters may require on-premises processing.</li>
+        <li><strong>Input minimization:</strong> Only share the minimum client information necessary for the AI task. Do not paste entire privileged memos into general-purpose AI tools.</li>
+        <li><strong>Client consent:</strong> Consider whether client consent is needed before using AI tools on their matters, particularly for sensitive or high-profile matters.</li>
+      </ul>
+      <Callout title="Warning: Consumer AI Tools">
+        <p className="text-amber-800 text-sm">Using consumer-grade AI tools (such as free ChatGPT) for client work raises serious confidentiality concerns. These tools may use inputs for model training, have broad data use policies, and do not provide the security assurances required for client data. Use only enterprise-grade legal AI tools with appropriate data protections.</p>
+      </Callout>
+    </Section>
+
+    <Section title="Candor to the Tribunal (Model Rule 3.3)">
+      <p className="text-gray-700 mb-4">
+        The duty of candor requires honesty with the court, which has specific implications for AI use:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>AI disclosure requirements:</strong> Multiple jurisdictions now require attorneys to disclose when AI was used in preparing court filings. Know your jurisdiction&apos;s rules.</li>
+        <li><strong>Citation accuracy:</strong> Submitting AI-hallucinated citations to a court violates Rule 3.3. The high-profile sanctions in cases involving fabricated AI citations have made this the most visible ethical risk.</li>
+        <li><strong>Misrepresenting AI work as human work:</strong> Do not imply that AI-generated analysis was performed by an attorney if it was not meaningfully reviewed and adopted by the attorney.</li>
+      </ul>
+    </Section>
+
+    <Section title="Emerging Bar Association Guidance">
+      <p className="text-gray-700 mb-4">
+        As of 2026, the following bar associations and courts have issued significant AI guidance:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>ABA Formal Opinion 512:</strong> Addresses the duty of competence in using AI tools and the obligation to supervise AI outputs.</li>
+        <li><strong>California State Bar:</strong> Practical guidance on confidentiality obligations when using AI tools with client data.</li>
+        <li><strong>New York Courts:</strong> Standing orders in multiple districts requiring AI disclosure in filed documents.</li>
+        <li><strong>Florida Bar:</strong> Advisory opinion addressing AI-generated legal documents and supervision requirements.</li>
+        <li><strong>Texas Bar:</strong> Ethics opinion on client consent and billing practices when AI is used to perform legal tasks.</li>
+      </ul>
+      <p className="text-gray-600 text-sm mt-3">This landscape is evolving rapidly. Monitor your jurisdiction&apos;s bar association for new guidance.</p>
+    </Section>
+
+    <Section title="Practical Compliance Checklist">
+      <div className="space-y-3">
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">1</span>
+          <span>Maintain an inventory of all AI tools used in your practice with data security assessments for each.</span>
+        </div>
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">2</span>
+          <span>Establish written policies for AI use, including permitted tools, approved use cases, and review requirements.</span>
+        </div>
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">3</span>
+          <span>Require independent citation verification for all AI-generated legal research before filing.</span>
+        </div>
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">4</span>
+          <span>Provide annual AI ethics training as part of your CLE program.</span>
+        </div>
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">5</span>
+          <span>Comply with all applicable AI disclosure requirements in court filings.</span>
+        </div>
+        <div className="flex items-start gap-3 text-gray-700">
+          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-bold mt-0.5">6</span>
+          <span>Review and update your AI policies at least annually as guidance evolves.</span>
+        </div>
+      </div>
+    </Section>
+
+    <Summary>
+      <p className="text-lg text-gray-800 mb-4">
+        AI is a powerful tool for legal practice, but it does not change the fundamental ethical obligations that define the profession. Competence requires understanding your tools. Supervision requires meaningful review. Confidentiality requires vendor due diligence. Candor requires citation verification and appropriate disclosure.
+      </p>
+      <p className="text-gray-600">
+        The lawyers who will thrive in the AI era are those who embrace the technology while maintaining the ethical standards that underpin public trust in the profession.
+      </p>
+    </Summary>
+  </>
+);
+
+const automateDocumentAssemblyContent = (
+  <>
+    <Section title="Why Document Assembly is Ripe for AI">
+      <p className="text-lg leading-relaxed text-gray-700">
+        Legal document assembly — creating contracts, pleadings, corporate documents, and other legal instruments from templates and client data — is one of the most time-consuming and repetitive tasks in legal practice. Yet many firms still rely on manual copy-paste-modify workflows that are slow, error-prone, and impossible to scale. AI-powered document assembly tools eliminate these problems by combining intelligent templates, automated data population, and natural language generation to produce draft documents in minutes rather than hours.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="How AI Document Assembly Works">
+      <p className="text-gray-700 mb-4">
+        Modern AI document assembly goes beyond simple mail merge. These tools use AI at multiple stages:
+      </p>
+      <div className="space-y-4">
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Intelligent Template Building</h3>
+          <p className="text-gray-600">AI analyzes your existing documents to identify variable fields, conditional sections, and common patterns. Instead of manually marking up a template with merge fields, the AI suggests where variables should be and what logic should control conditional content. This accelerates template creation from days to hours.</p>
+        </div>
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Data Integration</h3>
+          <p className="text-gray-600">AI document assembly tools pull data from client intake forms, CRM systems, practice management platforms, and even scanned documents to auto-populate templates. When data is missing, the system generates targeted questions rather than presenting the user with a blank form.</p>
+        </div>
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Natural Language Generation</h3>
+          <p className="text-gray-600">For sections that require narrative text (recitals, factual backgrounds, descriptions of services), AI can generate contextually appropriate language based on the structured data provided. This eliminates the blank-page problem for sections that cannot be templated.</p>
+        </div>
+        <div className="border rounded-xl p-6">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Consistency Checking</h3>
+          <p className="text-gray-600">AI reviews the assembled document for internal consistency — ensuring party names match throughout, dates are logical, cross-references are correct, and defined terms are used consistently. This catches errors that slip through manual assembly.</p>
+        </div>
+      </div>
+    </Section>
+
+    <Section title="Choosing a Platform">
+      <p className="text-gray-700 mb-4">Key factors when evaluating AI document assembly tools:</p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Template complexity:</strong> Does the tool support conditional logic, nested conditions, and multi-document assembly (e.g., generating a complete corporate formation package from one intake)?</li>
+        <li><strong>Integration depth:</strong> Can it pull data from your practice management system, CRM, and intake forms without manual re-entry?</li>
+        <li><strong>Output quality:</strong> Does the output maintain professional formatting, proper pagination, and correct styling?</li>
+        <li><strong>Collaboration:</strong> Can multiple attorneys work on and customize templates without developer involvement?</li>
+        <li><strong>Version control:</strong> Are templates versioned so you can track changes and roll back if needed?</li>
+      </ul>
+    </Section>
+
+    <Section title="Implementation Roadmap">
+      <StepCard number={1} title="Start with Your Highest-Volume Documents">
+        <p className="text-gray-600">Identify the 5-10 document types your firm creates most frequently. These are your pilot templates. Common starting points: NDAs, engagement letters, demand letters, basic contracts, corporate resolutions, and simple pleadings.</p>
+      </StepCard>
+
+      <StepCard number={2} title="Clean Up Your Templates">
+        <p className="text-gray-600">Before automating a template, standardize it. Ensure the language is current, formatting is consistent, and there is a clear consensus on preferred terms. Automating a bad template just produces bad documents faster.</p>
+      </StepCard>
+
+      <StepCard number={3} title="Build and Test">
+        <p className="text-gray-600">Use the AI tool to build your initial templates. Test with real client data (or anonymized versions) to verify accuracy. Have multiple attorneys review the output against manually-drafted versions. Fix any issues before releasing to the broader team.</p>
+      </StepCard>
+
+      <StepCard number={4} title="Connect Your Data Sources">
+        <p className="text-gray-600">Integrate client intake data, practice management records, and CRM data to minimize manual entry. The goal is a workflow where an attorney can generate a complete first draft from data already in your systems.</p>
+      </StepCard>
+
+      <StepCard number={5} title="Scale Across Practice Areas">
+        <p className="text-gray-600">Once your pilot templates are working reliably, expand to additional practice areas. Each practice group should own their templates with a central operations team maintaining the platform and enforcing standards.</p>
+      </StepCard>
+    </Section>
+
+    <Section title="ROI Expectations">
+      <p className="text-gray-700 mb-4">
+        Firms that successfully implement AI document assembly typically see:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>70-80% reduction in first-draft creation time</strong> for templated documents</li>
+        <li><strong>50% fewer errors</strong> in assembled documents compared to manual drafting</li>
+        <li><strong>Faster turnaround to clients</strong> — first drafts delivered same-day instead of next-day</li>
+        <li><strong>Better knowledge capture</strong> — your best attorneys&apos; preferred language is codified in templates rather than trapped in individual practice</li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Start with high-volume documents</strong> where time savings are immediately measurable.</li>
+        <li><strong>Standardize before you automate</strong> — clean templates produce clean documents.</li>
+        <li><strong>Integrate with your existing systems</strong> to eliminate manual data re-entry.</li>
+        <li><strong>Test rigorously</strong> with real data before rolling out to the firm.</li>
+        <li><strong>Scale incrementally</strong> across practice areas once your pilot templates prove reliable.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
 export const guideContent: Record<string, React.ReactNode> = {
   "evaluating-ai-legal-tools": evaluatingContent,
   "ai-legal-research-guide": researchGuideContent,
@@ -978,4 +1542,11 @@ export const guideContent: Record<string, React.ReactNode> = {
   "build-business-case-legal-technology": buildBusinessCaseContent,
   "manual-to-automated-contract-management": manualToAutomatedContent,
   "free-tools-contract-audit": freeToolsContractAuditContent,
+  // New guides
+  "how-to-implement-ai-law-firm": implementAiLawFirmContent,
+  "ai-contract-review-best-practices": aiContractReviewBestPracticesContent,
+  "complete-guide-ai-legal-research-tools": completeGuideAiLegalResearchContent,
+  "ai-ediscovery-without-risking-privilege": aiEdiscoveryPrivilegeContent,
+  "ai-ethics-legal-practice": aiEthicsLegalPracticeContent,
+  "automate-legal-document-assembly-ai": automateDocumentAssemblyContent,
 };

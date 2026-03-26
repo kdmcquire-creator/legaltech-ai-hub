@@ -131,6 +131,79 @@ export const guides: Guide[] = [
     color: "from-teal-500 to-emerald-600",
     published: true,
   },
+  // ─── NEW GUIDES (6) ──────────────────────────────────
+  {
+    slug: "how-to-implement-ai-law-firm",
+    title: "How to Implement AI in Your Law Firm: A Step-by-Step Guide",
+    description:
+      "A practical, phase-by-phase roadmap for law firms adopting AI — covering stakeholder buy-in, tool selection, pilot programs, training, and measuring ROI.",
+    type: "implementation",
+    date: "2026-03-30",
+    readTime: "12 min read",
+    tags: ["Implementation", "Law Firm", "Getting Started"],
+    color: "from-blue-500 to-indigo-600",
+    published: true,
+  },
+  {
+    slug: "ai-contract-review-best-practices",
+    title: "AI-Powered Contract Review: Best Practices for Legal Teams",
+    description:
+      "Best practices for integrating AI contract review into your legal workflow — including playbook configuration, quality assurance, and managing attorney trust in AI outputs.",
+    type: "how-to",
+    date: "2026-04-06",
+    readTime: "10 min read",
+    tags: ["Contract Review", "Best Practices", "Workflow"],
+    color: "from-emerald-500 to-teal-600",
+    published: true,
+  },
+  {
+    slug: "complete-guide-ai-legal-research-tools",
+    title: "The Complete Guide to AI Legal Research Tools",
+    description:
+      "Everything you need to know about AI legal research tools in 2026 — from natural language search and citation verification to choosing between Westlaw Edge, CoCounsel, and Harvey AI.",
+    type: "buyers-guide",
+    date: "2026-04-13",
+    readTime: "14 min read",
+    tags: ["Legal Research", "Buyer Guide", "AI Tools"],
+    color: "from-violet-500 to-purple-600",
+    published: true,
+  },
+  {
+    slug: "ai-ediscovery-without-risking-privilege",
+    title: "How to Use AI for E-Discovery Without Risking Privilege",
+    description:
+      "A guide to deploying AI in e-discovery while protecting attorney-client privilege — covering TAR workflows, privilege logging, clawback agreements, and quality control protocols.",
+    type: "how-to",
+    date: "2026-04-20",
+    readTime: "11 min read",
+    tags: ["E-Discovery", "Privilege", "Compliance"],
+    color: "from-amber-500 to-orange-600",
+    published: true,
+  },
+  {
+    slug: "ai-ethics-legal-practice",
+    title: "AI Ethics in Legal Practice: What Every Lawyer Needs to Know",
+    description:
+      "An essential guide to the ethical obligations lawyers face when using AI — covering competence requirements, supervision duties, confidentiality, and emerging bar association guidelines.",
+    type: "educational",
+    date: "2026-04-27",
+    readTime: "11 min read",
+    tags: ["Ethics", "Compliance", "Bar Association"],
+    color: "from-rose-500 to-pink-600",
+    published: true,
+  },
+  {
+    slug: "automate-legal-document-assembly-ai",
+    title: "How to Automate Legal Document Assembly with AI",
+    description:
+      "A hands-on guide to automating legal document assembly — from selecting the right platform to building templates, integrating client intake data, and scaling across practice areas.",
+    type: "how-to",
+    date: "2026-05-04",
+    readTime: "10 min read",
+    tags: ["Document Assembly", "Automation", "How-To"],
+    color: "from-cyan-500 to-blue-600",
+    published: true,
+  },
 ];
 
 export const guideTypeLabels: Record<Guide["type"], string> = {
