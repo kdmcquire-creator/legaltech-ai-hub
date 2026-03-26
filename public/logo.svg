@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Legaltech AI Hub">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#475569"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#cbd5e1;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hexagon background — slate to blue -->
+  <polygon
+    points="32,4 56,17 56,47 32,60 8,47 8,17"
+    fill="url(#grad)"
+  />
+
+  <!-- Scale of justice — balanced beam with two pans -->
+  <!-- Center pillar -->
+  <rect x="30.5" y="16" width="3" height="28" rx="1.5" fill="url(#icon-grad)"/>
+  <!-- Base -->
+  <rect x="24" y="44" width="16" height="3" rx="1.5" fill="url(#icon-grad)"/>
+  <!-- Horizontal beam -->
+  <rect x="14" y="16" width="36" height="2.5" rx="1.25" fill="url(#icon-grad)"/>
+  <!-- Left pan — small triangle/cup -->
+  <polygon points="14,18.5 10,30 18,30" fill="none" stroke="url(#icon-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Right pan -->
+  <polygon points="50,18.5 46,30 54,30" fill="none" stroke="url(#icon-grad)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Circuit dots — AI accent -->
+  <circle cx="14" cy="35" r="1.5" fill="url(#icon-grad)" opacity="0.6"/>
+  <circle cx="50" cy="35" r="1.5" fill="url(#icon-grad)" opacity="0.6"/>
+  <circle cx="21" cy="38" r="1" fill="url(#icon-grad)" opacity="0.4"/>
+  <circle cx="43" cy="38" r="1" fill="url(#icon-grad)" opacity="0.4"/>
+</svg>
