@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { reviews, typeLabels, typeColors } from "@/lib/reviews";
 import { reviewContent } from "@/lib/review-content";
 import AdUnit from "@/components/AdUnit";
+import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -126,6 +127,9 @@ export default async function ReviewPage({ params }: Props) {
       {/* Content */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl">
+          {/* Sponsor banner above content */}
+          <SiteGroundLeaderboard />
+
           {content ? (
             content
           ) : (

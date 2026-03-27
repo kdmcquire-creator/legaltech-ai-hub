@@ -12,6 +12,7 @@ const staticLinks: Record<string, string> = {
   casetext: "https://casetext.com/cocounsel",
   spellbook: "https://www.spellbook.legal",
   amazon: "https://www.amazon.com/?tag=legaltechhub-20",
+  siteground: "https://www.siteground.com/index.htm?afcode=758135cea38bbc354897accd3183d9ff",
 };
 
 function resolveDestination(slug: string): string | undefined {

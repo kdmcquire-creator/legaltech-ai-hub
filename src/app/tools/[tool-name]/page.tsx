@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { tools } from "@/lib/tools";
 import { reviews } from "@/lib/reviews";
 import AdUnit from "@/components/AdUnit";
+import SiteGroundHalfPage from "@/components/SiteGroundHalfPage";
 import { ToolJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 type Props = {
@@ -250,6 +251,9 @@ export default async function ToolPage({ params }: Props) {
               <div className="border rounded-xl p-4 overflow-hidden">
                 <AdUnit slot="SLOT_TOOL_SIDEBAR" format="rectangle" />
               </div>
+
+              {/* SiteGround sponsor */}
+              <SiteGroundHalfPage />
 
               {/* Quick links */}
               <div className="border rounded-xl p-6">

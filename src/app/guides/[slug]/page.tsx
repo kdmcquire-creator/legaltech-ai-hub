@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { guides, guideTypeLabels, guideTypeColors } from "@/lib/guides";
 import { guideContent } from "@/lib/guide-content";
 import AdUnit from "@/components/AdUnit";
+import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -126,6 +127,9 @@ export default async function GuidePage({ params }: Props) {
       {/* Content */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl">
+          {/* Sponsor banner above content */}
+          <SiteGroundLeaderboard />
+
           {content ? (
             content
           ) : (
