@@ -11,6 +11,7 @@ const staticLinks: Record<string, string> = {
   ironclad: "https://ironcladapp.com",
   casetext: "https://casetext.com/cocounsel",
   spellbook: "https://www.spellbook.legal",
+  amazon: "https://www.amazon.com/?tag=legaltechhub-20",
 };
 
 function resolveDestination(slug: string): string | undefined {

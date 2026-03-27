@@ -258,6 +258,17 @@ export default function RootLayout({
                   </Link>
                   .
                 </p>
+                <p className="text-gray-400 text-xs mb-3">
+                  <a
+                    href="/go/amazon/"
+                    target="_blank"
+                    rel="nofollow noopener sponsored"
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    🛒 Amazon Associate
+                  </a>
+                  {" "}· As an Amazon Associate I earn from qualifying purchases.
+                </p>
                 <p className="text-gray-500 text-sm">
                   {"©"} {new Date().getFullYear()} LegalTech AI Hub. All rights
                   reserved.
