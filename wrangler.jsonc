@@ -35,7 +35,8 @@
   "vars": {
     "SENDGRID_FROM_EMAIL": "contact@legaltech-ai-hub.com",
     "SENDGRID_NEWSLETTER_FROM_EMAIL": "updates@legaltech-ai-hub.com",
-    "CONTACT_TO_EMAIL": "moonsmoke.contact@gmail.com"
+    "CONTACT_TO_EMAIL": "moonsmoke.contact@gmail.com",
+    "NEXT_PUBLIC_GTM_ID": "GTM-MXHMH4NS"
   }
   // Secret variables should be set via:
   //   Local dev:  .dev.vars file
