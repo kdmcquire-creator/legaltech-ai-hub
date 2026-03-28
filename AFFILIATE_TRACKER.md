@@ -54,7 +54,7 @@
 | **Semrush** | CE | Link uses `?ref=clarityengine` — not a real affiliate link, earns nothing | Apply at semrush.com/lp/affiliate-program/ (requires ~1,500 mo. visitors) → replace with real BeRush link |
 | **Surfer SEO** | CE | Link uses `?via=clarityengine` — not a real affiliate link | Apply at surferseo.com/affiliate-program/ → replace with real partner link |
 | **Moz** | CE | Link uses `?ref=clarityengine` — not tracked | Check Moz partner program status → update or remove |
-| **Mangools** | CE | Link uses `?ref=clarityengine` — not tracked | Apply at mangools.com/affiliate-program → replace with real link |
+| ~~**Mangools**~~ | ✅ Fixed 2026-03-27 | ID `a69b590a66aee08840d5414cd`. Links use `#id` fragment (not `?ref=`). `/go/mangools` + `/go/mangools-kwfinder` wired on CE. |
 
 ---
 
@@ -81,7 +81,7 @@ These slugs are in `/go/` routes for click tracking, but the destinations have n
 |---------|---------|-----------|---------|-------|
 | **Semrush (BeRush)** | Direct | $200/sale, $10/trial, $0.01/signup | 🔴 High | 120-day cookie. Requires ~1,500 mo. visitors. Signup: semrush.com/lp/affiliate-program/en/ |
 | **Surfer SEO** | Direct | 25% recurring | 🔴 High | 60-day cookie. CE has tools that pair with Surfer. Signup: surferseo.com/affiliate-program/ |
-| **Mangools** | Direct | 30% recurring lifetime | 🔴 High | 30-day cookie. Easy to get. Signup: mangools.com/affiliate-program |
+| **Mangools** | Direct | `ref=a69b590a66aee08840d5414cd` | 30% recurring lifetime | 30 days | CE |
 | **SE Ranking** | Direct | 30% lifetime | 🟠 Medium | 120-day cookie. Signup: seranking.com/affiliate.html |
 | **ConvertKit (Kit)** | Direct | 30% recurring 24mo | 🟠 Medium | 90-day cookie. Good for PH audience. Signup: kit.com/affiliate |
 | **ShareASale** | Network | Varies | 🟡 Low-Medium | Hosts WP Engine, OptinMonster — good for PH/CE |
@@ -183,7 +183,7 @@ Click-through goes to `/go/amazon` → site-specific tracking tag.
 
 - [ ] **Apply to Semrush BeRush** — $200/sale. Check if CE traffic qualifies at semrush.com/lp/affiliate-program/en/
 - [ ] **Apply to Surfer SEO affiliate** — 25% recurring. surferseo.com/affiliate-program/
-- [ ] **Apply to Mangools** — 30% lifetime recurring, easy acceptance. mangools.com/affiliate-program
+- [x] **Mangools** — ✅ Approved. ID `a69b590a66aee08840d5414cd` wired. Banners: KWFinder, SERPChecker, SiteProfiler (250×250 iframes).
 - [ ] **Apply to LegalZoom affiliate** (CJ/ShareASale) — LT has 16 reviews and 16 guides that naturally reference LegalZoom
 
 ### 🟡 Medium — Expand Coverage
