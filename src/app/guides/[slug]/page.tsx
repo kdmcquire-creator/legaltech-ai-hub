@@ -5,6 +5,7 @@ import { guides, guideTypeLabels, guideTypeColors } from "@/lib/guides";
 import { guideContent } from "@/lib/guide-content";
 import AdUnit from "@/components/AdUnit";
 import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
+import { NordVPNLeaderboard } from "@/components/NordVPNLeaderboard";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -140,6 +141,9 @@ export default async function GuidePage({ params }: Props) {
           <div className="my-10">
             <AdUnit slot="SLOT_GUIDE_BOTTOM" format="auto" />
           </div>
+
+          {/* Post-guide sponsor */}
+          <NordVPNLeaderboard />
 
           {/* Disclosure */}
           <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">
