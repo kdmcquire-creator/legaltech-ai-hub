@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { tools } from "@/lib/tools";
-import { logAffiliateClick } from "@/lib/analytics";
+import { logAffiliateClick, persistAffiliateClick } from "@/lib/analytics";
 
 // Static affiliate links for partners not tied to a specific tool page
 const staticLinks: Record<string, string> = {
@@ -31,7 +31,7 @@ export async function GET(
   const { slug } = await params;
   const destination = resolveDestination(slug);
 
-  logAffiliateClick({
+  const clickEvent = {
     slug,
     destination: destination ?? "not_found",
     referrer: request.headers.get("referer"),
@@ -40,7 +40,10 @@ export async function GET(
     ip:
       request.headers.get("cf-connecting-ip") ??
       request.headers.get("x-forwarded-for"),
-  });
+  };
+
+  logAffiliateClick(clickEvent);
+  after(() => persistAffiliateClick(clickEvent));
 
   if (destination) {
     return NextResponse.redirect(destination, 302);

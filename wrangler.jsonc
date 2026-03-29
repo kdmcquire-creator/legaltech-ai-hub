@@ -32,6 +32,12 @@
     ]
   },
   // Environment variables (non-secret)
+  "kv_namespaces": [
+    {
+      "binding": "AFFILIATE_CLICKS",
+      "id": "ddeef7db067b4dff9660b731662a40c6"
+    }
+  ],
   "vars": {
     "SENDGRID_FROM_EMAIL": "contact@legaltech-ai-hub.com",
     "SENDGRID_NEWSLETTER_FROM_EMAIL": "updates@legaltech-ai-hub.com",

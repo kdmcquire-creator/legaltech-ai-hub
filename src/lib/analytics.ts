@@ -1,6 +1,4 @@
-// Click tracking data stored in flat-file JSON pattern
-// On Cloudflare Workers, this will use KV or a simple JSON approach
-// For now, log to console (visible in Cloudflare Workers logs)
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export interface ClickEvent {
   slug: string;
@@ -11,15 +9,25 @@ export interface ClickEvent {
   ip: string | null;
 }
 
+interface WorkerEnv {
+  AFFILIATE_CLICKS: KVNamespace;
+}
+
 export function logAffiliateClick(event: ClickEvent): void {
-  // In production on Cloudflare Workers, this would write to KV or D1
-  // For now, structured logging that Cloudflare captures
-  console.log(
-    JSON.stringify({
-      type: "affiliate_click",
-      ...event,
-    })
-  );
+  console.log(JSON.stringify({ type: "affiliate_click", site: "lt", ...event }));
+}
+
+export async function persistAffiliateClick(event: ClickEvent): Promise<void> {
+  try {
+    const { env } = getCloudflareContext<WorkerEnv>();
+    const date = event.timestamp.slice(0, 10);
+    const key = `lt:${date}:${event.slug}:${Date.now()}`;
+    await env.AFFILIATE_CLICKS.put(key, JSON.stringify(event), {
+      expirationTtl: 7776000, // 90 days
+    });
+  } catch {
+    // KV unavailable in local dev — already logged via console
+  }
 }
 
 // Client-side GA4 event helpers
