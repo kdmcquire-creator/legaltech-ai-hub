@@ -2,6 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
+  async redirects() {
+    return [
+      // Redirect www → non-www (fixes canonical split in Google)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.legaltech-ai-hub.com" }],
+        destination: "https://legaltech-ai-hub.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
