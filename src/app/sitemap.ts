@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const reviewEntries = reviews.map((r) => ({
     url: `${baseUrl}/reviews/${r.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(r.date),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((g) => g.published)
     .map((g) => ({
       url: `${baseUrl}/guides/${g.slug}`,
-      lastModified: new Date(),
+      lastModified: new Date(g.date),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     }));
