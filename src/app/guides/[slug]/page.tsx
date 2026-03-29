@@ -6,6 +6,7 @@ import { guideContent } from "@/lib/guide-content";
 import AdUnit from "@/components/AdUnit";
 import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
 import { NordVPNLeaderboard } from "@/components/NordVPNLeaderboard";
+import SidebarAmazon from "@/components/SidebarAmazon";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -127,53 +128,58 @@ export default async function GuidePage({ params }: Props) {
 
       {/* Content */}
       <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          {/* Sponsor banner above content */}
-          <SiteGroundLeaderboard />
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="lg:grid lg:grid-cols-3 lg:gap-10">
 
-          {content ? (
-            content
-          ) : (
-            <p className="text-gray-500">Full guide coming soon.</p>
-          )}
+            {/* Main content */}
+            <div className="lg:col-span-2">
+              {/* Sponsor banner above content */}
+              <SiteGroundLeaderboard />
 
-          {/* Ad Unit */}
-          <div className="my-10">
-            <AdUnit slot="SLOT_GUIDE_BOTTOM" format="auto" />
-          </div>
+              {content ? (
+                content
+              ) : (
+                <p className="text-gray-500">Full guide coming soon.</p>
+              )}
 
-          {/* Post-guide sponsor */}
-          <NordVPNLeaderboard />
+              {/* Ad Unit */}
+              <div className="my-10">
+                <AdUnit slot="SLOT_GUIDE_BOTTOM" format="auto" />
+              </div>
 
-          {/* Disclosure */}
-          <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">
-            <strong>Disclosure:</strong> Some links in this article may be
-            affiliate links. We may earn a commission if you sign up through
-            them at no extra cost to you. Affiliate relationships never influence
-            our editorial content. See our{" "}
-            <Link
-              href="/disclosure"
-              className="underline font-medium"
-            >
-              full disclosure
-            </Link>
-            .
-          </div>
+              {/* Post-guide sponsor */}
+              <NordVPNLeaderboard />
 
-          {/* Nav */}
-          <div className="mt-12 pt-8 border-t flex justify-between items-center">
-            <Link
-              href="/guides"
-              className="text-blue-600 hover:underline font-medium"
-            >
-              &larr; Back to Guides
-            </Link>
-            <Link
-              href="/reviews"
-              className="text-blue-600 hover:underline font-medium"
-            >
-              Read Reviews &rarr;
-            </Link>
+              {/* Disclosure */}
+              <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">
+                <strong>Disclosure:</strong> Some links in this article may be
+                affiliate links. We may earn a commission if you sign up through
+                them at no extra cost to you. Affiliate relationships never influence
+                our editorial content. See our{" "}
+                <Link href="/disclosure" className="underline font-medium">
+                  full disclosure
+                </Link>
+                .
+              </div>
+
+              {/* Nav */}
+              <div className="mt-12 pt-8 border-t flex justify-between items-center">
+                <Link href="/guides" className="text-blue-600 hover:underline font-medium">
+                  &larr; Back to Guides
+                </Link>
+                <Link href="/reviews" className="text-blue-600 hover:underline font-medium">
+                  Read Reviews &rarr;
+                </Link>
+              </div>
+            </div>
+
+            {/* Sidebar — sticky */}
+            <aside className="mt-12 lg:mt-0">
+              <div className="sticky top-6 space-y-6">
+                <SidebarAmazon />
+              </div>
+            </aside>
+
           </div>
         </div>
       </section>
