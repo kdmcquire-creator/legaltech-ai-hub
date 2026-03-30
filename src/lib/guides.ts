@@ -204,6 +204,42 @@ export const guides: Guide[] = [
     color: "from-cyan-500 to-blue-600",
     published: true,
   },
+  {
+    slug: "chatgpt-for-lawyers-guide",
+    title: "ChatGPT for Lawyers: A Practical Guide to Using AI in Legal Work",
+    description:
+      "A no-nonsense guide to using ChatGPT in legal practice — what it's actually useful for, what to avoid, and how to stay on the right side of your bar's ethics rules.",
+    type: "how-to",
+    date: "2026-03-28",
+    readTime: "11 min read",
+    tags: ["ChatGPT", "AI Tools", "How-To", "Ethics"],
+    color: "from-blue-500 to-indigo-600",
+    published: true,
+  },
+  {
+    slug: "ai-contract-drafting-tools",
+    title: "Best AI Contract Drafting Tools in 2026: A Lawyer's Comparison",
+    description:
+      "An honest comparison of AI contract drafting tools — from general-purpose AI assistants to purpose-built legal drafting platforms like Spellbook, Harvey, and CoCounsel.",
+    type: "comparison",
+    date: "2026-03-26",
+    readTime: "12 min read",
+    tags: ["Contract Drafting", "Comparison", "AI Tools"],
+    color: "from-violet-500 to-purple-600",
+    published: true,
+  },
+  {
+    slug: "ai-for-small-law-firms-toolkit",
+    title: "The AI Toolkit for Small Law Firms: High-Impact Tools on a Real Budget",
+    description:
+      "A curated, budget-conscious AI toolkit for small and solo law firms — covering research, drafting, client intake, billing, and document management without enterprise pricing.",
+    type: "buyers-guide",
+    date: "2026-03-24",
+    readTime: "10 min read",
+    tags: ["Small Law Firm", "Buyer Guide", "Budget-Friendly"],
+    color: "from-emerald-500 to-teal-600",
+    published: true,
+  },
 ];
 
 export const guideTypeLabels: Record<Guide["type"], string> = {

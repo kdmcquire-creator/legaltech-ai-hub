@@ -1531,6 +1531,288 @@ const automateDocumentAssemblyContent = (
   </>
 );
 
+const chatgptForLawyersContent = (
+  <>
+    <Section title="What ChatGPT Can (and Can't) Do for Lawyers">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        ChatGPT is a powerful general-purpose AI assistant — not a legal research tool. That distinction matters enormously in practice. It has no access to live case law databases, cannot verify citations in real time, and will sometimes produce plausible-sounding but incorrect legal authority. Used with those limitations clearly in mind, it's a genuine productivity multiplier. Used carelessly, it's a professional liability.
+      </p>
+      <p className="text-gray-700">
+        The practical rule: use ChatGPT for the cognitive and drafting work around legal tasks, not for the authoritative legal research itself. That research still needs Westlaw, Lexis, or a purpose-built AI legal research tool.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Where ChatGPT Genuinely Helps">
+      <StepCard number={1} title="First-Draft Document Generation">
+        <p className="text-gray-700 mb-3">
+          ChatGPT excels at producing competent first drafts of standard legal documents — demand letters, cease and desist notices, non-disclosure agreements, client intake questionnaires, and routine correspondence. The key is treating these as drafts requiring attorney review, not final products.
+        </p>
+        <p className="text-gray-600 text-sm">
+          <strong>Prompt approach:</strong> Provide the factual context, the document type, your jurisdiction, and any specific terms that must appear. Ask for a first draft, then edit heavily for jurisdiction-specific requirements and your client&apos;s situation.
+        </p>
+      </StepCard>
+
+      <StepCard number={2} title="Legal Research Acceleration">
+        <p className="text-gray-700 mb-3">
+          ChatGPT won&apos;t replace Westlaw, but it&apos;s useful for quickly understanding an area of law before diving into primary sources. Ask it to explain a legal doctrine, summarize the elements of a claim, or outline the key issues in a practice area you&apos;re less familiar with. Use the output as background orientation, then verify everything with authoritative sources.
+        </p>
+        <Callout title="Critical Warning">
+          <p className="text-amber-800">Never cite ChatGPT-generated case citations without independent verification. Multiple attorneys have faced sanctions for filing briefs with hallucinated citations. Every case name, citation, and holding must be verified in a primary source database before use.</p>
+        </Callout>
+      </StepCard>
+
+      <StepCard number={3} title="Contract Analysis and Redlining Prep">
+        <p className="text-gray-700 mb-3">
+          You can paste contract text into ChatGPT and ask it to identify potentially problematic clauses, summarize the key obligations of each party, flag unusual provisions, or compare against a standard market position. This accelerates initial contract review significantly — though attorney judgment must still be applied to the output.
+        </p>
+      </StepCard>
+
+      <StepCard number={4} title="Client Communication Drafts">
+        <p className="text-gray-700 mb-3">
+          ChatGPT is excellent at helping translate complex legal concepts into plain language for client correspondence. Feed it your legal analysis and ask it to rewrite it at an 8th-grade reading level, or draft a client update letter from your notes. This saves significant time on routine communication while keeping clients informed.
+        </p>
+      </StepCard>
+
+      <StepCard number={5} title="Brief and Motion Structure">
+        <p className="text-gray-700 mb-3">
+          Use ChatGPT to outline arguments, draft introductions, generate counterargument analysis, and polish writing. It cannot research the underlying legal authority, but once you have your cases and statutes in hand, it&apos;s a capable writing assistant for structuring and articulating those arguments.
+        </p>
+      </StepCard>
+    </Section>
+
+    <Section title="Ethics Obligations: What Your Bar Requires">
+      <p className="text-gray-700 mb-4">
+        Most state bars have now issued formal guidance on AI use by attorneys. The recurring themes across jurisdictions:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-3 mb-4">
+        <li><strong>Competence (Rule 1.1):</strong> You must understand the limitations of any AI tool you use. &quot;The AI did it&quot; is not a defense to an error in a filing or advice to a client.</li>
+        <li><strong>Supervision (Rule 5.3):</strong> AI-generated work product must be reviewed and supervised just as work product from a paralegal or associate would be.</li>
+        <li><strong>Confidentiality (Rule 1.6):</strong> Do not paste client information into ChatGPT&apos;s standard interface without understanding how that data is used. Anthropic and OpenAI both offer enterprise agreements with stronger data protection; these are worth the investment for law firms.</li>
+        <li><strong>Candor to the Tribunal (Rule 3.3):</strong> You are personally responsible for the accuracy of citations and legal authority in court filings. Verify everything.</li>
+      </ul>
+      <Callout title="Practical Step">
+        <p className="text-amber-800">Check your state bar&apos;s website for any formal ethics opinions on AI use. The ABA has also published guidance. These documents tell you exactly what disclosure, supervision, and verification obligations apply in your jurisdiction.</p>
+      </Callout>
+    </Section>
+
+    <Section title="Setting Up ChatGPT for Law Firm Use">
+      <p className="text-gray-700 mb-4">
+        For individual attorneys, ChatGPT Plus ($20/month) provides access to GPT-4o and is sufficient for most use cases. For law firms, the priority is data protection:
+      </p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>ChatGPT Team or Enterprise:</strong> Data is not used to train models by default; conversations are isolated between users</li>
+        <li><strong>Custom GPTs:</strong> Build firm-specific assistants trained on your document templates, style guides, and standard positions</li>
+        <li><strong>API access:</strong> For firms building internal tools, the OpenAI API offers greater control over data handling</li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Use ChatGPT for drafting and writing acceleration</strong> — first drafts, client communication, brief structure.</li>
+        <li><strong>Never rely on it for case citations</strong> — verify every legal authority in a primary source database.</li>
+        <li><strong>Understand your bar&apos;s ethics rules</strong> — competence, supervision, and confidentiality obligations all apply.</li>
+        <li><strong>Upgrade to Team or Enterprise</strong> for client data protection — the standard consumer interface isn&apos;t appropriate for confidential client information.</li>
+        <li><strong>Treat all AI output as a draft</strong> requiring attorney review — not a finished product.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const aiContractDraftingToolsContent = (
+  <>
+    <Section title="The Contract Drafting Tool Landscape in 2026">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        Contract drafting AI has matured significantly. The market now splits into two tiers: purpose-built legal AI platforms (Spellbook, Harvey, CoCounsel) that integrate deeply with legal workflows and understand legal context, and general-purpose AI assistants (ChatGPT, Claude) that can handle contract drafting tasks but require more attorney guidance and verification.
+      </p>
+      <p className="text-gray-700">
+        For most law firms and legal teams, the right answer involves both: a purpose-built tool for high-volume contract work, and a general-purpose AI for the surrounding tasks. Here&apos;s how the leading options compare.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="Purpose-Built Legal Drafting Tools">
+      <StepCard number={1} title="Spellbook (by Rally Legal)">
+        <p className="text-gray-700 mb-3">
+          Spellbook is a Microsoft Word add-in that brings AI drafting capabilities directly into the tool attorneys already use for contracts. It can draft clauses, suggest missing provisions, redline against your preferred positions, and explain why certain language is used or risky. The Word integration eliminates the copy-paste workflow that makes general AI tools friction-heavy for contract work.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>Lives inside Microsoft Word — no workflow disruption</li>
+          <li>Trained on legal language; understands contract structure and conventions</li>
+          <li>Redlining and playbook-based review</li>
+          <li>Best for: transactional attorneys who live in Word</li>
+          <li>Pricing: contact for pricing (typically $100-200/user/month for small firms)</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={2} title="Harvey AI">
+        <p className="text-gray-700 mb-3">
+          Harvey is built for large law firms and enterprise legal departments. It handles complex drafting tasks — sophisticated M&A agreements, complex financing documents, multi-party commercial contracts — at a level that reflects training on high-end law firm work product. The platform integrates with common legal tech stacks (iManage, NetDocuments) and supports custom training on firm-specific documents.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>Best-in-class for complex transactional documents</li>
+          <li>Custom training on your firm&apos;s documents and preferred positions</li>
+          <li>DMS integrations (iManage, NetDocuments)</li>
+          <li>Best for: AmLaw 200 firms and large in-house teams</li>
+          <li>Pricing: enterprise contract; not publicly listed</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={3} title="CoCounsel (by Thomson Reuters)">
+        <p className="text-gray-700 mb-3">
+          CoCounsel is Thomson Reuters&apos; AI platform, integrated with Westlaw for grounded legal research alongside drafting capabilities. The research integration is its differentiator — when it cites authority, you can verify it immediately in Westlaw without leaving the platform. For attorneys who already subscribe to Westlaw, CoCounsel is a natural extension.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>Integrated with Westlaw — cited cases are verifiable immediately</li>
+          <li>Contract review, drafting, and research in one platform</li>
+          <li>Document review and deposition prep features</li>
+          <li>Best for: existing Westlaw subscribers who want AI drafting</li>
+          <li>Pricing: bundled with Westlaw; contact for pricing</li>
+        </ul>
+      </StepCard>
+    </Section>
+
+    <Section title="General-Purpose AI for Contract Drafting">
+      <p className="text-gray-700 mb-4">
+        For firms not ready to invest in purpose-built legal AI, or for specific tasks that don&apos;t justify specialized tooling, general-purpose AI assistants can handle contract drafting with the right approach.
+      </p>
+
+      <StepCard number={4} title="Claude (Anthropic)">
+        <p className="text-gray-700 mb-3">
+          Claude is particularly well-suited to contract drafting tasks among the general-purpose AI models. It follows complex, multi-part instructions reliably, handles long documents without losing context, and produces writing that&apos;s closer to standard legal English than most alternatives. Claude Pro ($20/month) includes a 200K context window — large enough to process full contracts with instructions in a single session.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>Excellent at following detailed drafting instructions</li>
+          <li>200K context window handles full contracts</li>
+          <li>Better at maintaining consistent legal tone than GPT-4o</li>
+          <li>Requires more attorney guidance than purpose-built tools</li>
+          <li>Pricing: Free, Pro ($20/mo), Team ($25/user/mo)</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={5} title="ChatGPT (OpenAI)">
+        <p className="text-gray-700 mb-3">
+          GPT-5 is a capable contract drafter for standard agreements, with the important caveat that output requires careful attorney review. The &apos;Custom GPT&apos; feature lets you build a contract drafting assistant pre-loaded with your firm&apos;s standard language, fallback positions, and jurisdiction-specific requirements — significantly improving output quality over the generic model.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>Custom GPTs allow firm-specific training on standard language</li>
+          <li>Widely used and well-documented prompting techniques available</li>
+          <li>Enterprise plan required for proper data protection with client information</li>
+          <li>Pricing: Plus ($20/mo), Enterprise (contact)</li>
+        </ul>
+      </StepCard>
+    </Section>
+
+    <Section title="How to Choose">
+      <p className="text-gray-700 mb-4">The right tool depends on your firm&apos;s size, practice mix, and budget:</p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Solo/small firm, general practice:</strong> Claude Pro or ChatGPT Team — purpose-built tools are hard to justify at this scale</li>
+        <li><strong>Mid-size transactional firm:</strong> Spellbook — the Word integration and legal training deliver ROI quickly for contract-heavy practices</li>
+        <li><strong>Existing Westlaw subscriber:</strong> CoCounsel — leverage your existing investment, add drafting capabilities with integrated research</li>
+        <li><strong>Large firm or sophisticated in-house team:</strong> Harvey — enterprise-grade, customizable, handles complex documents</li>
+      </ul>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Purpose-built tools (Spellbook, Harvey, CoCounsel)</strong> understand legal context and workflow better than general-purpose AI.</li>
+        <li><strong>General-purpose AI (Claude, ChatGPT)</strong> is the right starting point for firms not ready for specialized tooling — with appropriate attorney oversight.</li>
+        <li><strong>The Word integration matters</strong> — tools that work inside your existing workflow see higher adoption than standalone platforms.</li>
+        <li><strong>Always verify all legal authority</strong> regardless of which tool generates it.</li>
+        <li><strong>Data protection requires enterprise agreements</strong> for tools used with actual client information.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
+const aiForSmallLawFirmsContent = (
+  <>
+    <Section title="The Small Firm AI Advantage">
+      <p className="text-lg leading-relaxed text-gray-700 mb-4">
+        Small and solo law firms have an AI adoption advantage that large firms don&apos;t: agility. Without IT procurement processes, multi-department stakeholder reviews, or enterprise security approvals, a solo attorney or small firm can adopt a new AI tool in an afternoon and see productivity gains the same week. The challenge is knowing which tools are worth your limited time and money.
+      </p>
+      <p className="text-gray-700">
+        This guide focuses on high-impact AI tools at realistic price points — not enterprise platforms that require six-figure contracts and dedicated implementation teams.
+      </p>
+    </Section>
+
+    <hr className="my-12 border-gray-200" />
+
+    <Section title="The Core Toolkit: Five Categories">
+      <StepCard number={1} title="Legal Research: Casetext (Now CoCounsel)">
+        <p className="text-gray-700 mb-3">
+          For small firms that can&apos;t afford Westlaw or Lexis at full price, Casetext — now integrated into CoCounsel by Thomson Reuters — offers AI-powered legal research at more accessible pricing. Its CARA A.I. feature finds relevant cases based on the brief or motion you&apos;re working on, not just keyword searches. The AI research assistant handles natural language queries and produces cited, verifiable results.
+        </p>
+        <p className="text-gray-600 text-sm"><strong>Alternative:</strong> FastCase is included free with many state bar memberships — check yours. It&apos;s not as powerful as Westlaw but handles most state and federal research needs.</p>
+      </StepCard>
+
+      <StepCard number={2} title="Drafting and Writing: Claude Pro">
+        <p className="text-gray-700 mb-3">
+          At $20/month, Claude Pro is the highest-value AI drafting tool for solo and small firm attorneys. It handles first-draft demand letters, routine motions, NDA and standard contract drafting, client correspondence, and brief writing assistance. The 200K context window means you can paste an entire contract and give drafting or revision instructions without losing context.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>$20/month for Claude Pro (individual) or $25/user/month for Teams (with data protection)</li>
+          <li>Use Claude Teams for client-confidential work — data not used for training</li>
+          <li>Build a personal &quot;prompt library&quot; for your most common drafting tasks</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={3} title="Meeting Notes and Transcription: Fathom (Free)">
+        <p className="text-gray-700 mb-3">
+          Fathom offers genuinely unlimited free meeting transcription for individual Zoom users. For client calls, strategy sessions, and depositions conducted over video, Fathom captures a complete transcript and generates an AI summary with action items immediately after the call. No other tool in any category offers this much value for free.
+        </p>
+        <p className="text-gray-600 text-sm"><strong>Note on confidentiality:</strong> Review Fathom&apos;s data handling and inform clients before recording. State ethics rules vary on client consent for recording.</p>
+      </StepCard>
+
+      <StepCard number={4} title="Client Intake and CRM: Clio Grow">
+        <p className="text-gray-700 mb-3">
+          Clio Grow is the client intake module of the Clio ecosystem — the most widely adopted practice management platform for small and solo firms. It handles online intake forms, e-signatures, automated follow-up, and potential client tracking. Combined with Clio Manage for matter management, it creates a complete client lifecycle system with built-in AI drafting features.
+        </p>
+        <ul className="list-disc pl-6 text-gray-600 space-y-1 text-sm">
+          <li>AI-powered intake questionnaires and automated follow-up</li>
+          <li>E-signature built in</li>
+          <li>Integrates with Clio Manage for end-to-end matter management</li>
+          <li>Pricing: Clio Grow $49/month; Clio Manage from $39/month</li>
+        </ul>
+      </StepCard>
+
+      <StepCard number={5} title="Document Management: NetDocuments or Clio Docs">
+        <p className="text-gray-700 mb-3">
+          AI document search and management is increasingly built into practice management platforms. Clio&apos;s document management includes AI-powered search across all matter documents. For firms with larger document volumes, NetDocuments offers more sophisticated AI search, document assembly, and DMS features — though at a higher price point than most solo firms need.
+        </p>
+        <p className="text-gray-600 text-sm"><strong>Budget option:</strong> If you&apos;re already paying for Microsoft 365, SharePoint with Microsoft Copilot ($30/user/month add-on) provides AI-powered document search and drafting assistance across your entire document library.</p>
+      </StepCard>
+    </Section>
+
+    <Section title="Realistic Budget Planning">
+      <p className="text-gray-700 mb-4">A practical AI toolkit for a solo attorney or 2-3 person firm:</p>
+      <ul className="list-disc pl-6 text-gray-700 space-y-2">
+        <li><strong>Claude Teams:</strong> $25/month — drafting, research orientation, client correspondence</li>
+        <li><strong>Fathom:</strong> $0 — unlimited Zoom transcription</li>
+        <li><strong>State bar FastCase access:</strong> $0 (included with most memberships)</li>
+        <li><strong>Clio Manage:</strong> $39/month — matter management, time tracking, billing</li>
+        <li><strong>Clio Grow:</strong> $49/month — if intake volume justifies it</li>
+        <li><strong>Total core stack:</strong> ~$113/month for most of what you need</li>
+      </ul>
+      <Callout title="Where to Spend More if Budget Allows">
+        <p className="text-amber-800">If you do significant contract work, Spellbook ($100-200/month) pays for itself quickly. If you do complex litigation, a Casetext/CoCounsel subscription for legal research is worth the investment. Add these as your caseload justifies the cost.</p>
+      </Callout>
+    </Section>
+
+    <Summary>
+      <ul className="space-y-3 text-lg text-gray-800">
+        <li><strong>Start with Claude Teams + Fathom + your state bar research tool</strong> — high impact, minimal cost.</li>
+        <li><strong>Add Clio for practice management</strong> when you need structured matter management and billing.</li>
+        <li><strong>Upgrade to purpose-built legal AI</strong> (Spellbook, CoCounsel) when your volume justifies the cost.</li>
+        <li><strong>Use enterprise/team plans for client-confidential work</strong> — not consumer-tier AI tools.</li>
+        <li><strong>Verify all AI-generated legal authority</strong> before filing or relying on it in client advice.</li>
+      </ul>
+    </Summary>
+  </>
+);
+
 export const guideContent: Record<string, React.ReactNode> = {
   "evaluating-ai-legal-tools": evaluatingContent,
   "ai-legal-research-guide": researchGuideContent,
@@ -1549,4 +1831,7 @@ export const guideContent: Record<string, React.ReactNode> = {
   "ai-ediscovery-without-risking-privilege": aiEdiscoveryPrivilegeContent,
   "ai-ethics-legal-practice": aiEthicsLegalPracticeContent,
   "automate-legal-document-assembly-ai": automateDocumentAssemblyContent,
+  "chatgpt-for-lawyers-guide": chatgptForLawyersContent,
+  "ai-contract-drafting-tools": aiContractDraftingToolsContent,
+  "ai-for-small-law-firms-toolkit": aiForSmallLawFirmsContent,
 };
