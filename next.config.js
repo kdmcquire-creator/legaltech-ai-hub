@@ -2,17 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  async redirects() {
-    return [
-      // Redirect www → non-www (fixes canonical split in Google)
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.legaltech-ai-hub.com" }],
-        destination: "https://legaltech-ai-hub.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
+  // www → non-www redirect removed — handled at Cloudflare DNS level.
+  // The `has` condition in Next.js redirects is not supported by
+  // opennextjs-cloudflare, causing all requests to redirect to the
+  // literal string "/:path*/" instead of interpolating the path.
   async headers() {
     return [
       {
