@@ -20,8 +20,8 @@ export default function AboutPage() {
             About LegalTech AI Hub
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-sky-100">
-            Your go-to resource for discovering and evaluating AI-powered legal
-            technology.
+            Independent reviews and comparisons of AI legal tools &mdash; for the
+            lawyers who have to bet their practice on them.
           </p>
         </div>
       </section>
@@ -35,10 +35,10 @@ export default function AboutPage() {
               Our Mission
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              AI is transforming legal work at an unprecedented pace. New tools
-              launch every week, each promising to streamline research, automate
-              contracts, or simplify compliance. The problem is not a lack of
-              options — it is knowing which ones are actually worth your time.
+              AI legal tools launch every week. Each one promises to streamline
+              research, automate contracts, or simplify compliance. The problem
+              is figuring out which ones actually work before you commit your
+              firm&apos;s budget and your client workflows to them.
             </p>
             <p className="text-gray-700 leading-relaxed mt-4">
               LegalTech AI Hub exists to solve that problem. We curate a
@@ -82,7 +82,7 @@ export default function AboutPage() {
                 <h3 className="text-base md:text-lg font-bold mb-2">Industry Insights</h3>
                 <p className="text-gray-600 text-sm">
                   Coverage of trends, funding rounds, and shifts in the legal AI
-                  landscape so you stay ahead of the curve.
+                  landscape &mdash; the stuff that affects your next tool purchase.
                 </p>
               </div>
             </div>

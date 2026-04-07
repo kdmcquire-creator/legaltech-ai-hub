@@ -562,7 +562,7 @@ const ipBoutiquePatentContent = (
 
     <KeyTakeaway>
       <ul className="space-y-3 text-lg text-gray-800">
-        <li><strong>Semantic search is a game-changer for patent work.</strong> Inventions are often described in different terminology across jurisdictions. AI that understands concepts — not just keywords — finds references that manual searches miss.</li>
+        <li><strong>Semantic search transforms patent work.</strong> Inventions are often described in different terminology across jurisdictions. AI that understands concepts — not just keywords — finds references that manual searches miss.</li>
         <li><strong>Cross-lingual capability is no longer optional.</strong> With China, Korea, and Japan accounting for a growing share of global patent filings, firms that can&apos;t search non-English databases are operating with blind spots.</li>
         <li><strong>Parallel validation builds trust.</strong> Running AI and manual searches side-by-side for the first batch of matters gave attorneys firsthand evidence of the tool&apos;s accuracy before relying on it exclusively.</li>
         <li><strong>Landscape mapping adds strategic value.</strong> Clients don&apos;t just want to know if their invention is patentable — they want to understand the competitive landscape. AI-generated patent maps elevate the conversation from tactical to strategic.</li>

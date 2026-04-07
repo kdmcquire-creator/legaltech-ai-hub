@@ -183,7 +183,7 @@ const researchGuideContent = (
       </p>
       <ul className="list-disc pl-6 text-gray-700 space-y-1">
         <li>Novel legal theories with little or no precedent</li>
-        <li>Cutting-edge regulatory areas (emerging AI regulation, cryptocurrency law)</li>
+        <li>Fast-moving regulatory areas (AI regulation, cryptocurrency law)</li>
         <li>Hyper-local jurisdictions with limited digitized case law</li>
         <li>Constitutional challenges and matters of first impression</li>
       </ul>
