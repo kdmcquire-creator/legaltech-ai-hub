@@ -22,15 +22,11 @@
   "observability": {
     "enabled": true
   },
-  // Single cron trigger — runs at specific hours, dispatches tasks based on day/time
-  // Newsletter: Wed 15:00 UTC (10:00 AM ET)
-  // News crawl: every run (5x daily)
-  // Email check: every run (5x daily)
-  "triggers": {
-    "crons": [
-      "0 0,6,12,15,18 * * *"
-    ]
-  },
+  // NOTE: Cron triggers removed — OpenNext Cloudflare workers don't export
+  // a scheduled() handler, so triggers.crons fires into the void.
+  // Cron dispatching is handled by the legaltech-cron-scheduler worker
+  // (separate Cloudflare Worker) which calls /api/cron/ via HTTP fetch.
+  // Schedules: newsletter Wed 15:00 UTC, news crawl daily 12:00, email check */6h.
   // Environment variables (non-secret)
   "kv_namespaces": [
     {
