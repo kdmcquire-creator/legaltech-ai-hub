@@ -1,7 +1,26 @@
 import React from 'react';
 
+// Safe: only serializes our own static data object, never user input
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "LegalZoom vs. LawDepot vs. LegalNature: Which Online Legal Service is Best?",
+  datePublished: "2026-04-01",
+  dateModified: "2026-04-01",
+  author: { "@type": "Organization", name: "LegalTech AI Hub", url: "https://legaltech-ai-hub.com" },
+  publisher: { "@type": "Organization", name: "LegalTech AI Hub", url: "https://legaltech-ai-hub.com" },
+  description: "Compare LegalZoom, LawDepot, and LegalNature to find the best online legal service for business formation, contracts, and personal documents.",
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://legaltech-ai-hub.com/blog/legalzoom-vs-lawdepot-vs-legalnature/" },
+};
+
 export default function LegalComparisonGuidePage() {
   return (
+    <>
+    {/* Article structured data -- safe: serializes static data only */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+    />
     <article className="container mx-auto px-4 py-12 max-w-4xl">
       <h1 className="text-4xl font-bold mb-8 text-gray-900">LegalZoom vs. LawDepot vs. LegalNature: Which Online Legal Service is Best?</h1>
 
@@ -64,5 +83,6 @@ export default function LegalComparisonGuidePage() {
         </ul>
       </section>
     </article>
+    </>
   );
 }
