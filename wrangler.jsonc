@@ -22,11 +22,10 @@
   "observability": {
     "enabled": true
   },
-  // NOTE: Cron triggers removed — OpenNext Cloudflare workers don't export
-  // a scheduled() handler, so triggers.crons fires into the void.
-  // Cron dispatching is handled by the legaltech-cron-scheduler worker
-  // (separate Cloudflare Worker) which calls /api/cron/ via HTTP fetch.
-  // Schedules: newsletter Wed 15:00 UTC, news crawl daily 12:00, email check */6h.
+  // Explicitly empty — clears dead cron triggers from Cloudflare.
+  // OpenNext workers don't export scheduled(), so crons fired into the void.
+  // Cron dispatching is handled by legaltech-cron-scheduler via HTTP fetch.
+  "triggers": { "crons": [] },
   // Environment variables (non-secret)
   "kv_namespaces": [
     {
