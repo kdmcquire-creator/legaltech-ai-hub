@@ -6,6 +6,7 @@ import { reviews } from "@/lib/reviews";
 import AdUnit from "@/components/AdUnit";
 import SiteGroundHalfPage from "@/components/SiteGroundHalfPage";
 import { ToolJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
+import RelatedTools from "@/components/RelatedTools";
 
 type Props = {
   params: Promise<{ "tool-name": string }>;
@@ -199,6 +200,12 @@ export default async function ToolPage({ params }: Props) {
                   </Link>
                 </div>
               )}
+
+              {/* Related Tools */}
+              <RelatedTools
+                currentSlug={toolSlug}
+                currentCategory={tool.category}
+              />
             </div>
 
             {/* Sidebar */}

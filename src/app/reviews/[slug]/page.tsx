@@ -7,6 +7,7 @@ import AdUnit from "@/components/AdUnit";
 import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
 import { NordVPNLeaderboard } from "@/components/NordVPNLeaderboard";
 import SidebarAmazon from "@/components/SidebarAmazon";
+import RelatedReviews from "@/components/RelatedReviews";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -149,6 +150,12 @@ export default async function ReviewPage({ params }: Props) {
 
               {/* Post-review sponsor */}
               <NordVPNLeaderboard />
+
+              {/* Related Reviews */}
+              <RelatedReviews
+                currentSlug={review.slug}
+                currentTags={review.tags}
+              />
 
               {/* Disclosure */}
               <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">

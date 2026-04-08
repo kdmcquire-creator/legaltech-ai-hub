@@ -7,6 +7,7 @@ import AdUnit from "@/components/AdUnit";
 import SiteGroundLeaderboard from "@/components/SiteGroundLeaderboard";
 import { NordVPNLeaderboard } from "@/components/NordVPNLeaderboard";
 import SidebarAmazon from "@/components/SidebarAmazon";
+import RelatedGuides from "@/components/RelatedGuides";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -149,6 +150,12 @@ export default async function GuidePage({ params }: Props) {
 
               {/* Post-guide sponsor */}
               <NordVPNLeaderboard />
+
+              {/* Related Guides */}
+              <RelatedGuides
+                currentSlug={guide.slug}
+                currentTags={guide.tags}
+              />
 
               {/* Disclosure */}
               <div className="mt-12 p-4 bg-yellow-50 border border-yellow-100 rounded-lg text-sm text-yellow-800">
