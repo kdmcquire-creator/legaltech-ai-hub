@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MobileNav from "@/components/MobileNav";
@@ -85,8 +86,14 @@ const jsonLd = {
       "@id": "https://legaltech-ai-hub.com/#organization",
       name: "LegalTech AI Hub",
       url: "https://legaltech-ai-hub.com",
+      logo: "https://legaltech-ai-hub.com/moonsmoke/logo.png",
       description:
         "Comprehensive directory of AI-powered legal technology tools and solutions",
+      sameAs: [
+        "https://www.linkedin.com/company/moonsmoke/",
+        "https://twitter.com/MoonsmokeNetwrk",
+        "https://www.pinterest.com/moonsmokecontent/",
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "Customer Support",
@@ -290,10 +297,29 @@ export default function RootLayout({
                   </a>
                   {" "}· As an Amazon Associate I earn from qualifying purchases.
                 </p>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-sm mb-6">
                   {"©"} {new Date().getFullYear()} LegalTech AI Hub. All rights
                   reserved.
                 </p>
+                {/* Published by Moonsmoke LLC */}
+                <div className="border-t border-gray-200 pt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
+                  <Image
+                    src="/moonsmoke/logo.png"
+                    alt="Moonsmoke LLC"
+                    width={24}
+                    height={24}
+                    className="rounded"
+                  />
+                  <span>
+                    Published by Moonsmoke LLC &bull; Austin, Texas &bull;{" "}
+                    <Link
+                      href="/about/editorial-team/"
+                      className="hover:text-blue-600 transition underline"
+                    >
+                      Editorial Team
+                    </Link>
+                  </span>
+                </div>
               </div>
             </div>
           </footer>

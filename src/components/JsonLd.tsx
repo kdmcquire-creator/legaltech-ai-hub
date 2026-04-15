@@ -46,7 +46,12 @@ export function OrganizationJsonLd() {
         "@type": "Organization",
         name: "Legaltech AI Hub",
         url: BASE_URL,
-        sameAs: [],
+        logo: `${BASE_URL}/moonsmoke/logo.png`,
+        sameAs: [
+          "https://www.linkedin.com/company/moonsmoke/",
+          "https://twitter.com/MoonsmokeNetwrk",
+          "https://www.pinterest.com/moonsmokecontent/",
+        ],
       }}
     />
   );
@@ -124,21 +129,16 @@ export function ArticleJsonLd({
         headline: post.title,
         description: post.description,
         ...(post.dateISO ? { datePublished: post.dateISO } : {}),
-        ...(post.author
-          ? {
-              author: {
-                "@type": "Person",
-                name: post.author,
-                ...(post.authorSlug
-                  ? { url: `${BASE_URL}/author/${post.authorSlug}/` }
-                  : {}),
-              },
-            }
-          : {}),
+        author: {
+          "@type": "Organization",
+          name: "The LegalTech AI Hub Editorial Team",
+          url: `${BASE_URL}/about/editorial-team/`,
+        },
         publisher: {
           "@type": "Organization",
           name: "Legaltech AI Hub",
           url: BASE_URL,
+          logo: `${BASE_URL}/moonsmoke/logo.png`,
         },
         mainEntityOfPage: {
           "@type": "WebPage",
